@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Website</title>
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/orderstyles.css') }}">
+
+</head>
+<body>
+  <aside class="menu_active" style="padding-top: 0px;">
+    <div id="lbox">
+      <div id="logo">
+        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo">
+        <span class="bold-blue">Virtual Trading</span>
+      </div>
+    </div>
+
+    <div id="menu_main">
+      <ul>
+        <li class="menu_item" id="dashboard_item">
+          <a href="{{ url_for('index') }}">
+            <span>Dashboard</span>
+          </a>
+        </li>
+
+        <li class="menu_item" id="order_management_item">
+          <a href="{{ url_for('order_index') }}">
+            <span>Buy/Sell</span>
+          </a>
+        </li>
+
+        <li class="menu_item" id="market_data_item">
+          <a href="{{ url_for('market_index') }}">
+            <span>Market Data</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </aside>
+
+  <header id="header">
+    <div class="header-content">
+      <span class="bold-blue">Header Content</span>
+    </div>
+  </header>
+
+  <div id="body-container">
+    
+    <div class="company-table">
+      <div class="top-box">
+        <div class="buy-sell-box">
+          <span>Buy   ‎ </span>
+          <div class="switch-box">  
+            <label class="switch">
+              <input type="checkbox">
+              <span class="slider"></span>
+            </label>
+          </div>
+          <span>‎   Sell</span>
+        </div>
+      </div>
+      <div class="main-box">
+        <div class="upper-main">
+          <div class="symbol-qty-box">
+          <div class="symbol-qty-box">
+
+            <div class="label">Symbol</div>
+            <form autocomplete="off">
+              <div class="autocomplete" style="width:300px;">
+                <input id="myInput" type="text" name="mySymbol" placeholder="Symbol">
+              </div>
+            </form> 
+            </div>
+          <div class="symbol-qty-box">
+            <div class="label">QTY</div>
+            <input type="number" id="quantity-input" placeholder="Quantity">
+          </div>
+          <div class="symbol-qty-box">
+            <div class="label">PRICE(NPR)</div>
+            <input type="number" id="price-input" placeholder="Price" readonly>
+          </div>                    
+            <span id="price-output"></span>
+          </div>
+        </div>
+        <div class="stock-info">
+          <table id="symbol-info-table">
+            <thead>
+              <tr>
+                <th>LTP</th>
+                <th>Low</th>
+                <th>High</th>
+                <th>PClose</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td id="ltp-row"></td>
+                <td id="low-row"></td>
+                <td id="high-row"></td>
+                <td id="pclose-row"></td>
+              </tr>
+            </tbody>
+          </table>
+          
+        </div>
+        
+          
+          
+          <div class="buysellbtn">
+            <button id="confirm-btn" class="buy">Buy</button>
+            <button id="cancel-btn">Cancel</button>
+          </div>
+          <div id="confirmation-overlay" class="overlay">
+            <div class="confirmation-box">
+              <div class="message">Are you sure you want to cancel?</div>
+              <div class="actions">
+                <button id="confirm-cancel">Yes</button>
+                <button id="cancel-confirm">No</button>
+              </div>
+            </div>
+          </div>
+            
+            <!--buy button or sell and cancel-->
+          </div>
+        </div>
+      </div>
+        <div class="more-lower">
+        <!--order book-->
+      </div>
+    </div>
+  </div>
+  <script src="{{ url_for('static', filename='js/orderscripts.js') }}"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+
+  
+</body>
+</html>

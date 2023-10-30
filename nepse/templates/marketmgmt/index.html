@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Website</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/marketstyles.css') }}">
+</head>
+<body>
+
+  <aside class="menu_active" style="padding-top: 0px;">
+    <div id="lbox">
+      <div id="logo">
+        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo">
+        <span class="bold-blue">Virtual Trading</span>
+      </div>
+  </div>
+
+    <div id="menu_main">
+      <ul>
+        <li class="menu_item" id="dashboard_item">
+          <a href="{{ url_for('index') }}">
+            <span>Dashboard</span>
+          </a>
+        </li>
+
+        <li class="menu_item" id="order_management_item">
+          <a href="{{ url_for('order_index') }}">
+            <span>Buy/Sell</span>
+          </a>
+        </li>
+
+        <li class="menu_item" id="market_data_item">
+          <a href="{{ url_for('market_index') }}">
+            <span>Market Data</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </aside>
+
+  <header id="header">
+    <div class="header-content">
+      <span class="bold-blue">Header Content</span>
+    </div>
+  </header>
+
+  <div id="body-container">
+    <div class="company-table">
+
+        <h3>Market Data</h3>
+        <div class="centered-search">
+        <input type="text" id="search-box" placeholder="Search...">
+      </div>
+      <table class="centered-table" id="market-table">
+        <colgroup>
+          <col style="width: 120px;"> <!-- Adjust the width as needed for each column -->
+          <col style="width: 150px;">
+          <col style="width: 100px;">
+          <col style="width: 120px;">
+          <col style="width: 100px;">
+          <col style="width: 100px;">
+          <col style="width: 100px;">
+          <col style="width: 100px;">
+          <col style="width: 100px;">
+          <col style="width: 100px;">
+
+          
+        </colgroup>
+        <thead>
+          <tr>
+            {% for column in table_data.columns %}
+            <th>{{ column }}</th>
+            {% endfor %}
+          </tr>
+        </thead>
+        <tbody>
+                {% for index, row in table_data.iterrows() %}
+                <tr style="background-color: {% if row['% Change']|float < 0 %}darkred{% elif row['% Change']|float > 0 %}darkgreen{% else %}orange{% endif %};
+                           color: {% if index >= 0 %}white{% endif %}">
+                    {% for column in table_data.columns %}
+                    <td>{{ row[column] }}</td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+
+<script src="{{ url_for('static', filename='js/marketscripts.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Website</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+  <aside class="menu_active" style="padding-top: 0px;">
+    <div id="lbox">
+      <div id="logo">
+        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo">
+        <span class="bold-blue">Virtual Trading</span>
+      </div>
+  </div>
+
+    <div id="menu_main">
+      <ul>
+        <li class="menu_item" id="dashboard_item">
+          <a href="{{ url_for('index') }}">
+            <span>Dashboard</span>
+          </a>
+        </li>
+
+        <li class="menu_item" id="order_management_item">
+          <a href="{{ url_for('order_index') }}">
+            <span>Buy/Sell</span>
+          </a>
+        </li>
+
+        <li class="menu_item" id="market_data_item">
+          <a href="{{ url_for('market_index') }}">
+            <span>Market Data</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </aside>
+
+  <header id="header">
+    <div class="header-content">
+      <span class="bold-blue">Header Content</span>
+    </div>
+  </header>
+
+  <div id="body-container">
+    <div class="content-wrapper">
+      <div class="watchlist">
+        <h3>My Watchlist</h3>
+        <table class="centered-table">
+          <thead>
+            <tr>
+                {% for column in table_data.columns %}
+                <th>{{ column }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+          <tbody id="watchlist-body">
+            <!-- Table rows will be dynamically populated using JavaScript -->
+          </tbody>
+        </table>
+      </div>
+
+      
+    </div>
+
+  <div id="second_div">
+    <div class="dp_holding">
+
+      <h3>DP Holdings</h3>
+      <p>No. of Shares: <span id="dp_shares">0</span></p>
+      <p>Total Amount as of CP: <span id="dp_amount">0</span></p>
+    </div>
+
+    <div class="collateral">
+       
+      <p>My Collateral = <span id="1"> 100000</span></p>
+    </div>
+  </div>
+  </div>
+
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
