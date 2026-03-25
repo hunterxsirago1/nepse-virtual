@@ -168,40 +168,60 @@ def index():
     with df_lock:
         table_data = df.copy()
     
-    # Calculate portfolio value and gain/loss
-    portfolio_value = user.balance
-    day_gain = 0
-    holdings_count = len(user.holdings)
-    
     # Strictly deduplicate for calculation
     df_calc = table_data.loc[:, ~table_data.columns.duplicated()].copy()
     
+    # Required data structures for template
+    portfolio = {}
+    market_prices = {}
+    total_investment = 0.0
+    current_portfolio_value = user.balance
+    day_gain = 0.0
+    
     for holding in user.holdings:
+        # 1. Total Investment (Cost Basis)
+        total_investment += holding.wacc * holding.quantity
+        
+        # 2. Add to portfolio dict
+        portfolio[holding.symbol] = {
+            'quantity': holding.quantity,
+            'avg_price': holding.wacc
+        }
+        
+        # 3. Market Price & Current Value
+        current_price = 0.0
         current_price_row = df_calc[df_calc['Symbol'] == holding.symbol]
         if not current_price_row.empty:
             try:
-                # LTP might be duplicated, take first scalar
                 val = current_price_row.iloc[0]['LTP']
                 ltp_str = str(val).replace(',', '').strip()
-                if not ltp_str or ltp_str == 'nan':
-                     current_price = 0.0
-                else:
+                if ltp_str and ltp_str != 'nan':
                     current_price = float(ltp_str)
-                
-                portfolio_value += current_price * holding.quantity
-                day_gain += (current_price - holding.wacc) * holding.quantity
             except Exception as e:
-                logger.error(f"Error calculating value for {holding.symbol}: {e}")
-    
-    # Convert to list of dicts for Jinja2 safety
+                logger.error(f"Error parsing LTP for {holding.symbol}: {e}")
+        
+        market_prices[holding.symbol] = current_price
+        current_portfolio_value += current_price * holding.quantity
+        day_gain += (current_price - holding.wacc) * holding.quantity
+
+    portfolio_change_pct = 0.0
+    if total_investment > 0:
+        portfolio_change_pct = (day_gain / total_investment) * 100
+
+    # Convert market table to list of dicts for the footer table if needed
+    # Note: index.html currently uses its own portfolio loop at the top, 
+    # but might still use table_data for a "Market Watch" section if added later.
     table_dict = df_calc.to_dict('records')
     
     return render_template('index.html', 
-                          table_data=table_dict, 
-                          user=user, 
-                          portfolio_value=round(portfolio_value, 2),
-                          day_gain=round(day_gain, 2),
-                          holdings_count=holdings_count)
+                          user=user,
+                          portfolio=portfolio,
+                          market_prices=market_prices,
+                          total_portfolio_value=current_portfolio_value,
+                          total_investment=total_investment,
+                          portfolio_change=day_gain,
+                          portfolio_change_pct=portfolio_change_pct,
+                          table_data=table_dict)
 
 @app.route('/marketmgmt/')
 def market_index():

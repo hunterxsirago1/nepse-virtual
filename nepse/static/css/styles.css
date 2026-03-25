@@ -39,21 +39,52 @@ body {
     overflow: hidden; /* Main container handles scroll */
 }
 
+/* Layout Core */
 .app-container {
-    display: flex;
-    height: 100vh;
-    width: 100vw;
+    display: block; /* Removed flex to use fixed positioning */
+    min-height: 100vh;
 }
 
-/* Sidebar Styling - Premium Overhaul */
 .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 260px;
+    height: 100vh;
     background-color: var(--bg-sidebar);
     border-right: 1px solid var(--tms-border);
     display: flex;
     flex-direction: column;
-    z-index: 100;
+    z-index: 1000;
     box-shadow: 2px 0 10px rgba(0,0,0,0.02);
+}
+
+.main-content {
+    margin-left: 260px;
+    width: calc(100% - 260px);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--bg-app);
+}
+
+.top-bar {
+    position: sticky;
+    top: 0;
+    height: 64px;
+    background: white;
+    border-bottom: 1px solid var(--tms-border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 32px;
+    z-index: 999;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.content-wrapper {
+    padding: 32px;
+    flex: 1;
 }
 
 .logo-container {
@@ -62,19 +93,64 @@ body {
     align-items: center;
     gap: 12px;
     border-bottom: 1px solid var(--tms-border);
+    height: 64px;
+    box-sizing: border-box;
 }
 
+/* Sidebar Live Widget */
+.sidebar-footer {
+    padding: 20px;
+    border-top: 1px solid var(--tms-border);
+    background: #fcfcfc;
+}
+
+/* Sidebar Search */
+.sidebar-search {
+    padding: 16px 20px;
+}
+
+.search-icon-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.sidebar-search i {
+    position: absolute;
+    left: 12px;
+    color: var(--tms-text-light);
+    font-size: 0.85rem;
+    z-index: 5;
+}
+
+.sidebar-search input {
+    width: 100%;
+    padding: 10px 12px 10px 36px;
+    background: #f8fafc;
+    border: 1px solid var(--tms-border);
+    border-radius: 20px; /* Pill shape for premium look */
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.sidebar-search input:focus {
+    outline: none;
+    border-color: var(--tms-blue);
+    background: white;
+    box-shadow: 0 0 0 3px rgba(13, 71, 161, 0.05);
+}
+
+/* Logo & Identity */
 .tms-logo-circle {
-    width: 32px;
-    height: 32px;
+    width: 36px;
+    height: 36px;
     background: var(--tms-blue);
-    border-radius: 50%;
+    border-radius: 8px; /* Square with rounded corners looks more modern/TMS */
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
-    font-size: 1.1rem;
-    box-shadow: 0 0 0 4px rgba(13, 71, 161, 0.1);
+    font-size: 1.2rem;
 }
 
 .logo-text {
@@ -502,23 +578,86 @@ tr:hover {
     transform: scale(0.98);
 }
 
-/* Responsive */
+/* Top Bar Internal Layout */
+.index-container {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+
+.index-item {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+}
+
+.index-label {
+    font-size: 0.6rem;
+    font-weight: 800;
+    color: var(--tms-text-light);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.index-value {
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: var(--tms-text-dark);
+}
+
+.index-value.positive { color: var(--positive); }
+.index-value.negative { color: var(--negative); }
+
+.market-status {
+    background: #f1f5f9;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--tms-blue-dark);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.market-status i {
+    font-size: 0.5rem;
+    color: var(--positive);
+}
+
+/* User Nav */
+.user-nav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.wallet-info {
+    text-align: right;
+    line-height: 1.2;
+}
+
+.wallet-label {
+    display: block;
+    font-size: 0.6rem;
+    font-weight: 800;
+    color: var(--tms-text-light);
+    text-transform: uppercase;
+}
+
+.wallet-amount {
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: var(--tms-blue);
+}
+
+/* Responsive Overrides */
 @media (max-width: 1024px) {
-    .sidebar {
-        width: 80px;
+    .sidebar { width: 70px; }
+    .main-content { margin-left: 70px; width: calc(100% - 70px); }
+    .logo-text, .nav-group-label, nav#sidebarNav span, .sidebar-footer, .sidebar-search, .wallet-info {
+        display: none !important;
     }
-    .logo-text, .nav-group-label, nav#sidebarNav span, .sidebar-footer, .sidebar-search {
-        display: none;
-    }
-    .logo-container {
-        justify-content: center;
-        padding: 24px 0;
-    }
-    nav#sidebarNav a {
-        justify-content: center;
-        padding: 15px 0;
-    }
-    nav#sidebarNav a i {
-        font-size: 1.4rem;
-    }
+    .logo-container { justify-content: center; padding: 20px 0; }
+    nav#sidebarNav a { justify-content: center; padding: 15px 0; }
 }
