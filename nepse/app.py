@@ -216,12 +216,13 @@ def market_index():
 @app.route('/ordermgmt/')
 def order_index():
     user = User.query.first()
+    recent_transactions = Transaction.query.filter_by(user_id=user.id).order_by(Transaction.timestamp.desc()).limit(5).all()
     with df_lock:
         if df.empty:
             table_dict = []
         else:
             table_dict = df.loc[:, ~df.columns.duplicated()].to_dict('records')
-    return render_template('ordermgmt/index.html', table_data=table_dict, user=user)
+    return render_template('ordermgmt/index.html', table_data=table_dict, user=user, recent_transactions=recent_transactions)
 
 @app.route('/ordermgmt/data')
 def order_data():

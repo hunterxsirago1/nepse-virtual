@@ -1,118 +1,142 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<style>
-    .order-toggle-container {
-        display: flex;
-        background: #f1f1f1;
-        border-radius: 4px;
-        padding: 4px;
-        margin-bottom: 20px;
-    }
-    .order-toggle-item {
-        flex: 1;
-        text-align: center;
-        padding: 10px;
-        cursor: pointer;
-        font-weight: 700;
-        border-radius: 4px;
-        transition: all 0.3s;
-    }
-    .order-toggle-item.active-buy { background: var(--positive); color: white; }
-    .order-toggle-item.active-sell { background: var(--negative); color: white; }
-    
-    .price-info-grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 10px;
-        margin-bottom: 20px;
-        background: #f8f9fa;
-        padding: 15px;
-        border-radius: 4px;
-        border: 1px dashed var(--tms-border);
-    }
-    .info-item {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-    .info-label { font-size: 0.7rem; color: var(--tms-text-light); text-transform: uppercase; }
-    .info-value { font-size: 1rem; font-weight: 700; color: var(--tms-blue-dark); }
-</style>
-
-<div class="dashboard-header" style="margin-bottom: 20px;">
-    <h1 style="font-size: 1.5rem; margin: 0; color: var(--tms-blue-dark);">Order Management</h1>
-    <p style="font-size: 0.85rem; color: var(--tms-text-light);">Direct Market Access - Execute Buy/Sell Orders.</p>
+<div style="margin-bottom: 24px;">
+    <h2 style="font-size: 1.25rem; margin: 0; color: var(--tms-blue-dark); font-weight: 800; letter-spacing: -0.5px;">Trading Terminal</h2>
+    <p style="font-size: 0.85rem; color: var(--tms-text-light); margin-top: 4px; font-weight: 500;">Direct market access - Fast, secure order execution.</p>
 </div>
 
-<div class="card" style="max-width: 800px; margin: 0 auto;">
-    <div class="card-header">
-        <h3><i class="fas fa-shopping-cart"></i> Create New Order</h3>
-    </div>
-    <div class="card-body">
-        <form id="orderForm" style="padding: 20px;">
-            <div class="order-toggle-container">
-                <div class="order-toggle-item active-buy" id="buyToggle" onclick="setOrderType('BUY')">BUY</div>
-                <div class="order-toggle-item" id="sellToggle" onclick="setOrderType('SELL')">SELL</div>
+<div class="trade-container">
+    <!-- Left: Order Entry -->
+    <div class="order-entry-card">
+        <div class="card-header">
+            <h3><i class="fas fa-plus-circle" style="margin-right: 8px;"></i> Place New Order</h3>
+            <span id="market-status-indicator" style="font-size: 0.7rem; font-weight: 700; color: var(--positive); background: #f0fdf4; padding: 4px 8px; border-radius: 12px; display: flex; align-items: center; gap: 6px;">
+                <i class="fas fa-circle" style="font-size: 0.5rem;"></i> MARKET OPEN
+            </span>
+        </div>
+        
+        <form id="orderForm" style="padding: 24px;">
+            <div class="order-toggle-group">
+                <button type="button" class="toggle-btn active-buy" id="buyToggle" onclick="setOrderType('BUY')">BUY SECURITY</button>
+                <button type="button" class="toggle-btn" id="sellToggle" onclick="setOrderType('SELL')">SELL SECURITY</button>
                 <input type="hidden" name="trade_type" id="tradeType" value="BUY">
             </div>
 
-            <div class="trade-form-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;">
+            <div class="form-row">
                 <div class="form-group">
-                    <label>Security Symbol</label>
-                    <input list="symbols" name="symbol" id="symbolInput" placeholder="Enter Symbol (e.g. NICA)" onchange="updatePriceInfo()" style="width: 100%; padding: 10px; border: 1px solid var(--tms-border); border-radius: 4px;">
+                    <label>Symbol</label>
+                    <input list="symbols" name="symbol" id="symbolInput" class="form-control" placeholder="Search (e.g. NICA)" onchange="updatePriceInfo()">
                     <datalist id="symbols"></datalist>
                 </div>
-
                 <div class="form-group">
                     <label>Order Type</label>
-                    <select id="priceType" style="width: 100%; padding: 10px; border: 1px solid var(--tms-border); border-radius: 4px;">
+                    <select id="priceType" class="form-control">
                         <option value="LMT">Limit Order (LMT)</option>
                         <option value="MKT">Market Order (MKT)</option>
                     </select>
                 </div>
+            </div>
 
+            <div class="form-row">
                 <div class="form-group">
                     <label>Quantity</label>
-                    <input type="number" id="quantity" placeholder="Units" step="10" min="10" style="width: 100%; padding: 10px; border: 1px solid var(--tms-border); border-radius: 4px;">
+                    <input type="number" id="quantity" class="form-control" placeholder="Min. 10 Units" step="10" min="10">
                 </div>
-
                 <div class="form-group">
-                    <label>Limit Price (NPR)</label>
-                    <input type="number" id="price" placeholder="Price" step="0.10" style="width: 100%; padding: 10px; border: 1px solid var(--tms-border); border-radius: 4px;">
+                    <label>Price (NPR)</label>
+                    <input type="number" id="price" class="form-control" placeholder="0.00" step="0.10">
                 </div>
             </div>
 
             <!-- Price Info Bar -->
-            <div id="priceInfo" class="price-info-grid" style="display: none; margin-top: 20px;">
-                <div class="info-item">
-                    <span class="info-label">LTP</span>
-                    <span class="info-value" id="ltpInfo">0.00</span>
+            <div id="priceInfo" class="market-info-strip" style="display: none;">
+                <div class="info-box">
+                    <span class="info-box-label">LTP</span>
+                    <span class="info-box-value" id="ltpInfo">0.00</span>
                 </div>
-                <div class="info-item">
-                    <span class="info-label">Daily High</span>
-                    <span class="info-value" id="highInfo">0.00</span>
+                <div class="info-box">
+                    <span class="info-box-label">High</span>
+                    <span class="info-box-value" id="highInfo">0.00</span>
                 </div>
-                <div class="info-item">
-                    <span class="info-label">Daily Low</span>
-                    <span class="info-value" id="lowInfo">0.00</span>
+                <div class="info-box">
+                    <span class="info-box-label">Low</span>
+                    <span class="info-box-value" id="lowInfo">0.00</span>
                 </div>
-                <div class="info-item">
-                    <span class="info-label">Prev. Close</span>
-                    <span class="info-value" id="pcloseInfo">0.00</span>
+                <div class="info-box">
+                    <span class="info-box-label">Prev. Close</span>
+                    <span class="info-box-value" id="pcloseInfo">0.00</span>
                 </div>
             </div>
 
-            <div style="margin-top: 30px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--tms-border); padding-top: 20px;">
-                <div class="total-est">
-                    <span style="font-size: 0.8rem; color: var(--tms-text-light);">Estimated Total:</span>
-                    <div style="font-size: 1.25rem; font-weight: 800; color: var(--tms-blue-dark);">NPR <span id="totalDisplay">0.00</span></div>
+            <div class="order-footer">
+                <div>
+                    <span class="total-summary-label">Estimated Transaction Value</span>
+                    <div class="total-summary-value">NPR <span id="totalDisplay">0.00</span></div>
+                    <small style="color: var(--tms-text-light); font-size: 0.75rem;">Includes 0.4% brokerage & taxes</small>
                 </div>
-                <div class="actions">
-                    <button type="button" class="btn btn-primary" id="submitOrderBtn" style="padding: 12px 40px; font-weight: 700; background: var(--positive); border-color: var(--positive);">Execute BUY Order</button>
-                </div>
+                <button type="button" class="btn-execute" id="submitOrderBtn" style="background: var(--positive);">EXECUTE BUY</button>
             </div>
         </form>
+    </div>
+
+    <!-- Right: Market Context / Portfolio Quick View -->
+    <div style="display: flex; flex-direction: column; gap: 20px;">
+        <div class="card">
+            <div class="card-header" style="background: #f8fafc;">
+                <h3 style="font-size: 0.85rem; font-weight: 800;"><i class="fas fa-wallet" style="margin-right: 8px;"></i> Account Balance</h3>
+            </div>
+            <div style="padding: 20px;">
+                <span style="font-size: 0.75rem; color: var(--tms-text-light); font-weight: 700;">AVAILABLE FUNDS</span>
+                <div style="font-size: 1.5rem; font-weight: 800; color: var(--tms-blue-dark); margin-top: 4px;">NPR {{ "{:,.2f}".format(user.balance) }}</div>
+                <div style="margin-top: 16px; font-size: 0.8rem; color: var(--tms-text-light); display: flex; justify-content: space-between;">
+                    <span>Daily Limit</span>
+                    <span style="font-weight: 700; color: var(--tms-text);">NPR 500k</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card" style="background: var(--tms-blue-dark); color: white; border: none;">
+            <div style="padding: 24px;">
+                <h3 style="color: white; font-size: 1rem; margin-bottom: 12px;">Trading Tips</h3>
+                <p style="font-size: 0.85rem; opacity: 0.8; line-height: 1.5;">Always check the Last Traded Price (LTP) before placing a limit order to ensure timely execution.</p>
+                <a href="#" style="color: #60a5fa; font-size: 0.85rem; font-weight: 700; text-decoration: none; margin-top: 12px; display: inline-block;">Learn more →</a>
+            </div>
+        </div>
+
+        <!-- Recent Executions -->
+        <div class="card">
+            <div class="card-header" style="background: #f8fafc;">
+                <h3 style="font-size: 0.85rem; font-weight: 800;"><i class="fas fa-history" style="margin-right: 8px;"></i> Recent Executions</h3>
+            </div>
+            <div style="padding: 0;">
+                <table style="width: 100%; border-collapse: collapse; font-size: 0.75rem;">
+                    <thead>
+                        <tr style="background: #f1f5f9; text-align: left;">
+                            <th style="padding: 10px; border-bottom: 1px solid var(--tms-border);">Symbol</th>
+                            <th style="padding: 10px; border-bottom: 1px solid var(--tms-border);">Type</th>
+                            <th style="padding: 10px; border-bottom: 1px solid var(--tms-border);">Qty</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for txn in recent_transactions %}
+                        <tr>
+                            <td style="padding: 10px; border-bottom: 1px solid #f1f5f9; font-weight: 700;">{{ txn.symbol }}</td>
+                            <td style="padding: 10px; border-bottom: 1px solid #f1f5f9;">
+                                <span style="color: {% if txn.type == 'BUY' %}var(--positive){% else %}var(--negative){% endif %}; font-weight: 800;">{{ txn.type }}</span>
+                            </td>
+                            <td style="padding: 10px; border-bottom: 1px solid #f1f5f9;">{{ txn.quantity }}</td>
+                        </tr>
+                        {% endfor %}
+                        {% if not recent_transactions %}
+                        <tr>
+                            <td colspan="3" style="padding: 20px; text-align: center; color: var(--tms-text-light);">No recent trades</td>
+                        </tr>
+                        {% endif %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -131,14 +155,12 @@
             buyToggle.classList.add('active-buy');
             sellToggle.classList.remove('active-sell');
             submitBtn.style.background = 'var(--positive)';
-            submitBtn.style.borderColor = 'var(--positive)';
-            submitBtn.innerText = 'Execute BUY Order';
+            submitBtn.innerText = 'EXECUTE BUY';
         } else {
             buyToggle.classList.remove('active-buy');
             sellToggle.classList.add('active-sell');
             submitBtn.style.background = 'var(--negative)';
-            submitBtn.style.borderColor = 'var(--negative)';
-            submitBtn.innerText = 'Execute SELL Order';
+            submitBtn.innerText = 'EXECUTE SELL';
         }
     }
 

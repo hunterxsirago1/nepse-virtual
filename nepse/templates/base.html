@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NEPSE TMS - Simulator</title>
+    <title>NEPSE TMS - Premium Simulator</title>
     <!-- Use FontAwesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
@@ -13,49 +14,72 @@
         <!-- Sidebar -->
         <aside class="sidebar">
             <div class="logo-container">
-                <i class="fas fa-university"></i>
-                <div>
-                    <span>NEPAL STOCK EXCHANGE</span><br>
-                    <span style="font-size: 0.65rem; color: var(--tms-text-light);">Trade Management System</span>
+                <div class="tms-logo-circle">
+                    <i class="fas fa-university"></i>
+                </div>
+                <div class="logo-text">
+                    <span class="main">NEPSE TMS</span>
+                    <span class="sub">Virtual Simulator</span>
                 </div>
             </div>
-            <div class="search-menu">
-                <input type="text" id="sidebarSearch" placeholder="Search Menu/Submenus..." onkeyup="filterMenu()">
+
+            <div class="sidebar-search">
+                <div class="search-icon-wrapper">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="sidebarSearch" placeholder="Search Menu..." onkeyup="filterMenu()">
+                </div>
             </div>
+
             <nav id="sidebarNav">
+                <div class="nav-group-label">Trading</div>
                 <a href="{{ url_for('index') }}" class="{{ 'active' if request.endpoint == 'index' else '' }}">
-                    <i class="fas fa-tachometer-alt"></i>
-                    <span>NEPSE TMS Dashboard</span>
-                </a>
-                <a href="#">
-                    <i class="fas fa-user"></i>
-                    <span>My Information</span>
-                </a>
-                <a href="#">
-                    <i class="fas fa-search-plus"></i>
-                    <span>Search Client</span>
-                </a>
-                <a href="#">
-                    <i class="fas fa-dollar-sign"></i>
-                    <span>Fund Management</span>
+                    <i class="fas fa-chart-pie"></i>
+                    <span>Dashboard</span>
                 </a>
                 <a href="{{ url_for('order_index') }}" class="{{ 'active' if request.endpoint == 'order_index' else '' }}">
-                    <i class="fas fa-shopping-cart"></i>
-                    <span>Order Management</span>
+                    <i class="fas fa-exchange-alt"></i>
+                    <span>Buy/Sell Stocks</span>
                 </a>
                 <a href="#">
-                    <i class="fas fa-users"></i>
-                    <span>Trade Management</span>
+                    <i class="fas fa-history"></i>
+                    <span>Order History</span>
                 </a>
+
+                <div class="nav-group-label">Market Data</div>
                 <a href="{{ url_for('market_index') }}" class="{{ 'active' if request.endpoint == 'market_index' else '' }}">
-                    <i class="fas fa-chart-line"></i>
-                    <span>Market Data</span>
+                    <i class="fas fa-globe"></i>
+                    <span>Market Explorer</span>
                 </a>
                 <a href="#">
-                    <i class="fas fa-file-alt"></i>
-                    <span>Broker Back Office</span>
+                    <i class="fas fa-list-ul"></i>
+                    <span>Market Depth</span>
+                </a>
+                <a href="#">
+                    <i class="fas fa-building"></i>
+                    <span>Listed Companies</span>
+                </a>
+
+                <div class="nav-group-label">Account</div>
+                <a href="#">
+                    <i class="fas fa-wallet"></i>
+                    <span>Fund Management</span>
+                </a>
+                <a href="#">
+                    <i class="fas fa-user-circle"></i>
+                    <span>My Information</span>
                 </a>
             </nav>
+
+            <div class="sidebar-footer">
+                <div class="market-mini-widget">
+                    <div class="mini-widget-header">
+                        <span class="mini-widget-label">NEPSE INDEX</span>
+                        <span class="mini-widget-status"><i class="fas fa-circle"></i> LIVE</span>
+                    </div>
+                    <div class="mini-widget-value">2,605.63</div>
+                    <div class="mini-widget-change text-positive">+4.02 (0.15%)</div>
+                </div>
+            </div>
         </aside>
 
         <!-- Main Content -->
@@ -64,33 +88,26 @@
                 <div class="index-container">
                     <div class="index-item">
                         <span class="index-label">NEPSE</span>
-                        <span class="index-value positive">2,605.63 <i class="fas fa-caret-up"></i> 4.02 (0.15%)</span>
+                        <span class="index-value positive">2,605.63 <i class="fas fa-caret-up"></i></span>
                     </div>
                     <div class="index-item">
-                        <span class="index-label">SENSIND</span>
-                        <span class="index-value positive">448.27 <i class="fas fa-caret-up"></i> 0.74 (0.16%)</span>
-                    </div>
-                    <div style="border-left: 1px solid var(--tms-border); height: 30px; margin: 0 10px;"></div>
-                    <div class="index-item">
-                        <span class="index-label">Active Sessions</span>
-                        <span class="index-value" style="color: var(--tms-blue);">CONTINUOUS (11:00 - 15:00)</span>
-                    </div>
-                    <div class="index-item">
-                        <span class="index-label">Turnover</span>
-                        <span class="index-value" style="color: var(--tms-blue-dark);">364,766,488.49</span>
+                        <span class="index-label">TOTAL TURNOVER</span>
+                        <span class="index-value" style="color: var(--tms-blue);">NPR 364.76M</span>
                     </div>
                     <div class="market-status">
-                        <i class="fas fa-circle"></i> LIVE
+                        <i class="fas fa-circle"></i> CONTINUOUS SESSION
                     </div>
                 </div>
 
                 <div class="user-nav">
                     <div class="wallet-info">
-                        <span class="wallet-label">Available Balance</span>
+                        <span class="wallet-label">Virtual Cash</span>
                         <span class="wallet-amount">NPR {{ "{:,.2f}".format(user.balance) }}</span>
                     </div>
                     <div class="user-profile">
-                        <i class="fas fa-user-circle fa-2x" style="color: var(--tms-blue);"></i>
+                        <div class="avatar-circle">
+                            <i class="fas fa-user"></i>
+                        </div>
                     </div>
                 </div>
             </header>
@@ -99,8 +116,8 @@
                 {% with messages = get_flashed_messages() %}
                   {% if messages %}
                     {% for message in messages %}
-                      <div class="flash-message card" style="padding: 10px; margin-bottom: 20px; border-left: 5px solid var(--primary-color);">
-                        {{ message }}
+                      <div class="flash-message card" style="padding: 12px 16px; margin-bottom: 20px; border-left: 4px solid var(--tms-blue); background: var(--tms-sidebar-active); color: var(--tms-blue-dark); font-weight: 600; font-size: 0.9rem;">
+                        <i class="fas fa-info-circle" style="margin-right: 8px;"></i> {{ message }}
                       </div>
                     {% endfor %}
                   {% endif %}

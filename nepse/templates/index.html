@@ -28,70 +28,80 @@
 <!-- Summary Widgets -->
 <div class="stats-row">
     <div class="widget">
-        <div class="widget-label">Available Cash</div>
-        <div class="widget-value">NPR {{ "{:,.2f}".format(user.balance) }}</div>
-    </div>
+<div class="dashboard-grid">
     <div class="widget">
-        <div class="widget-label">Total Portfolio Value</div>
-        <div class="widget-value">NPR {{ "{:,.2f}".format(portfolio_value) }}</div>
-    </div>
-    <div class="widget {{ 'widget-positive' if day_gain >= 0 else 'widget-negative' }}">
-        <div class="widget-label">Total Day Gain/Loss</div>
-        <div class="widget-value {{ 'text-positive' if day_gain >= 0 else 'text-negative' }}">
-            NPR {{ "{:,.2f}".format(day_gain) }}
+        <span class="widget-label">Total Portfolio Value</span>
+        <div class="widget-value">NPR {{ "{:,.2f}".format(total_portfolio_value) }}</div>
+        <div class="widget-footer {{ 'text-positive' if portfolio_change >= 0 else 'text-negative' }}">
+            <i class="fas {{ 'fa-arrow-up' if portfolio_change >= 0 else 'fa-arrow-down' }}"></i>
+            <span>{{ "{:,.2f}".format(portfolio_change) }} ({{ "{:,.2f}".format(portfolio_change_pct) }}%) Todays Gain</span>
         </div>
     </div>
+
     <div class="widget">
-        <div class="widget-label">Securities in Portfolio</div>
-        <div class="widget-value">{{ holdings_count }} Items</div>
+        <span class="widget-label">Available Cash</span>
+        <div class="widget-value">NPR {{ "{:,.2f}".format(user.balance) }}</div>
+        <div class="widget-footer">
+            <i class="fas fa-wallet" style="color: var(--tms-blue);"></i>
+            <span style="color: var(--tms-text-light);">Buying Power</span>
+        </div>
+    </div>
+
+    <div class="widget">
+        <span class="widget-label">Total Investment</span>
+        <div class="widget-value">NPR {{ "{:,.2f}".format(total_investment) }}</div>
+        <div class="widget-footer text-positive">
+            <i class="fas fa-check-circle"></i>
+            <span>Fully Invested</span>
+        </div>
     </div>
 </div>
 
-<!-- Index Watch & Market Data -->
 <div class="card">
     <div class="card-header">
-        <h3><i class="fas fa-list-ul"></i> Market Watch</h3>
-        <div class="header-actions">
-            <button onclick="location.reload()" class="btn btn-primary" style="font-size: 0.75rem; padding: 4px 10px;">
-                <i class="fas fa-sync-alt"></i> Refresh Data
-            </button>
-        </div>
+        <h3><i class="fas fa-briefcase" style="margin-right: 8px;"></i> My Portfolio</h3>
+        <a href="{{ url_for('order_index') }}" class="btn-primary" style="padding: 8px 16px; font-size: 0.8rem; text-decoration: none; border-radius: 4px; background: var(--tms-blue); color: white; display: flex; align-items: center; gap: 8px;">
+            <i class="fas fa-plus"></i> New Trade
+        </a>
     </div>
-    <div class="table-container" style="padding: 15px;">
-        <table id="marketWatchTable" class="display" style="width:100%">
+    <div class="table-container">
+        <table>
             <thead>
                 <tr>
                     <th>Symbol</th>
-                    <th>LTP</th>
-                    <th>High</th>
-                    <th>Low</th>
-                    <th>Open</th>
-                    <th>Prev. Close</th>
-                    <th>Diff</th>
-                    <th>Diff %</th>
+                    <th style="text-align: right;">Quantity</th>
+                    <th style="text-align: right;">Avg Cost</th>
+                    <th style="text-align: right;">LTP</th>
+                    <th style="text-align: right;">Current Value</th>
+                    <th style="text-align: right;">Profit/Loss</th>
+                    <th style="text-align: center;">Action</th>
                 </tr>
             </thead>
             <tbody>
-                {% if table_data %}
-                {% for row in table_data %}
+                {% for symbol, stock in portfolio.items() %}
                 <tr>
-                    <td class="symbol-cell bold" style="color: var(--tms-blue);">{{ row.get('Symbol', '') }}</td>
-                    <td class="bold">{{ row.get('LTP', '') }}</td>
-                    <td>{{ row.get('High', '') }}</td>
-                    <td>{{ row.get('Low', '') }}</td>
-                    <td>{{ row.get('Open', '') }}</td>
-                    <td>{{ row.get('Prev. Close', '') }}</td>
-                    <td
-                        class="{{ 'text-positive' if row.get('Diff', '0')|string|replace(',', '')|float > 0 else 'text-negative' if row.get('Diff', '0')|string|replace(',', '')|float < 0 else '' }}">
-                        {{ row.get('Diff', '') }}
+                    <td><span class="symbol-cell">{{ symbol }}</span></td>
+                    <td style="text-align: right;">{{ stock.quantity }}</td>
+                    <td style="text-align: right;">{{ "{:,.2f}".format(stock.avg_price) }}</td>
+                    <td style="text-align: right;">{{ "{:,.2f}".format(market_prices.get(symbol, 0)) }}</td>
+                    <td style="text-align: right;">{{ "{:,.2f}".format(stock.quantity * market_prices.get(symbol, 0)) }}</td>
+                    <td style="text-align: right;" class="{{ 'text-positive' if (market_prices.get(symbol, 0) - stock.avg_price) >= 0 else 'text-negative' }}">
+                        {{ "{:,.2f}".format((market_prices.get(symbol, 0) - stock.avg_price) * stock.quantity) }}
+                        <br>
+                        <small>({{ "{:,.2f}".format(((market_prices.get(symbol, 0) - stock.avg_price) / stock.avg_price) * 100) }}%)</small>
                     </td>
-                    <td
-                        class="{{ 'text-positive' if row.get('Diff %', '0')|string|replace('%', '')|replace(',', '')|float > 0 else 'text-negative' if row.get('Diff %', '0')|string|replace('%', '')|replace(',', '')|float < 0 else '' }} bold">
-                        {{ row.get('Diff %', '') }}{% if row.get('Diff %') %}%{% endif %}
+                    <td style="text-align: center;">
+                        <a href="{{ url_for('order_index', symbol=symbol) }}" title="Sell" style="color: var(--negative); font-size: 1.1rem;"><i class="fas fa-minus-circle"></i></a>
+                    </td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="7" style="text-align: center; padding: 40px; color: var(--tms-text-light);">
+                        <i class="fas fa-folder-open" style="font-size: 2rem; display: block; margin-bottom: 12px; opacity: 0.5;"></i>
+                        You don't have any stocks in your portfolio yet.
                     </td>
                 </tr>
                 {% endfor %}
-                {% endif %}
             </tbody>
         </table>
     </div>
