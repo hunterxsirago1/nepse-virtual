@@ -3,57 +3,114 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}NEPSE Simulator{% endblock %}</title>
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <title>NEPSE TMS - Simulator</title>
+    <!-- Use FontAwesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    {% block extra_css %}{% endblock %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
     <div class="app-container">
-        <!-- Sidebar Navigation -->
+        <!-- Sidebar -->
         <aside class="sidebar">
-            <div class="logo">
+            <div class="logo-container">
                 <i class="fas fa-chart-line"></i>
-                <span>NEPSE SIM</span>
+                <span>NEPSE TMS</span>
             </div>
-            <nav>
-                <a href="{{ url_for('index') }}" class="{% if request.path == '/' %}active{% endif %}">
-                    <i class="fas fa-home"></i> Dashboard
+            <div class="search-menu">
+                <input type="text" id="sidebarSearch" placeholder="Search Menu/Submenus..." onkeyup="filterMenu()">
+            </div>
+            <nav id="sidebarNav">
+                <a href="{{ url_for('index') }}" class="{{ 'active' if request.endpoint == 'index' else '' }}">
+                    <i class="fas fa-th-large"></i>
+                    <span>NEPSE TMS Dashboard</span>
                 </a>
-                <a href="{{ url_for('market_index') }}" class="{% if request.path.startswith('/marketmgmt') %}active{% endif %}">
-                    <i class="fas fa-exchange-alt"></i> Market
+                <a href="#">
+                    <i class="fas fa-user"></i>
+                    <span>My Information</span>
                 </a>
-                <a href="{{ url_for('order_index') }}" class="{% if request.path.startswith('/ordermgmt') %}active{% endif %}">
-                    <i class="fas fa-shopping-cart"></i> Trade
+                <a href="#">
+                    <i class="fas fa-wallet"></i>
+                    <span>Fund Management</span>
+                </a>
+                <a href="{{ url_for('order_index') }}" class="{{ 'active' if request.endpoint == 'order_index' else '' }}">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>Order Management</span>
+                </a>
+                <a href="#">
+                    <i class="fas fa-exchange-alt"></i>
+                    <span>Trade Management</span>
+                </a>
+                <a href="{{ url_for('market_index') }}" class="{{ 'active' if request.endpoint == 'market_index' else '' }}">
+                    <i class="fas fa-chart-bar"></i>
+                    <span>Market Data</span>
+                </a>
+                <a href="#">
+                    <i class="fas fa-building"></i>
+                    <span>Broker Back Office</span>
                 </a>
             </nav>
-            <div class="sidebar-footer">
-                <p>&copy; 2024 NEPSE Sim</p>
-            </div>
         </aside>
 
-        <!-- Main Content Area -->
+        <!-- Main Content -->
         <main class="main-content">
             <header class="top-bar">
-                <div class="search-container">
-                    <i class="fas fa-search"></i>
-                    <input type="text" id="global-search" placeholder="Search Symbol...">
+                <div class="index-container">
+                    <div class="index-item">
+                        <span class="index-label">NEPSE</span>
+                        <span class="index-value positive">2,345.67 <i class="fas fa-caret-up"></i> 12.34 (0.53%)</span>
+                    </div>
+                    <div class="index-item">
+                        <span class="index-label">FLOATIND</span>
+                        <span class="index-value negative">165.43 <i class="fas fa-caret-down"></i> -0.12 (-0.07%)</span>
+                    </div>
+                    <div class="market-status">
+                        <i class="fas fa-circle"></i> MARKET OPEN
+                    </div>
                 </div>
-                <div class="user-profile">
-                    <span class="wallet-balance">Balance: रु. {{ "{:,.2f}".format(user.balance) }}</span>
-                    <div class="avatar"><i class="fas fa-user"></i></div>
+
+                <div class="user-nav">
+                    <div class="wallet-info">
+                        <span class="wallet-label">Available Balance</span>
+                        <span class="wallet-amount">NPR {{ "{:,.2f}".format(user.balance) }}</span>
+                    </div>
+                    <div class="user-profile">
+                        <i class="fas fa-user-circle fa-2x" style="color: var(--primary-color);"></i>
+                    </div>
                 </div>
             </header>
-            
+
             <div class="content-wrapper">
+                {% with messages = get_flashed_messages() %}
+                  {% if messages %}
+                    {% for message in messages %}
+                      <div class="flash-message card" style="padding: 10px; margin-bottom: 20px; border-left: 5px solid var(--primary-color);">
+                        {{ message }}
+                      </div>
+                    {% endfor %}
+                  {% endif %}
+                {% endwith %}
+
                 {% block content %}{% endblock %}
             </div>
         </main>
     </div>
-    {% block scripts %}{% endblock %}
+
+    <script>
+        function filterMenu() {
+            let input = document.getElementById('sidebarSearch');
+            let filter = input.value.toUpperCase();
+            let nav = document.getElementById('sidebarNav');
+            let links = nav.getElementsByTagName('a');
+
+            for (let i = 0; i < links.length; i++) {
+                let text = links[i].textContent || links[i].innerText;
+                if (text.toUpperCase().indexOf(filter) > -1) {
+                    links[i].style.display = "";
+                } else {
+                    links[i].style.display = "none";
+                }
+            }
+        }
+    </script>
 </body>
 </html>

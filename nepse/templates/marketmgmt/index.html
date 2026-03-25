@@ -1,24 +1,17 @@
-{% extends "base.html" %}
-
-{% block title %}Explore Market - NEPSE Simulator{% endblock %}
+{% extends 'base.html' %}
 
 {% block content %}
-<div class="page-header animate-fade-in">
-    <div class="page-info">
-        <h1>Market Explorer</h1>
-        <p>Browse and search through all listed securities</p>
-    </div>
-    <div class="header-actions">
-        <div class="premium-search">
-            <i class="fas fa-search"></i>
-            <input type="text" id="search-box" placeholder="Filter by Symbol or Name...">
-        </div>
-    </div>
+<div class="dashboard-header" style="margin-bottom: 20px;">
+    <h1 style="font-size: 1.5rem; margin: 0; color: var(--tms-blue-dark);">Market Explorer</h1>
 </div>
 
-<div class="card table-card animate-slide-up">
+<div class="card">
+    <div class="card-header">
+        <h3><i class="fas fa-search"></i> Browse All Securities</h3>
+        <input type="text" id="marketSearch" placeholder="Search Symbol or Name..." style="padding: 4px 10px; border: 1px solid var(--border-color); border-radius: 4px; font-size: 0.8rem; width: 250px;" onkeyup="searchMarket()">
+    </div>
     <div class="table-container">
-        <table id="market-table">
+        <table id="marketTable">
             <thead>
                 <tr>
                     <th>Symbol</th>
@@ -26,21 +19,25 @@
                     <th>High</th>
                     <th>Low</th>
                     <th>Open</th>
-                    <th>Close</th>
-                    <th>% Change</th>
+                    <th>Prev. Close</th>
+                    <th>Diff</th>
+                    <th>Diff %</th>
                 </tr>
             </thead>
             <tbody>
                 {% for index, row in table_data.iterrows() %}
                 <tr>
                     <td class="symbol-cell">{{ row['Symbol'] }}</td>
-                    <td class="price-cell">{{ row['LTP'] }}</td>
+                    <td class="bold">{{ row['LTP'] }}</td>
                     <td>{{ row['High'] }}</td>
                     <td>{{ row['Low'] }}</td>
                     <td>{{ row['Open'] }}</td>
-                    <td>{{ row['Close'] }}</td>
-                    <td class="change-cell {% if '+' in row['% Change'] %}positive{% elif '-' in row['% Change'] %}negative{% endif %}">
-                        {{ row['% Change'] }}
+                    <td>{{ row['Prev. Close'] }}</td>
+                    <td class="{{ 'text-positive' if row['Diff']|float > 0 else 'text-negative' if row['Diff']|float < 0 else '' }}">
+                        {{ row['Diff'] }}
+                    </td>
+                    <td class="{{ 'text-positive' if row['Diff %']|float > 0 else 'text-negative' if row['Diff %']|float < 0 else '' }} bold">
+                        {{ row['Diff %'] }}%
                     </td>
                 </tr>
                 {% endfor %}
@@ -48,8 +45,25 @@
         </table>
     </div>
 </div>
-{% endblock %}
 
-{% block scripts %}
-<script src="{{ url_for('static', filename='js/marketscripts.js') }}"></script>
+<script>
+function searchMarket() {
+    let input = document.getElementById('marketSearch');
+    let filter = input.value.toUpperCase();
+    let table = document.getElementById('marketTable');
+    let tr = table.getElementsByTagName('tr');
+
+    for (let i = 1; i < tr.length; i++) {
+        let symbolCell = tr[i].getElementsByTagName('td')[0];
+        if (symbolCell) {
+            let txtValue = symbolCell.textContent || symbolCell.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+        }
+    }
+}
+</script>
 {% endblock %}

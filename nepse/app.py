@@ -33,18 +33,101 @@ with app.app_context():
 df = pd.DataFrame()
 df_lock = threading.Lock()
 
+# Global session for persistent connections and cookies
+scraping_session = requests.Session()
+
 def fetch_data_from_website():
-    url = "https://www.sharesansar.com/live-nepse"
+    url = "https://www.sharesansar.com/today-share-price"
+    ajax_url = "https://www.sharesansar.com/ajaxtodayshareprice"
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36',
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
+        'Referer': url,
+        'X-Requested-With': 'XMLHttpRequest'
+    }
     try:
-        response = requests.get(url, timeout=10)
-        if response.status_code == 200:
-            soup = BeautifulSoup(response.text, 'html.parser')
-            table = soup.find('table', {'id': 'headFixed'})
-            if table:
-                new_df = pd.read_html(str(table))[0]
-                return new_df
+        # 1. Get main page to extract cookies and CSRF token
+        logger.info("Fetching main page for CSRF token...")
+        response = scraping_session.get(url, headers=headers, timeout=15)
+        logger.info(f"Main page status: {response.status_code}")
+        
+        if response.status_code != 200:
+            logger.error(f"Failed to fetch session. Status: {response.status_code}")
+            return None
+            
+        logger.debug(f"Main page snippet: {response.text[:200]}")
+        soup = BeautifulSoup(response.text, 'html.parser')
+        tables = []
+        token = None
+        # Check meta tag or hidden input
+        token_meta = soup.find('meta', {'name': 'csrf-token'})
+        if token_meta:
+            token = token_meta.get('content')
+        if not token:
+            token_input = soup.find('input', {'name': '_token'})
+            if token_input:
+                token = token_input.get('value')
+                
+        if not token:
+            logger.warning("CSRF token not found in main page snippet. Falling back to main page tables.")
+            tables = soup.find_all('table')
+        else:
+            # 2. Fetch data via AJAX POST
+            logger.info(f"Fetching AJAX data with token: {token[:10]}...")
+            today = datetime.now().strftime("%Y-%m-%d")
+            payload = {
+                '_token': token,
+                'sector': 'all_sec',
+                'date': today
+            }
+            ajax_headers = headers.copy()
+            ajax_headers['Content-Type'] = 'application/x-www-form-urlencoded'
+            
+            response = scraping_session.post(ajax_url, data=payload, headers=ajax_headers, timeout=15)
+            logger.info(f"AJAX response status: {response.status_code}")
+            
+            if response.status_code == 200:
+                ajax_soup = BeautifulSoup(response.text, 'html.parser')
+                tables = ajax_soup.find_all('table')
+                if not tables:
+                    # If no <table> tag, maybe it's just the rows. Wrap it.
+                    logger.debug("AJAX returned no table tag, wrapping in dummy table.")
+                    ajax_soup = BeautifulSoup(f"<table>{response.text}</table>", 'html.parser')
+                    tables = ajax_soup.find_all('table')
+            else:
+                logger.error(f"AJAX request failed. Status: {response.status_code}. Falling back to main page tables.")
+                tables = soup.find_all('table')
+
+        # 3. Parse tables (either from main page or AJAX)
+        logger.info(f"Processing {len(tables)} tables...")
+        for i, table in enumerate(tables):
+            try:
+                table_dfs = pd.read_html(str(table))
+                if not table_dfs: continue
+                new_df = table_dfs[0]
+                new_df.columns = [str(col).strip() for col in new_df.columns]
+                
+                # Check for symbol column
+                symbol_col = next((c for c in new_df.columns if 'SYMBOL' in c.upper()), None)
+                if symbol_col:
+                    logger.info(f"Successfully found data in table {i}")
+                    if symbol_col != 'Symbol':
+                        new_df.rename(columns={symbol_col: 'Symbol'}, inplace=True)
+                    
+                    # Normalize columns
+                    name_mapping = {'LTP':'LTP','HIGH':'High','LOW':'Low','OPEN':'Open','PREV':'Prev. Close','DIFF':'Diff','%':'Diff %'}
+                    for col in new_df.columns:
+                        for k, v in name_mapping.items():
+                            if k in col.upper():
+                                new_df.rename(columns={col: v}, inplace=True)
+                                break
+                    return new_df
+            except Exception as e:
+                logger.debug(f"Table {i} parsing error: {e}")
+                
+        logger.warning("No suitable market data table found in detected tables.")
     except Exception as e:
-        logger.error(f"Error fetching data: {e}")
+        logger.error(f"Scraper error: {e}")
     return None
 
 def scrape_worker():

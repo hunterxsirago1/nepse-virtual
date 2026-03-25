@@ -1,108 +1,145 @@
-{% extends "base.html" %}
-
-{% block title %}Execute Trade - NEPSE Simulator{% endblock %}
+{% extends 'base.html' %}
 
 {% block content %}
-<div class="page-header animate-fade-in">
-    <div class="page-info">
-        <h1>Trade Terminal</h1>
-        <p>Execute buy and sell orders in the virtual simulator</p>
-    </div>
+<div class="dashboard-header" style="margin-bottom: 20px;">
+    <h1 style="font-size: 1.5rem; margin: 0; color: var(--tms-blue-dark);">Order Management - Trading Terminal</h1>
 </div>
 
-<div class="trade-grid">
-    <!-- Trading Interface -->
-    <div class="card trade-card animate-slide-up">
-        <div class="card-header">
-            <h3><i class="fas fa-bolt"></i> Order Entry</h3>
-        </div>
-        <div class="trade-form">
-            <div class="trade-type-selector">
-                <input type="checkbox" id="trade-type-toggle">
-                <label for="trade-type-toggle" class="toggle-slider">
-                    <span class="buy-label">BUY</span>
-                    <span class="sell-label">SELL</span>
-                </label>
-            </div>
-
-            <div class="input-group">
-                <label>Script Symbol</label>
-                <div class="autocomplete-wrapper">
-                    <input type="text" id="myInput" placeholder="Enter Symbol (e.g., ADBL, NICA)" autocomplete="off">
+<div class="card">
+    <div class="card-header">
+        <h3><i class="fas fa-shopping-cart"></i> Buy/Sell Order Entry</h3>
+    </div>
+    <div class="card-body">
+        <form id="orderForm" style="padding: 20px;">
+            <div class="trade-form-grid" style="grid-template-columns: repeat(2, 1fr);">
+                <!-- Left Column -->
+                <div class="form-group">
+                    <label>Order Type</label>
+                    <div class="order-toggle">
+                        <input type="radio" name="trade_type" id="buyCheck" value="BUY" checked>
+                        <label for="buyCheck" class="buy-label">BUY</label>
+                        <input type="radio" name="trade_type" id="sellCheck" value="SELL">
+                        <label for="sellCheck" class="sell-label">SELL</label>
+                    </div>
                 </div>
-            </div>
 
-            <div class="input-row">
-                <div class="input-group">
+                <div class="form-group">
+                    <label>Symbol</label>
+                    <input list="symbols" name="symbol" id="symbolInput" placeholder="Symbol (e.g. ADL)" onchange="updatePriceInfo()">
+                    <datalist id="symbols">
+                        <!-- Filled by JS -->
+                    </datalist>
+                </div>
+
+                <div class="form-group">
                     <label>Quantity</label>
-                    <input type="number" id="quantity-input" placeholder="Units">
+                    <input type="number" id="quantity" placeholder="Quantity (e.g. 10)" step="10" min="10">
                 </div>
-                <div class="input-group">
-                    <label>Estimated Total</label>
-                    <input type="text" id="price-input" readonly placeholder="रु. 0.00">
+
+                <div class="form-group">
+                    <label>Price Type</label>
+                    <select id="priceType" style="padding: 8px 12px; border: 1px solid var(--border-color); border-radius: 4px;">
+                        <option value="LMT">Limit (LMT)</option>
+                        <option value="MKT">Market (MKT)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Price</label>
+                    <input type="number" id="price" placeholder="Price" step="0.10">
+                </div>
+                
+                <div class="form-group">
+                    <label>Total Amount (Inc. Commissions)</label>
+                    <input type="text" id="totalAmount" disabled style="background-color: #f1f1f1; font-weight: 700;">
                 </div>
             </div>
 
-            <div class="trade-actions">
-                <button id="confirm-btn" class="buy animate-pulse">EXECUTE BUY</button>
-                <button id="cancel-btn" class="cancel">RESET</button>
+            <!-- Price Info Bar -->
+            <div id="priceInfo" style="margin: 0 20px 20px; padding: 10px; background: #e3f2fd; border-radius: 4px; display: none; font-size: 0.85rem;">
+                <span id="lowInfo">Low: 0</span> | <span id="highInfo">High: 0</span> | <span id="ltpInfo">LTP: 0</span> | <span id="pcloseInfo">Prev. Close: 0</span>
             </div>
-        </div>
-    </div>
 
-    <!-- Symbol Summary -->
-    <div class="card info-card animate-slide-right">
-        <div class="card-header">
-            <h3><i class="fas fa-info-circle"></i> Market Depth & Fees</h3>
-        </div>
-        <div class="market-depth-grid">
-            <div class="depth-item">
-                <span class="label">LTP</span>
-                <span class="value" id="ltp-row">-</span>
+            <div style="padding: 0 20px 20px; text-align: right;">
+                <button type="button" class="badge-buy" style="padding: 10px 30px; border: none; font-weight: 700; cursor: pointer; background: var(--tms-blue-dark); color: white;" id="submitOrderBtn">Execute Order</button>
+                <button type="reset" class="badge-sell" style="padding: 10px 20px; border: none; font-weight: 700; cursor: pointer;">Clear</button>
             </div>
-            <div class="depth-item">
-                <span class="label">Prev. Close</span>
-                <span class="value" id="pclose-row">-</span>
-            </div>
-        </div>
-        <div class="fee-breakdown" style="margin-top: 20px; border-top: 1px solid var(--border-color); padding-top: 15px;">
-            <div class="depth-item">
-                <span class="label">Broker Commission</span>
-                <span class="value" id="commission-row">रु. 0.00</span>
-            </div>
-            <div class="depth-item">
-                <span class="label">SEBON Fee</span>
-                <span class="value" id="sebon-row">रु. 0.00</span>
-            </div>
-            <div class="depth-item">
-                <span class="label">DP Fee</span>
-                <span class="value" id="dp-row">रु. 0.00</span>
-            </div>
-            <div class="depth-item" id="cgt-container" style="display: none;">
-                <span class="label">CGT (Estimated)</span>
-                <span class="value" id="cgt-row">रु. 0.00</span>
-            </div>
-            <div class="depth-item" style="font-weight: bold; color: var(--primary-color);">
-                <span class="label">Net Amount</span>
-                <span class="value" id="net-amount-row">रु. 0.00</span>
-            </div>
-        </div>
+        </form>
     </div>
 </div>
 
-<!-- Overlay Popups -->
-<div id="confirmation-overlay" class="overlay">
-    <div class="confirm-modal card effect-zoom">
-        <h2>Confirm Action</h2>
-        <p>Are you sure you want to reset the current form?</p>
-        <div class="modal-actions">
-            <button id="confirm-cancel" class="danger">YES, RESET</button>
-            <button id="cancel-confirm" class="secondary">NO, GO BACK</button>
-        </div>
-    </div>
-</div>
-{% endblock %}
+<script>
+    // Fetch symbols for datalist and market info
+    let marketData = {};
 
-{% block scripts %}
-<script src="{{ url_for('static', filename='js/orderscripts.js') }}"></script>
+    fetch('/ordermgmt/data3')
+        .then(response => response.json())
+        .then(data => {
+            const dl = document.getElementById('symbols');
+            for(let i=0; i < data.symbols.length; i++){
+                let opt = document.createElement('option');
+                opt.value = data.symbols[i];
+                dl.appendChild(opt);
+                marketData[data.symbols[i]] = {
+                    ltp: data.ltps[i],
+                    low: data.lows[i],
+                    high: data.highs[i],
+                    pclose: data.pcloses[i]
+                };
+            }
+        });
+
+    function updatePriceInfo() {
+        const symbol = document.getElementById('symbolInput').value;
+        const info = marketData[symbol];
+        if(info) {
+            document.getElementById('priceInfo').style.display = 'block';
+            document.getElementById('lowInfo').innerText = 'Low: ' + info.low;
+            document.getElementById('highInfo').innerText = 'High: ' + info.high;
+            document.getElementById('ltpInfo').innerText = 'LTP: ' + info.ltp;
+            document.getElementById('pcloseInfo').innerText = 'P. Close: ' + info.pclose;
+            document.getElementById('price').value = info.ltp;
+            calculateTotal();
+        }
+    }
+
+    function calculateTotal() {
+        const price = parseFloat(document.getElementById('price').value) || 0;
+        const qty = parseInt(document.getElementById('quantity').value) || 0;
+        const total = price * qty;
+        // Mock commission
+        const commission = total * 0.004; 
+        document.getElementById('totalAmount').value = (total + commission).toFixed(2);
+    }
+
+    document.getElementById('price').addEventListener('input', calculateTotal);
+    document.getElementById('quantity').addEventListener('input', calculateTotal);
+
+    document.getElementById('submitOrderBtn').addEventListener('click', function() {
+        const symbol = document.getElementById('symbolInput').value;
+        const price = document.getElementById('price').value;
+        const quantity = document.getElementById('quantity').value;
+        const type = document.querySelector('input[name="trade_type"]:checked').value;
+
+        if(!symbol || !price || !quantity) {
+            alert('Please fill all fields');
+            return;
+        }
+
+        fetch('/trade/execute', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({symbol, price, quantity, type})
+        })
+        .then(res => res.json())
+        .then(data => {
+            if(data.status === 'success') {
+                alert('Order Executed Successfully!');
+                location.href = '/';
+            } else {
+                alert('Error: ' + data.message);
+            }
+        });
+    });
+</script>
 {% endblock %}

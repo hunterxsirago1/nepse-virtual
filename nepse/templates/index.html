@@ -1,103 +1,99 @@
-{% extends "base.html" %}
-
-{% block title %}Dashboard - NEPSE Simulator{% endblock %}
+{% extends 'base.html' %}
 
 {% block content %}
-<div class="dashboard-header animate-fade-in">
-    <div class="page-info">
-        <h1>Dashboard</h1>
-        <p>Real-time Overview of Nepal Stock Market</p>
+<div class="dashboard-header" style="margin-bottom: 20px;">
+    <h1 style="font-size: 1.5rem; margin: 0; color: var(--tms-blue-dark);">NEPSE TMS Dashboard</h1>
+</div>
+
+<!-- Summary Widgets -->
+<div class="dashboard-grid">
+    <div class="widget">
+        <div class="widget-label">Total Portfolio Value</div>
+        <div class="widget-value">NPR {{ "{:,.2f}".format(portfolio_value) }}</div>
+    </div>
+    <div class="widget">
+        <div class="widget-label">Total Day Gain/Loss</div>
+        <div class="widget-value {{ 'text-positive' if day_gain >= 0 else 'text-negative' }}">
+            NPR {{ "{:,.2f}".format(day_gain) }}
+        </div>
+    </div>
+    <div class="widget">
+        <div class="widget-label">Holdings Count</div>
+        <div class="widget-value">{{ holdings_count }} Securities</div>
     </div>
 </div>
 
-<div class="grid-container">
-    <!-- Watchlist Table -->
-    <div class="card watchlist-card animate-slide-up">
-        <div class="card-header">
-            <h3><i class="fas fa-star text-gold"></i> Live Marketplace</h3>
+<!-- Index Watch & Market Data -->
+<div class="card">
+    <div class="card-header">
+        <h3><i class="fas fa-list-ul"></i> Market Watch</h3>
+        <div class="header-actions" style="display: flex; gap: 10px;">
+            <input type="text" id="marketSearch" placeholder="Search Security..." style="padding: 4px 10px; border: 1px solid var(--border-color); border-radius: 4px; font-size: 0.8rem; width: 200px;" onkeyup="searchMarket()">
+            <button onclick="location.reload()" class="badge-buy" style="border: none; cursor: pointer; padding: 4px 10px; border-radius: 4px;"><i class="fas fa-sync-alt"></i> Refresh</button>
         </div>
-        <div class="table-container">
-            <table id="market-table">
-                <thead>
-                    <tr>
-                        <th>Symbol</th>
-                        <th>LTP</th>
-                        <th>High</th>
-                        <th>Low</th>
-                        <th>Open</th>
-                        <th>Close</th>
-                        <th>% Change</th>
-                    </tr>
-                </thead>
-                <tbody id="watchlist-body">
+    </div>
+    <div class="table-container">
+        <table id="marketTable">
+            <thead>
+                <tr>
+                    <th>Symbol</th>
+                    <th>LTP</th>
+                    <th>High</th>
+                    <th>Low</th>
+                    <th>Open</th>
+                    <th>Prev. Close</th>
+                    <th>Diff</th>
+                    <th>Diff %</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if not table_data.empty %}
                     {% for index, row in table_data.iterrows() %}
                     <tr>
                         <td class="symbol-cell">{{ row['Symbol'] }}</td>
-                        <td class="price-cell">{{ row['LTP'] }}</td>
+                        <td class="bold">{{ row['LTP'] }}</td>
                         <td>{{ row['High'] }}</td>
                         <td>{{ row['Low'] }}</td>
                         <td>{{ row['Open'] }}</td>
-                        <td>{{ row['Close'] }}</td>
-                        <td class="change-cell {% if '+' in row['% Change'] %}positive{% elif '-' in row['% Change'] %}negative{% endif %}">
-                            {{ row['% Change'] }}
+                        <td>{{ row['Prev. Close'] }}</td>
+                        <td class="{{ 'text-positive' if row['Diff']|float > 0 else 'text-negative' if row['Diff']|float < 0 else '' }}">
+                            {{ row['Diff'] }}
+                        </td>
+                        <td class="{{ 'text-positive' if row['Diff %']|float > 0 else 'text-negative' if row['Diff %']|float < 0 else '' }} bold">
+                            {{ row['Diff %'] }}%
                         </td>
                     </tr>
                     {% endfor %}
-                </tbody>
-            </table>
-        </div>
-    </div>
-    
-    <!-- Market Stats Summary -->
-    <div class="card stats-card animate-slide-right">
-        <div class="card-header">
-            <h3><i class="fas fa-chart-pie"></i> Portfolio Stats</h3>
-        </div>
-        <div class="stats-grid">
-            <div class="stat-item">
-                <span class="label">Total Value</span>
-                <span class="value">रु. {{ "{:,.2f}".format(portfolio_value) }}</span>
-            </div>
-            <div class="stat-item">
-                <span class="label">Total Gain/Loss</span>
-                <span class="value {% if day_gain >= 0 %}positive{% else %}negative{% endif %}">
-                    {% if day_gain >= 0 %}+{% endif %}रु. {{ "{:,.2f}".format(day_gain) }}
-                </span>
-            </div>
-            <div class="stat-item">
-                <span class="label">Holdings</span>
-                <span class="value">{{ holdings_count }} Securities</span>
-            </div>
-        </div>
-
-        <div class="card-header" style="margin-top: 30px;">
-            <h3><i class="fas fa-history"></i> Recent Trades</h3>
-        </div>
-        <div class="transaction-list">
-            {% for txn in user.transactions|reverse %}
-            {% if loop.index <= 5 %}
-            <div class="stat-item" style="border-bottom: 1px solid var(--border-color); padding-bottom: 10px; margin-bottom: 10px;">
-                <div style="display: flex; justify-content: space-between; width: 100%;">
-                    <div>
-                        <span class="badge {{ txn.type|lower }}">{{ txn.type }}</span>
-                        <span style="font-weight: 600; margin-left: 5px;">{{ txn.symbol }}</span>
-                    </div>
-                    <span style="color: var(--text-secondary); font-size: 0.8rem;">{{ txn.timestamp.strftime('%Y-%m-%d %H:%M') }}</span>
-                </div>
-                <div style="display: flex; justify-content: space-between; width: 100%; font-size: 0.9rem;">
-                    <span>{{ txn.quantity }} @ रु. {{ txn.price }}</span>
-                    <span style="font-weight: 600;">रु. {{ "{:,.2f}".format(txn.total_amount) }}</span>
-                </div>
-            </div>
-            {% endif %}
-            {% else %}
-            <p style="color: var(--text-secondary); text-align: center; font-style: italic;">No transactions yet.</p>
-            {% endfor %}
-        </div>
+                {% else %}
+                    <tr>
+                        <td colspan="8" style="text-align: center; padding: 40px; color: var(--text-secondary);">
+                            <i class="fas fa-info-circle"></i> No market data available at the moment.
+                        </td>
+                    </tr>
+                {% endif %}
+            </tbody>
+        </table>
     </div>
 </div>
-{% endblock %}
 
-{% block scripts %}
-<script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+<script>
+function searchMarket() {
+    let input = document.getElementById('marketSearch');
+    let filter = input.value.toUpperCase();
+    let table = document.getElementById('marketTable');
+    let tr = table.getElementsByTagName('tr');
+
+    for (let i = 1; i < tr.length; i++) {
+        let symbolCell = tr[i].getElementsByTagName('td')[0];
+        if (symbolCell) {
+            let txtValue = symbolCell.textContent || symbolCell.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+        }
+    }
+}
+</script>
 {% endblock %}
