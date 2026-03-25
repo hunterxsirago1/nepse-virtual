@@ -116,7 +116,9 @@
             </thead>
             <tbody>
                 {% for row in table_data %}
-                <tr>
+                {% set diff_str = row.get('Diff %', '0')|string|replace('%', '')|replace(',', '')|trim %}
+                {% set diff_val = diff_str|float if diff_str and diff_str != 'nan' else 0 %}
+                <tr class="{{ 'row-positive' if diff_val > 0 else 'row-negative' if diff_val < 0 else 'row-warning' if diff_val == 0 else '' }}">
                     <td><span class="symbol-cell">{{ row.get('Symbol', '') }}</span></td>
                     <td style="text-align: right; font-weight: 700;">{{ row.get('LTP', '') }}</td>
                     <td style="text-align: right;">{{ row.get('High', '') }}</td>
