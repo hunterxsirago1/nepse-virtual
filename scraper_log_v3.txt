@@ -160,3 +160,2371 @@
 <meta name="viewport"
     content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
 2026-03-26 00:39:04,966 - INFO - Fetching AJAX data with token: mXDiicnuY0...
+2026-03-26 00:39:06,349 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 00:39:06,356 - INFO - AJAX response status: 200
+2026-03-26 00:39:06,649 - INFO - Processing 1 tables...
+2026-03-26 00:39:06,944 - INFO - Successfully found data in table 0
+2026-03-26 00:39:06,951 - INFO - Successfully updated market data.
+2026-03-26 00:39:08,224 - INFO - Starting scheduled data scrape...
+2026-03-26 00:39:08,224 - INFO - Fetching main page for CSRF token...
+2026-03-26 00:39:09,280 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 00:39:09,287 - INFO - Main page status: 200
+2026-03-26 00:39:09,288 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 00:39:09,821 - INFO - Fetching AJAX data with token: XFMsO7NLEo...
+2026-03-26 00:39:11,196 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 00:39:11,304 - INFO - AJAX response status: 200
+2026-03-26 00:39:12,307 - INFO - Processing 1 tables...
+2026-03-26 00:39:12,492 - INFO - Successfully found data in table 0
+2026-03-26 00:39:12,495 - INFO - Successfully updated market data.
+2026-03-26 00:39:31,510 - INFO - 127.0.0.1 - - [26/Mar/2026 00:39:31] "GET /marketmgmt/ HTTP/1.1" 200 -
+2026-03-26 00:39:31,881 - INFO - 127.0.0.1 - - [26/Mar/2026 00:39:31] "GET /static/css/styles.css HTTP/1.1" 304 -
+2026-03-26 00:39:36,951 - INFO - Starting scheduled data scrape...
+2026-03-26 00:39:36,952 - INFO - Fetching main page for CSRF token...
+2026-03-26 00:39:38,498 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 00:39:38,506 - INFO - Main page status: 200
+2026-03-26 00:39:38,508 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 00:39:39,799 - INFO - Fetching AJAX data with token: mXDiicnuY0...
+2026-03-26 00:39:40,885 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 00:39:40,900 - INFO - AJAX response status: 200
+2026-03-26 00:39:41,498 - INFO - Processing 1 tables...
+2026-03-26 00:39:41,827 - INFO - Successfully found data in table 0
+2026-03-26 00:39:41,840 - INFO - Successfully updated market data.
+2026-03-26 00:39:42,495 - INFO - Starting scheduled data scrape...
+2026-03-26 00:39:42,496 - INFO - Fetching main page for CSRF token...
+2026-03-26 00:39:43,983 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 00:39:43,993 - INFO - Main page status: 200
+2026-03-26 00:39:43,994 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 00:39:45,000 - INFO - Fetching AJAX data with token: XFMsO7NLEo...
+2026-03-26 00:39:46,126 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 00:39:46,133 - INFO - AJAX response status: 200
+2026-03-26 00:39:46,719 - INFO - Processing 1 tables...
+2026-03-26 00:39:47,041 - INFO - Successfully found data in table 0
+2026-03-26 00:39:47,050 - INFO - Successfully updated market data.
+2026-03-26 00:40:11,840 - INFO - Starting scheduled data scrape...
+2026-03-26 00:40:11,841 - INFO - Fetching main page for CSRF token...
+2026-03-26 00:40:12,951 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 00:40:12,958 - INFO - Main page status: 200
+2026-03-26 00:40:12,960 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 00:40:13,620 - INFO - Fetching AJAX data with token: mXDiicnuY0...
+2026-03-26 00:40:15,028 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 00:40:15,037 - INFO - AJAX response status: 200
+2026-03-26 00:40:15,890 - INFO - Processing 1 tables...
+2026-03-26 00:40:16,257 - INFO - Successfully found data in table 0
+2026-03-26 00:40:16,264 - INFO - Successfully updated market data.
+2026-03-26 00:40:17,051 - INFO - Starting scheduled data scrape...
+2026-03-26 00:40:17,051 - INFO - Fetching main page for CSRF token...
+2026-03-26 00:40:18,563 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 00:40:18,571 - INFO - Main page status: 200
+2026-03-26 00:40:18,572 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 00:40:19,044 - INFO - Fetching AJAX data with token: XFMsO7NLEo...
+2026-03-26 00:40:20,379 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 00:40:20,387 - INFO - AJAX response status: 200
+2026-03-26 00:40:21,339 - INFO - Processing 1 tables...
+2026-03-26 00:40:21,759 - INFO - Successfully found data in table 0
+2026-03-26 00:40:21,765 - INFO - Successfully updated market data.
+2026-03-26 00:40:45,580 - INFO - 127.0.0.1 - - [26/Mar/2026 00:40:45] "GET /ordermgmt/ HTTP/1.1" 200 -
+2026-03-26 00:40:45,661 - INFO - 127.0.0.1 - - [26/Mar/2026 00:40:45] "GET /static/css/styles.css HTTP/1.1" 304 -
+2026-03-26 00:40:45,871 - INFO - 127.0.0.1 - - [26/Mar/2026 00:40:45] "GET /ordermgmt/data3 HTTP/1.1" 500 -
+Traceback (most recent call last):
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 1536, in __call__
+    return self.wsgi_app(environ, start_response)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 1514, in wsgi_app
+    response = self.handle_exception(e)
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\asus\.gemini\antigravity\scratch\nepse-virtual\nepse\app.py", line 217, in order_sinfo
+    "ltps": df["LTP"].tolist(),
+            ^^^^^^^^^^^^^^^^
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\generic.py", line 6206, in __getattr__
+    return object.__getattribute__(self, name)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AttributeError: 'DataFrame' object has no attribute 'tolist'
+2026-03-26 00:40:46,267 - INFO - Starting scheduled data scrape...
+2026-03-26 00:40:46,267 - INFO - Fetching main page for CSRF token...
+2026-03-26 00:40:47,446 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 00:40:47,451 - INFO - Main page status: 200
+2026-03-26 00:40:47,452 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 00:40:47,945 - INFO - Fetching AJAX data with token: mXDiicnuY0...
+2026-03-26 00:40:49,075 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 00:40:49,082 - INFO - AJAX response status: 200
+2026-03-26 00:40:49,447 - INFO - Processing 1 tables...
+2026-03-26 00:40:49,850 - INFO - Successfully found data in table 0
+2026-03-26 00:40:49,852 - INFO - Successfully updated market data.
+2026-03-26 00:40:51,766 - INFO - Starting scheduled data scrape...
+2026-03-26 00:40:51,767 - INFO - Fetching main page for CSRF token...
+2026-03-26 00:40:53,041 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 00:40:53,052 - INFO - Main page status: 200
+2026-03-26 00:40:53,054 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 00:40:53,698 - INFO - Fetching AJAX data with token: XFMsO7NLEo...
+2026-03-26 00:40:54,780 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 00:40:54,809 - INFO - AJAX response status: 200
+2026-03-26 00:40:56,191 - INFO - Processing 1 tables...
+2026-03-26 00:40:56,576 - INFO - Successfully found data in table 0
+2026-03-26 00:40:56,579 - INFO - Successfully updated market data.
+2026-03-26 00:41:19,853 - INFO - Starting scheduled data scrape...
+2026-03-26 00:41:19,853 - INFO - Fetching main page for CSRF token...
+2026-03-26 00:41:21,060 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 00:41:21,071 - INFO - Main page status: 200
+2026-03-26 00:41:21,073 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 00:41:21,728 - INFO - Fetching AJAX data with token: mXDiicnuY0...
+2026-03-26 00:41:22,937 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 00:41:22,945 - INFO - AJAX response status: 200
+2026-03-26 00:41:23,540 - INFO - Processing 1 tables...
+2026-03-26 00:41:23,881 - INFO - Successfully found data in table 0
+2026-03-26 00:41:23,892 - INFO - Successfully updated market data.
+2026-03-26 00:41:26,579 - INFO - Starting scheduled data scrape...
+2026-03-26 00:41:26,580 - INFO - Fetching main page for CSRF token...
+2026-03-26 00:41:27,827 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 00:41:27,833 - INFO - Main page status: 200
+2026-03-26 00:41:27,834 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 00:41:28,932 - INFO - Fetching AJAX data with token: XFMsO7NLEo...
+2026-03-26 00:41:30,294 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 00:41:30,305 - INFO - AJAX response status: 200
+2026-03-26 00:41:30,878 - INFO - Processing 1 tables...
+2026-03-26 00:41:31,284 - INFO - Successfully found data in table 0
+2026-03-26 00:41:31,298 - INFO - Successfully updated market data.
+2026-03-26 00:41:53,893 - INFO - Starting scheduled data scrape...
+2026-03-26 00:41:53,894 - INFO - Fetching main page for CSRF token...
+2026-03-26 00:41:55,399 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 00:41:55,406 - INFO - Main page status: 200
+2026-03-26 00:41:55,407 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 00:41:55,909 - INFO - Fetching AJAX data with token: mXDiicnuY0...
+2026-03-26 00:41:57,347 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 00:41:57,353 - INFO - AJAX response status: 200
+2026-03-26 00:41:57,812 - INFO - Processing 1 tables...
+2026-03-26 00:41:58,169 - INFO - Successfully found data in table 0
+2026-03-26 00:41:58,175 - INFO - Successfully updated market data.
+2026-03-26 00:42:01,300 - INFO - Starting scheduled data scrape...
+2026-03-26 00:42:01,300 - INFO - Fetching main page for CSRF token...
+2026-03-26 00:42:03,121 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 00:42:03,128 - INFO - Main page status: 200
+2026-03-26 00:42:03,130 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 00:42:03,549 - INFO - Fetching AJAX data with token: XFMsO7NLEo...
+2026-03-26 00:42:04,971 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 00:42:04,975 - INFO - AJAX response status: 200
+2026-03-26 00:42:05,294 - INFO - Processing 1 tables...
+2026-03-26 00:42:05,566 - INFO - Successfully found data in table 0
+2026-03-26 00:42:05,572 - INFO - Successfully updated market data.
+2026-03-26 00:42:28,177 - INFO - Starting scheduled data scrape...
+2026-03-26 00:42:28,178 - INFO - Fetching main page for CSRF token...
+2026-03-26 00:42:29,216 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 00:42:29,224 - INFO - Main page status: 200
+2026-03-26 00:42:29,225 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 00:42:30,523 - INFO - Fetching AJAX data with token: mXDiicnuY0...
+2026-03-26 00:42:31,754 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 00:42:31,771 - INFO - AJAX response status: 200
+2026-03-26 00:42:32,354 - INFO - Processing 1 tables...
+2026-03-26 00:42:32,724 - INFO - Successfully found data in table 0
+2026-03-26 00:42:32,732 - INFO - Successfully updated market data.
+2026-03-26 00:42:35,574 - INFO - Starting scheduled data scrape...
+2026-03-26 00:42:35,575 - INFO - Fetching main page for CSRF token...
+2026-03-26 00:42:37,015 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 00:42:37,018 - INFO - Main page status: 200
+2026-03-26 00:42:37,019 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 00:42:37,882 - INFO - Fetching AJAX data with token: XFMsO7NLEo...
+2026-03-26 00:42:39,010 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 00:42:39,019 - INFO - AJAX response status: 200
+2026-03-26 00:42:39,662 - INFO - Processing 1 tables...
+2026-03-26 00:42:40,134 - INFO - Successfully found data in table 0
+2026-03-26 00:42:40,137 - INFO - Successfully updated market data.
+2026-03-26 00:43:02,733 - INFO - Starting scheduled data scrape...
+2026-03-26 00:43:02,733 - INFO - Fetching main page for CSRF token...
+2026-03-26 00:43:04,150 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 00:43:04,159 - INFO - Main page status: 200
+2026-03-26 00:43:04,160 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 00:43:04,755 - INFO - Fetching AJAX data with token: mXDiicnuY0...
+2026-03-26 00:43:05,886 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 00:43:05,893 - INFO - AJAX response status: 200
+2026-03-26 00:43:06,638 - INFO - Processing 1 tables...
+2026-03-26 00:43:06,851 - INFO - Successfully found data in table 0
+2026-03-26 00:43:06,864 - INFO - Successfully updated market data.
+2026-03-26 00:43:10,145 - INFO - Starting scheduled data scrape...
+2026-03-26 00:43:10,145 - INFO - Fetching main page for CSRF token...
+2026-03-26 00:43:11,383 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 00:43:11,400 - INFO - Main page status: 200
+2026-03-26 00:43:11,401 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 00:43:12,004 - INFO - Fetching AJAX data with token: XFMsO7NLEo...
+2026-03-26 00:43:13,463 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 00:43:13,470 - INFO - AJAX response status: 200
+2026-03-26 00:43:13,968 - INFO - Processing 1 tables...
+2026-03-26 00:43:14,249 - INFO - Successfully found data in table 0
+2026-03-26 00:43:14,252 - INFO - Successfully updated market data.
+2026-03-26 00:43:36,870 - INFO - Starting scheduled data scrape...
+2026-03-26 00:43:36,871 - INFO - Fetching main page for CSRF token...
+2026-03-26 00:43:37,975 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 00:43:37,982 - INFO - Main page status: 200
+2026-03-26 00:43:37,983 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 00:43:38,560 - INFO - Fetching AJAX data with token: mXDiicnuY0...
+2026-03-26 00:43:39,931 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 00:43:39,935 - INFO - AJAX response status: 200
+2026-03-26 00:43:40,449 - INFO - Processing 1 tables...
+2026-03-26 00:43:40,908 - INFO - Successfully found data in table 0
+2026-03-26 00:43:40,918 - INFO - Successfully updated market data.
+2026-03-26 00:43:44,253 - INFO - Starting scheduled data scrape...
+2026-03-26 00:43:44,253 - INFO - Fetching main page for CSRF token...
+2026-03-26 00:43:45,350 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 00:43:45,391 - INFO - Main page status: 200
+2026-03-26 00:43:45,400 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 00:43:46,131 - INFO - Fetching AJAX data with token: XFMsO7NLEo...
+2026-03-26 00:43:47,346 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 00:43:47,356 - INFO - AJAX response status: 200
+2026-03-26 00:43:47,835 - INFO - Processing 1 tables...
+2026-03-26 00:43:48,060 - INFO - Successfully found data in table 0
+2026-03-26 00:43:48,064 - INFO - Successfully updated market data.
+2026-03-26 00:44:10,919 - INFO - Starting scheduled data scrape...
+2026-03-26 00:44:10,920 - INFO - Fetching main page for CSRF token...
+2026-03-26 00:44:11,982 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 00:44:11,993 - INFO - Main page status: 200
+2026-03-26 00:44:12,002 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 00:44:13,105 - INFO - Fetching AJAX data with token: mXDiicnuY0...
+2026-03-26 00:44:14,237 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 00:44:14,250 - INFO - AJAX response status: 200
+2026-03-26 00:44:14,841 - INFO - Processing 1 tables...
+2026-03-26 00:44:15,310 - INFO - Successfully found data in table 0
+2026-03-26 00:44:15,319 - INFO - Successfully updated market data.
+2026-03-26 00:44:18,064 - INFO - Starting scheduled data scrape...
+2026-03-26 00:44:18,065 - INFO - Fetching main page for CSRF token...
+2026-03-26 00:44:19,236 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 00:44:19,260 - INFO - Main page status: 200
+2026-03-26 00:44:19,268 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 00:44:20,462 - INFO - Fetching AJAX data with token: XFMsO7NLEo...
+2026-03-26 00:44:24,265 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 00:44:24,275 - INFO - AJAX response status: 200
+2026-03-26 00:44:26,259 - INFO - Processing 1 tables...
+2026-03-26 00:44:26,726 - INFO - Successfully found data in table 0
+2026-03-26 00:44:26,743 - INFO - Successfully updated market data.
+2026-03-26 00:44:45,321 - INFO - Starting scheduled data scrape...
+2026-03-26 00:44:45,322 - INFO - Fetching main page for CSRF token...
+2026-03-26 00:44:46,490 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 00:44:46,501 - INFO - Main page status: 200
+2026-03-26 00:44:46,503 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 00:44:47,380 - INFO - Fetching AJAX data with token: mXDiicnuY0...
+2026-03-26 00:44:48,582 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 00:44:48,615 - INFO - AJAX response status: 200
+2026-03-26 00:44:50,465 - INFO - Processing 1 tables...
+2026-03-26 00:44:50,740 - INFO - Successfully found data in table 0
+2026-03-26 00:44:50,747 - INFO - Successfully updated market data.
+2026-03-26 00:44:56,744 - INFO - Starting scheduled data scrape...
+2026-03-26 00:44:56,745 - INFO - Fetching main page for CSRF token...
+2026-03-26 00:44:57,970 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 00:44:57,999 - INFO - Main page status: 200
+2026-03-26 00:44:58,002 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 00:44:59,036 - INFO - Fetching AJAX data with token: XFMsO7NLEo...
+2026-03-26 00:45:00,149 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 00:45:00,194 - INFO - AJAX response status: 200
+2026-03-26 00:45:01,786 - INFO - Processing 1 tables...
+2026-03-26 00:45:03,621 - INFO - Successfully found data in table 0
+2026-03-26 00:45:03,654 - INFO - Successfully updated market data.
+2026-03-26 00:45:20,749 - INFO - Starting scheduled data scrape...
+2026-03-26 00:45:20,750 - INFO - Fetching main page for CSRF token...
+2026-03-26 00:45:22,197 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 00:45:22,207 - INFO - Main page status: 200
+2026-03-26 00:45:22,209 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 00:45:22,844 - INFO - Fetching AJAX data with token: mXDiicnuY0...
+2026-03-26 00:45:23,990 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 00:45:24,014 - INFO - AJAX response status: 200
+2026-03-26 00:45:24,811 - INFO - Processing 1 tables...
+2026-03-26 00:45:25,201 - INFO - Successfully found data in table 0
+2026-03-26 00:45:25,212 - INFO - Successfully updated market data.
+2026-03-26 00:45:33,664 - INFO - Starting scheduled data scrape...
+2026-03-26 00:45:33,666 - INFO - Fetching main page for CSRF token...
+2026-03-26 00:45:34,830 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 00:45:34,842 - INFO - Main page status: 200
+2026-03-26 00:45:34,844 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 00:45:35,833 - INFO - Fetching AJAX data with token: XFMsO7NLEo...
+2026-03-26 00:45:36,966 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 00:45:37,008 - INFO - AJAX response status: 200
+2026-03-26 00:45:38,399 - INFO - Processing 1 tables...
+2026-03-26 00:45:38,791 - INFO - Successfully found data in table 0
+2026-03-26 00:45:38,801 - INFO - Successfully updated market data.
+2026-03-26 00:45:55,214 - INFO - Starting scheduled data scrape...
+2026-03-26 00:45:55,215 - INFO - Fetching main page for CSRF token...
+2026-03-26 00:45:56,609 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 00:45:56,632 - INFO - Main page status: 200
+2026-03-26 00:45:56,633 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 00:45:58,224 - INFO - Fetching AJAX data with token: mXDiicnuY0...
+2026-03-26 00:45:59,655 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 00:45:59,670 - INFO - AJAX response status: 200
+2026-03-26 00:46:00,994 - INFO - Processing 1 tables...
+2026-03-26 00:46:01,345 - INFO - Successfully found data in table 0
+2026-03-26 00:46:01,359 - INFO - Successfully updated market data.
+2026-03-26 00:46:08,808 - INFO - Starting scheduled data scrape...
+2026-03-26 00:46:08,809 - INFO - Fetching main page for CSRF token...
+2026-03-26 00:46:10,214 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 00:46:10,230 - INFO - Main page status: 200
+2026-03-26 00:46:10,237 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 00:46:11,640 - INFO - Fetching AJAX data with token: XFMsO7NLEo...
+2026-03-26 00:46:12,755 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 00:46:12,771 - INFO - AJAX response status: 200
+2026-03-26 00:46:15,681 - INFO - Processing 1 tables...
+2026-03-26 00:46:16,002 - INFO - Successfully found data in table 0
+2026-03-26 00:46:16,011 - INFO - Successfully updated market data.
+2026-03-26 00:46:31,361 - INFO - Starting scheduled data scrape...
+2026-03-26 00:46:31,374 - INFO - Fetching main page for CSRF token...
+2026-03-26 00:46:32,791 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 00:46:32,809 - INFO - Main page status: 200
+2026-03-26 00:46:32,814 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 00:46:33,628 - INFO - Fetching AJAX data with token: mXDiicnuY0...
+2026-03-26 00:46:35,092 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 00:46:35,299 - INFO - AJAX response status: 200
+2026-03-26 00:46:36,143 - INFO - Processing 1 tables...
+2026-03-26 00:46:36,365 - INFO - Successfully found data in table 0
+2026-03-26 00:46:36,371 - INFO - Successfully updated market data.
+2026-03-26 00:46:46,012 - INFO - Starting scheduled data scrape...
+2026-03-26 00:46:46,012 - INFO - Fetching main page for CSRF token...
+2026-03-26 00:46:47,093 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 00:46:47,100 - INFO - Main page status: 200
+2026-03-26 00:46:47,102 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 00:46:47,644 - INFO - Fetching AJAX data with token: XFMsO7NLEo...
+2026-03-26 00:46:48,710 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 00:46:48,714 - INFO - AJAX response status: 200
+2026-03-26 00:46:49,159 - INFO - Processing 1 tables...
+2026-03-26 00:46:49,363 - INFO - Successfully found data in table 0
+2026-03-26 00:46:49,366 - INFO - Successfully updated market data.
+2026-03-26 00:47:06,372 - INFO - Starting scheduled data scrape...
+2026-03-26 00:47:06,372 - INFO - Fetching main page for CSRF token...
+2026-03-26 00:47:07,408 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 00:47:07,427 - INFO - Main page status: 200
+2026-03-26 00:47:07,428 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 00:47:08,675 - INFO - Fetching AJAX data with token: mXDiicnuY0...
+2026-03-26 00:47:09,886 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 00:47:09,892 - INFO - AJAX response status: 200
+2026-03-26 00:47:10,430 - INFO - Processing 1 tables...
+2026-03-26 00:47:10,820 - INFO - Successfully found data in table 0
+2026-03-26 00:47:10,829 - INFO - Successfully updated market data.
+2026-03-26 00:47:19,367 - INFO - Starting scheduled data scrape...
+2026-03-26 00:47:19,368 - INFO - Fetching main page for CSRF token...
+2026-03-26 00:47:20,751 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 00:47:20,763 - INFO - Main page status: 200
+2026-03-26 00:47:20,764 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 00:47:21,627 - INFO - Fetching AJAX data with token: XFMsO7NLEo...
+2026-03-26 00:47:23,008 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 00:47:23,016 - INFO - AJAX response status: 200
+2026-03-26 00:47:23,568 - INFO - Processing 1 tables...
+2026-03-26 00:47:23,999 - INFO - Successfully found data in table 0
+2026-03-26 00:47:24,006 - INFO - Successfully updated market data.
+2026-03-26 00:47:40,958 - INFO - Starting scheduled data scrape...
+2026-03-26 00:47:40,958 - INFO - Fetching main page for CSRF token...
+2026-03-26 00:47:42,453 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 00:47:42,466 - INFO - Main page status: 200
+2026-03-26 00:47:42,469 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 00:47:43,201 - INFO - Fetching AJAX data with token: mXDiicnuY0...
+2026-03-26 00:47:44,299 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 00:47:44,311 - INFO - AJAX response status: 200
+2026-03-26 00:47:45,093 - INFO - Processing 1 tables...
+2026-03-26 00:47:45,294 - INFO - Successfully found data in table 0
+2026-03-26 00:47:45,306 - INFO - Successfully updated market data.
+2026-03-26 00:47:53,463 - INFO -  * Detected change in 'C:\\Users\\asus\\.gemini\\antigravity\\scratch\\nepse-virtual\\nepse\\app.py', reloading
+2026-03-26 00:47:54,097 - INFO -  * Restarting with stat
+2026-03-26 00:47:58,041 - INFO - Starting scheduled data scrape...
+2026-03-26 00:47:58,044 - INFO - Starting NEPSE Virtual app...
+2026-03-26 00:47:58,044 - INFO - Fetching main page for CSRF token...
+2026-03-26 00:47:58,051 - DEBUG - Starting new HTTPS connection (1): www.sharesansar.com:443
+2026-03-26 00:47:58,082 - WARNING -  * Debugger is active!
+2026-03-26 00:47:58,090 - INFO -  * Debugger PIN: 893-828-283
+2026-03-26 00:48:00,687 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 00:48:01,009 - INFO - Main page status: 200
+2026-03-26 00:48:01,010 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 00:48:01,907 - INFO - Fetching AJAX data with token: y8fSqDl8Pq...
+2026-03-26 00:48:03,567 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 00:48:03,586 - INFO - AJAX response status: 200
+2026-03-26 00:48:04,150 - INFO - Processing 1 tables...
+2026-03-26 00:48:04,634 - INFO - Successfully found data in table 0
+2026-03-26 00:48:04,641 - INFO - Successfully updated market data.
+2026-03-26 00:48:15,308 - INFO - Starting scheduled data scrape...
+2026-03-26 00:48:15,308 - INFO - Fetching main page for CSRF token...
+2026-03-26 00:48:16,384 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 00:48:16,410 - INFO - Main page status: 200
+2026-03-26 00:48:16,418 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 00:48:17,184 - INFO - Fetching AJAX data with token: mXDiicnuY0...
+2026-03-26 00:48:18,436 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 00:48:18,471 - INFO - AJAX response status: 200
+2026-03-26 00:48:19,053 - INFO - Processing 1 tables...
+2026-03-26 00:48:19,436 - INFO - Successfully found data in table 0
+2026-03-26 00:48:19,447 - INFO - Successfully updated market data.
+2026-03-26 00:48:34,641 - INFO - Starting scheduled data scrape...
+2026-03-26 00:48:34,642 - INFO - Fetching main page for CSRF token...
+2026-03-26 00:48:36,488 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 00:48:36,499 - INFO - Main page status: 200
+2026-03-26 00:48:36,503 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 00:48:37,270 - INFO - Fetching AJAX data with token: y8fSqDl8Pq...
+2026-03-26 00:48:38,564 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 00:48:38,586 - INFO - AJAX response status: 200
+2026-03-26 00:48:39,465 - INFO - Processing 1 tables...
+2026-03-26 00:48:39,889 - INFO - Successfully found data in table 0
+2026-03-26 00:48:39,895 - INFO - Successfully updated market data.
+2026-03-26 00:48:49,451 - INFO - Starting scheduled data scrape...
+2026-03-26 00:48:49,453 - INFO - Fetching main page for CSRF token...
+2026-03-26 00:48:50,996 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 00:48:51,011 - INFO - Main page status: 200
+2026-03-26 00:48:51,015 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 00:48:52,785 - INFO - Fetching AJAX data with token: mXDiicnuY0...
+2026-03-26 00:48:54,131 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 00:48:54,151 - INFO - AJAX response status: 200
+2026-03-26 00:48:54,885 - INFO - Processing 1 tables...
+2026-03-26 00:48:55,222 - INFO - Successfully found data in table 0
+2026-03-26 00:48:55,233 - INFO - Successfully updated market data.
+2026-03-26 00:49:09,920 - INFO - Starting scheduled data scrape...
+2026-03-26 00:49:09,921 - INFO - Fetching main page for CSRF token...
+2026-03-26 00:49:11,035 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 00:49:11,039 - INFO - Main page status: 200
+2026-03-26 00:49:11,040 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 00:49:11,625 - INFO - Fetching AJAX data with token: y8fSqDl8Pq...
+2026-03-26 00:49:12,875 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 00:49:12,887 - INFO - AJAX response status: 200
+2026-03-26 00:49:13,756 - INFO - Processing 1 tables...
+2026-03-26 00:49:14,224 - INFO - Successfully found data in table 0
+2026-03-26 00:49:14,231 - INFO - Successfully updated market data.
+2026-03-26 00:49:25,234 - INFO - Starting scheduled data scrape...
+2026-03-26 00:49:25,234 - INFO - Fetching main page for CSRF token...
+2026-03-26 00:49:26,558 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 00:49:26,571 - INFO - Main page status: 200
+2026-03-26 00:49:26,572 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 00:49:27,219 - INFO - Fetching AJAX data with token: mXDiicnuY0...
+2026-03-26 00:49:28,335 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 00:49:28,338 - INFO - AJAX response status: 200
+2026-03-26 00:49:28,718 - INFO - Processing 1 tables...
+2026-03-26 00:49:29,284 - INFO - Successfully found data in table 0
+2026-03-26 00:49:29,301 - INFO - Successfully updated market data.
+2026-03-26 00:49:44,237 - INFO - Starting scheduled data scrape...
+2026-03-26 00:49:44,238 - INFO - Fetching main page for CSRF token...
+2026-03-26 00:49:45,379 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 00:49:45,390 - INFO - Main page status: 200
+2026-03-26 00:49:45,398 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 00:49:46,951 - INFO - Fetching AJAX data with token: y8fSqDl8Pq...
+2026-03-26 00:49:49,190 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 00:49:49,195 - INFO - AJAX response status: 200
+2026-03-26 00:49:49,999 - INFO - Processing 1 tables...
+2026-03-26 00:49:50,344 - INFO - Successfully found data in table 0
+2026-03-26 00:49:50,351 - INFO - Successfully updated market data.
+2026-03-26 00:49:59,303 - INFO - Starting scheduled data scrape...
+2026-03-26 00:49:59,303 - INFO - Fetching main page for CSRF token...
+2026-03-26 00:50:00,486 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 00:50:00,492 - INFO - Main page status: 200
+2026-03-26 00:50:00,494 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 00:50:01,479 - INFO - Fetching AJAX data with token: mXDiicnuY0...
+2026-03-26 00:50:03,103 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 00:50:03,107 - INFO - AJAX response status: 200
+2026-03-26 00:50:03,566 - INFO - Processing 1 tables...
+2026-03-26 00:50:03,817 - INFO - Successfully found data in table 0
+2026-03-26 00:50:03,821 - INFO - Successfully updated market data.
+2026-03-26 00:50:20,353 - INFO - Starting scheduled data scrape...
+2026-03-26 00:50:20,354 - INFO - Fetching main page for CSRF token...
+2026-03-26 00:50:21,436 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 00:50:21,441 - INFO - Main page status: 200
+2026-03-26 00:50:21,442 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 00:50:22,052 - INFO - Fetching AJAX data with token: y8fSqDl8Pq...
+2026-03-26 00:50:23,282 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 00:50:23,295 - INFO - AJAX response status: 200
+2026-03-26 00:50:23,905 - INFO - Processing 1 tables...
+2026-03-26 00:50:24,364 - INFO - Successfully found data in table 0
+2026-03-26 00:50:24,373 - INFO - Successfully updated market data.
+2026-03-26 00:50:33,821 - INFO - Starting scheduled data scrape...
+2026-03-26 00:50:33,821 - INFO - Fetching main page for CSRF token...
+2026-03-26 00:50:35,169 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 00:50:35,184 - INFO - Main page status: 200
+2026-03-26 00:50:35,186 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 00:50:36,035 - INFO - Fetching AJAX data with token: mXDiicnuY0...
+2026-03-26 00:50:37,484 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 00:50:37,492 - INFO - AJAX response status: 200
+2026-03-26 00:50:38,372 - INFO - Processing 1 tables...
+2026-03-26 00:50:38,591 - INFO - Successfully found data in table 0
+2026-03-26 00:50:38,597 - INFO - Successfully updated market data.
+2026-03-26 00:50:54,379 - INFO - Starting scheduled data scrape...
+2026-03-26 00:50:54,379 - INFO - Fetching main page for CSRF token...
+2026-03-26 00:50:55,516 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 00:50:55,519 - INFO - Main page status: 200
+2026-03-26 00:50:55,520 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 00:50:56,396 - INFO - Fetching AJAX data with token: y8fSqDl8Pq...
+2026-03-26 00:50:57,528 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 00:50:57,537 - INFO - AJAX response status: 200
+2026-03-26 00:50:58,066 - INFO - Processing 1 tables...
+2026-03-26 00:50:58,516 - INFO - Successfully found data in table 0
+2026-03-26 00:50:58,522 - INFO - Successfully updated market data.
+2026-03-26 00:51:08,597 - INFO - Starting scheduled data scrape...
+2026-03-26 00:51:08,598 - INFO - Fetching main page for CSRF token...
+2026-03-26 00:51:09,739 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 00:51:09,755 - INFO - Main page status: 200
+2026-03-26 00:51:09,759 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 00:51:10,643 - INFO - Fetching AJAX data with token: mXDiicnuY0...
+2026-03-26 00:51:11,889 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 00:51:11,898 - INFO - AJAX response status: 200
+2026-03-26 00:51:12,458 - INFO - Processing 1 tables...
+2026-03-26 00:51:13,008 - INFO - Successfully found data in table 0
+2026-03-26 00:51:13,013 - INFO - Successfully updated market data.
+2026-03-26 00:51:28,530 - INFO - Starting scheduled data scrape...
+2026-03-26 00:51:28,530 - INFO - Fetching main page for CSRF token...
+2026-03-26 00:51:29,589 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 00:51:29,598 - INFO - Main page status: 200
+2026-03-26 00:51:29,599 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 00:51:30,383 - INFO - Fetching AJAX data with token: y8fSqDl8Pq...
+2026-03-26 00:51:31,563 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 00:51:31,575 - INFO - AJAX response status: 200
+2026-03-26 00:51:32,856 - INFO - Processing 1 tables...
+2026-03-26 00:51:33,125 - INFO - Successfully found data in table 0
+2026-03-26 00:51:33,129 - INFO - Successfully updated market data.
+2026-03-26 00:51:43,020 - INFO - Starting scheduled data scrape...
+2026-03-26 00:51:43,021 - INFO - Fetching main page for CSRF token...
+2026-03-26 00:51:44,286 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 00:51:44,305 - INFO - Main page status: 200
+2026-03-26 00:51:44,316 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 00:51:45,281 - INFO - Fetching AJAX data with token: mXDiicnuY0...
+2026-03-26 00:51:46,498 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 00:51:46,518 - INFO - AJAX response status: 200
+2026-03-26 00:51:47,502 - INFO - Processing 1 tables...
+2026-03-26 00:51:47,887 - INFO - Successfully found data in table 0
+2026-03-26 00:51:47,894 - INFO - Successfully updated market data.
+2026-03-26 00:52:03,131 - INFO - Starting scheduled data scrape...
+2026-03-26 00:52:03,136 - INFO - Fetching main page for CSRF token...
+2026-03-26 00:52:04,383 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 00:52:04,395 - INFO - Main page status: 200
+2026-03-26 00:52:04,396 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 00:52:05,194 - INFO - Fetching AJAX data with token: y8fSqDl8Pq...
+2026-03-26 00:52:06,686 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 00:52:06,697 - INFO - AJAX response status: 200
+2026-03-26 00:52:07,433 - INFO - Processing 1 tables...
+2026-03-26 00:52:07,897 - INFO - Successfully found data in table 0
+2026-03-26 00:52:07,913 - INFO - Successfully updated market data.
+2026-03-26 00:52:17,895 - INFO - Starting scheduled data scrape...
+2026-03-26 00:52:17,895 - INFO - Fetching main page for CSRF token...
+2026-03-26 00:52:19,079 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 00:52:19,099 - INFO - Main page status: 200
+2026-03-26 00:52:19,106 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 00:52:19,849 - INFO - Fetching AJAX data with token: mXDiicnuY0...
+2026-03-26 00:52:21,071 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 00:52:21,075 - INFO - AJAX response status: 200
+2026-03-26 00:52:22,120 - INFO - Processing 1 tables...
+2026-03-26 00:52:22,626 - INFO - Successfully found data in table 0
+2026-03-26 00:52:22,634 - INFO - Successfully updated market data.
+2026-03-26 00:52:37,915 - INFO - Starting scheduled data scrape...
+2026-03-26 00:52:37,915 - INFO - Fetching main page for CSRF token...
+2026-03-26 00:52:38,986 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 00:52:38,995 - INFO - Main page status: 200
+2026-03-26 00:52:38,997 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 00:52:40,348 - INFO - Fetching AJAX data with token: y8fSqDl8Pq...
+2026-03-26 00:52:42,197 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 00:52:42,201 - INFO - AJAX response status: 200
+2026-03-26 00:52:43,330 - INFO - Processing 1 tables...
+2026-03-26 00:52:43,875 - INFO - Successfully found data in table 0
+2026-03-26 00:52:43,880 - INFO - Successfully updated market data.
+2026-03-26 00:52:44,290 - INFO -  * Detected change in 'C:\\Users\\asus\\.gemini\\antigravity\\scratch\\nepse-virtual\\nepse\\app.py', reloading
+2026-03-26 00:52:45,108 - INFO -  * Restarting with stat
+2026-03-26 00:52:48,772 - INFO - Starting scheduled data scrape...
+2026-03-26 00:52:48,775 - INFO - Starting NEPSE Virtual app...
+2026-03-26 00:52:48,775 - INFO - Fetching main page for CSRF token...
+2026-03-26 00:52:48,780 - DEBUG - Starting new HTTPS connection (1): www.sharesansar.com:443
+2026-03-26 00:52:48,821 - WARNING -  * Debugger is active!
+2026-03-26 00:52:48,830 - INFO -  * Debugger PIN: 893-828-283
+2026-03-26 00:52:51,511 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 00:52:51,823 - INFO - Main page status: 200
+2026-03-26 00:52:51,824 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 00:52:52,537 - INFO - Fetching AJAX data with token: cPncbaG6vQ...
+2026-03-26 00:52:52,635 - INFO - Starting scheduled data scrape...
+2026-03-26 00:52:52,635 - INFO - Fetching main page for CSRF token...
+2026-03-26 00:52:53,548 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 00:52:53,583 - INFO - AJAX response status: 200
+2026-03-26 00:52:53,938 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 00:52:53,944 - INFO - Main page status: 200
+2026-03-26 00:52:53,947 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 00:52:54,369 - INFO - Processing 1 tables...
+2026-03-26 00:52:54,515 - INFO - Fetching AJAX data with token: mXDiicnuY0...
+2026-03-26 00:52:54,645 - INFO - Successfully found data in table 0
+2026-03-26 00:52:54,656 - INFO - Successfully updated market data.
+2026-03-26 00:52:55,600 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 00:52:55,624 - INFO - AJAX response status: 200
+2026-03-26 00:52:56,397 - INFO - Processing 1 tables...
+2026-03-26 00:52:56,862 - INFO - Successfully found data in table 0
+2026-03-26 00:52:56,866 - INFO - Successfully updated market data.
+2026-03-26 00:53:24,658 - INFO - Starting scheduled data scrape...
+2026-03-26 00:53:24,658 - INFO - Fetching main page for CSRF token...
+2026-03-26 00:53:25,750 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 00:53:25,756 - INFO - Main page status: 200
+2026-03-26 00:53:25,757 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 00:53:26,538 - INFO - Fetching AJAX data with token: cPncbaG6vQ...
+2026-03-26 00:53:26,872 - INFO - Starting scheduled data scrape...
+2026-03-26 00:53:26,873 - INFO - Fetching main page for CSRF token...
+2026-03-26 00:53:28,448 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 00:53:28,457 - INFO - AJAX response status: 200
+2026-03-26 00:53:28,846 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 00:53:28,852 - INFO - Main page status: 200
+2026-03-26 00:53:28,853 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 00:53:29,313 - INFO - Processing 1 tables...
+2026-03-26 00:53:29,441 - INFO - Fetching AJAX data with token: mXDiicnuY0...
+2026-03-26 00:53:29,826 - INFO - Successfully found data in table 0
+2026-03-26 00:53:29,874 - INFO - Successfully updated market data.
+2026-03-26 00:53:30,757 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 00:53:30,760 - INFO - AJAX response status: 200
+2026-03-26 00:53:31,605 - INFO - Processing 1 tables...
+2026-03-26 00:53:31,993 - INFO - Successfully found data in table 0
+2026-03-26 00:53:32,000 - INFO - Successfully updated market data.
+2026-03-26 00:53:59,875 - INFO - Starting scheduled data scrape...
+2026-03-26 00:53:59,876 - INFO - Fetching main page for CSRF token...
+2026-03-26 00:54:00,896 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 00:54:00,910 - INFO - Main page status: 200
+2026-03-26 00:54:00,918 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 00:54:01,808 - INFO - Fetching AJAX data with token: cPncbaG6vQ...
+2026-03-26 00:54:02,001 - INFO - Starting scheduled data scrape...
+2026-03-26 00:54:02,001 - INFO - Fetching main page for CSRF token...
+2026-03-26 00:54:04,149 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 00:54:04,158 - INFO - AJAX response status: 200
+2026-03-26 00:54:04,595 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 00:54:04,603 - INFO - Main page status: 200
+2026-03-26 00:54:04,604 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 00:54:04,681 - INFO - Processing 1 tables...
+2026-03-26 00:54:05,029 - INFO - Successfully found data in table 0
+2026-03-26 00:54:05,037 - INFO - Successfully updated market data.
+2026-03-26 00:54:05,230 - INFO - Fetching AJAX data with token: mXDiicnuY0...
+2026-03-26 00:54:06,078 - INFO - 127.0.0.1 - - [26/Mar/2026 00:54:06] "GET / HTTP/1.1" 500 -
+Traceback (most recent call last):
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 1536, in __call__
+    return self.wsgi_app(environ, start_response)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 1514, in wsgi_app
+    response = self.handle_exception(e)
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\asus\.gemini\antigravity\scratch\nepse-virtual\nepse\app.py", line 194, in index
+    return render_template('index.html',
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\asus\.gemini\antigravity\scratch\nepse-virtual\nepse\templates\index.html", line 1, in top-level template code
+    {% extends 'base.html' %}
+  File "C:\Users\asus\.gemini\antigravity\scratch\nepse-virtual\nepse\templates\base.html", line 109, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^
+  File "C:\Users\asus\.gemini\antigravity\scratch\nepse-virtual\nepse\templates\index.html", line 86, in block 'content'
+    {{ row.get('Diff %', '') }}{% if row.get('Diff %') %}%{% endif %}
+    
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\generic.py", line 1513, in __bool__
+    raise ValueError(
+    ^
+ValueError: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+2026-03-26 00:54:06,338 - INFO - 127.0.0.1 - - [26/Mar/2026 00:54:06] "GET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2026-03-26 00:54:06,412 - INFO - 127.0.0.1 - - [26/Mar/2026 00:54:06] "GET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2026-03-26 00:54:06,508 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 00:54:06,516 - INFO - AJAX response status: 200
+2026-03-26 00:54:06,988 - INFO - 127.0.0.1 - - [26/Mar/2026 00:54:06] "GET /?__debugger__=yes&cmd=resource&f=console.png&s=zytYyA8qcTJqAysl1VvW HTTP/1.1" 200 -
+2026-03-26 00:54:07,125 - INFO - 127.0.0.1 - - [26/Mar/2026 00:54:07] "GET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2026-03-26 00:54:07,308 - INFO - Processing 1 tables...
+2026-03-26 00:54:07,774 - INFO - Successfully found data in table 0
+2026-03-26 00:54:07,780 - INFO - Successfully updated market data.
+2026-03-26 00:54:16,273 - INFO - 127.0.0.1 - - [26/Mar/2026 00:54:16] "GET /marketmgmt/ HTTP/1.1" 500 -
+Traceback (most recent call last):
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 1536, in __call__
+    return self.wsgi_app(environ, start_response)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 1514, in wsgi_app
+    response = self.handle_exception(e)
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\asus\.gemini\antigravity\scratch\nepse-virtual\nepse\app.py", line 206, in market_index
+    return render_template('marketmgmt/index.html', table_data=table_data, user=user)
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\asus\.gemini\antigravity\scratch\nepse-virtual\nepse\templates\marketmgmt\index.html", line 1, in top-level template code
+    {% extends 'base.html' %}
+  File "C:\Users\asus\.gemini\antigravity\scratch\nepse-virtual\nepse\templates\base.html", line 109, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^
+  File "C:\Users\asus\.gemini\antigravity\scratch\nepse-virtual\nepse\templates\marketmgmt\index.html", line 62, in block 'content'
+    {{ row.get('Diff %', '') }}{% if row.get('Diff %') %}%{% endif %}
+    ^
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\generic.py", line 1513, in __bool__
+    raise ValueError(
+    ^
+ValueError: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+2026-03-26 00:54:16,484 - INFO - 127.0.0.1 - - [26/Mar/2026 00:54:16] "GET /marketmgmt/?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2026-03-26 00:54:16,623 - INFO - 127.0.0.1 - - [26/Mar/2026 00:54:16] "GET /marketmgmt/?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2026-03-26 00:54:16,954 - INFO - 127.0.0.1 - - [26/Mar/2026 00:54:16] "GET /marketmgmt/?__debugger__=yes&cmd=resource&f=console.png&s=zytYyA8qcTJqAysl1VvW HTTP/1.1" 200 -
+2026-03-26 00:54:17,207 - INFO - 127.0.0.1 - - [26/Mar/2026 00:54:17] "GET /marketmgmt/?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2026-03-26 00:54:34,322 - INFO - 127.0.0.1 - - [26/Mar/2026 00:54:34] "GET /ordermgmt/ HTTP/1.1" 200 -
+2026-03-26 00:54:34,627 - INFO - 127.0.0.1 - - [26/Mar/2026 00:54:34] "GET /static/css/styles.css HTTP/1.1" 200 -
+2026-03-26 00:54:35,019 - INFO - 127.0.0.1 - - [26/Mar/2026 00:54:35] "GET /ordermgmt/data3 HTTP/1.1" 500 -
+Traceback (most recent call last):
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 1536, in __call__
+    return self.wsgi_app(environ, start_response)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 1514, in wsgi_app
+    response = self.handle_exception(e)
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\asus\.gemini\antigravity\scratch\nepse-virtual\nepse\app.py", line 241, in order_sinfo
+    "ltps": df["LTP"].tolist(),
+            ^^^^^^^^^^^^^^^^
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\generic.py", line 6206, in __getattr__
+    return object.__getattribute__(self, name)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AttributeError: 'DataFrame' object has no attribute 'tolist'
+2026-03-26 00:54:35,037 - INFO - Starting scheduled data scrape...
+2026-03-26 00:54:35,037 - INFO - Fetching main page for CSRF token...
+2026-03-26 00:54:35,058 - INFO - 127.0.0.1 - - [26/Mar/2026 00:54:35] "GET /favicon.ico HTTP/1.1" 404 -
+2026-03-26 00:54:36,387 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 00:54:36,393 - INFO - Main page status: 200
+2026-03-26 00:54:36,394 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 00:54:37,021 - INFO - Fetching AJAX data with token: cPncbaG6vQ...
+2026-03-26 00:54:37,780 - INFO - Starting scheduled data scrape...
+2026-03-26 00:54:37,780 - INFO - Fetching main page for CSRF token...
+2026-03-26 00:54:38,269 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 00:54:38,274 - INFO - AJAX response status: 200
+2026-03-26 00:54:39,079 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 00:54:39,087 - INFO - Main page status: 200
+2026-03-26 00:54:39,088 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 00:54:39,221 - INFO - Processing 1 tables...
+2026-03-26 00:54:39,806 - INFO - Successfully found data in table 0
+2026-03-26 00:54:39,815 - INFO - Successfully updated market data.
+2026-03-26 00:54:40,145 - INFO - Fetching AJAX data with token: mXDiicnuY0...
+2026-03-26 00:54:41,242 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 00:54:41,254 - INFO - AJAX response status: 200
+2026-03-26 00:54:41,805 - INFO - Processing 1 tables...
+2026-03-26 00:54:42,244 - INFO - Successfully found data in table 0
+2026-03-26 00:54:42,251 - INFO - Successfully updated market data.
+2026-03-26 00:54:56,850 - INFO - 127.0.0.1 - - [26/Mar/2026 00:54:56] "GET /marketmgmt/ HTTP/1.1" 500 -
+Traceback (most recent call last):
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 1536, in __call__
+    return self.wsgi_app(environ, start_response)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 1514, in wsgi_app
+    response = self.handle_exception(e)
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\asus\.gemini\antigravity\scratch\nepse-virtual\nepse\app.py", line 206, in market_index
+    return render_template('marketmgmt/index.html', table_data=table_data, user=user)
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\asus\.gemini\antigravity\scratch\nepse-virtual\nepse\templates\marketmgmt\index.html", line 1, in top-level template code
+    {% extends 'base.html' %}
+  File "C:\Users\asus\.gemini\antigravity\scratch\nepse-virtual\nepse\templates\base.html", line 109, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^
+  File "C:\Users\asus\.gemini\antigravity\scratch\nepse-virtual\nepse\templates\marketmgmt\index.html", line 62, in block 'content'
+    {{ row.get('Diff %', '') }}{% if row.get('Diff %') %}%{% endif %}
+    ^
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\generic.py", line 1513, in __bool__
+    raise ValueError(
+    ^
+ValueError: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+2026-03-26 00:54:57,053 - INFO - 127.0.0.1 - - [26/Mar/2026 00:54:57] "GET /marketmgmt/?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 304 -
+2026-03-26 00:54:57,238 - INFO - 127.0.0.1 - - [26/Mar/2026 00:54:57] "GET /marketmgmt/?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 304 -
+2026-03-26 00:54:57,573 - INFO - 127.0.0.1 - - [26/Mar/2026 00:54:57] "GET /marketmgmt/?__debugger__=yes&cmd=resource&f=console.png&s=zytYyA8qcTJqAysl1VvW HTTP/1.1" 304 -
+2026-03-26 00:55:10,450 - INFO - Starting scheduled data scrape...
+2026-03-26 00:55:10,784 - INFO - Fetching main page for CSRF token...
+2026-03-26 00:55:11,675 - INFO - 127.0.0.1 - - [26/Mar/2026 00:55:11] "GET /ordermgmt/ HTTP/1.1" 200 -
+2026-03-26 00:55:12,016 - INFO - 127.0.0.1 - - [26/Mar/2026 00:55:12] "GET /static/css/styles.css HTTP/1.1" 304 -
+2026-03-26 00:55:12,079 - INFO - 127.0.0.1 - - [26/Mar/2026 00:55:12] "GET /ordermgmt/data3 HTTP/1.1" 500 -
+Traceback (most recent call last):
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 1536, in __call__
+    return self.wsgi_app(environ, start_response)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 1514, in wsgi_app
+    response = self.handle_exception(e)
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\asus\.gemini\antigravity\scratch\nepse-virtual\nepse\app.py", line 241, in order_sinfo
+    "ltps": df["LTP"].tolist(),
+            ^^^^^^^^^^^^^^^^
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\generic.py", line 6206, in __getattr__
+    return object.__getattribute__(self, name)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AttributeError: 'DataFrame' object has no attribute 'tolist'
+2026-03-26 00:55:12,252 - INFO - Starting scheduled data scrape...
+2026-03-26 00:55:12,252 - INFO - Fetching main page for CSRF token...
+2026-03-26 00:55:12,807 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 00:55:12,815 - INFO - Main page status: 200
+2026-03-26 00:55:12,819 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 00:55:13,370 - INFO - Fetching AJAX data with token: cPncbaG6vQ...
+2026-03-26 00:55:13,556 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 00:55:13,562 - INFO - Main page status: 200
+2026-03-26 00:55:13,563 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 00:55:14,086 - INFO - Fetching AJAX data with token: mXDiicnuY0...
+2026-03-26 00:55:14,556 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 00:55:14,561 - INFO - AJAX response status: 200
+2026-03-26 00:55:14,993 - INFO - Processing 1 tables...
+2026-03-26 00:55:15,219 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 00:55:15,223 - INFO - AJAX response status: 200
+2026-03-26 00:55:15,248 - INFO - Successfully found data in table 0
+2026-03-26 00:55:15,257 - INFO - Successfully updated market data.
+2026-03-26 00:55:15,670 - INFO - Processing 1 tables...
+2026-03-26 00:55:15,860 - INFO - Successfully found data in table 0
+2026-03-26 00:55:15,862 - INFO - Successfully updated market data.
+2026-03-26 00:55:16,523 - INFO - 127.0.0.1 - - [26/Mar/2026 00:55:16] "GET /marketmgmt/ HTTP/1.1" 500 -
+Traceback (most recent call last):
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 1536, in __call__
+    return self.wsgi_app(environ, start_response)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 1514, in wsgi_app
+    response = self.handle_exception(e)
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\asus\.gemini\antigravity\scratch\nepse-virtual\nepse\app.py", line 206, in market_index
+    return render_template('marketmgmt/index.html', table_data=table_data, user=user)
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\asus\.gemini\antigravity\scratch\nepse-virtual\nepse\templates\marketmgmt\index.html", line 1, in top-level template code
+    {% extends 'base.html' %}
+  File "C:\Users\asus\.gemini\antigravity\scratch\nepse-virtual\nepse\templates\base.html", line 109, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^
+  File "C:\Users\asus\.gemini\antigravity\scratch\nepse-virtual\nepse\templates\marketmgmt\index.html", line 62, in block 'content'
+    {{ row.get('Diff %', '') }}{% if row.get('Diff %') %}%{% endif %}
+    ^
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\generic.py", line 1513, in __bool__
+    raise ValueError(
+    ^
+ValueError: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+2026-03-26 00:55:16,811 - INFO - 127.0.0.1 - - [26/Mar/2026 00:55:16] "GET /marketmgmt/?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 304 -
+2026-03-26 00:55:16,878 - INFO - 127.0.0.1 - - [26/Mar/2026 00:55:16] "GET /marketmgmt/?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 304 -
+2026-03-26 00:55:17,227 - INFO - 127.0.0.1 - - [26/Mar/2026 00:55:17] "GET /marketmgmt/?__debugger__=yes&cmd=resource&f=console.png&s=zytYyA8qcTJqAysl1VvW HTTP/1.1" 304 -
+2026-03-26 00:55:22,687 - INFO - 127.0.0.1 - - [26/Mar/2026 00:55:22] "GET / HTTP/1.1" 500 -
+Traceback (most recent call last):
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 1536, in __call__
+    return self.wsgi_app(environ, start_response)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 1514, in wsgi_app
+    response = self.handle_exception(e)
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\asus\.gemini\antigravity\scratch\nepse-virtual\nepse\app.py", line 194, in index
+    return render_template('index.html',
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\asus\.gemini\antigravity\scratch\nepse-virtual\nepse\templates\index.html", line 1, in top-level template code
+    {% extends 'base.html' %}
+  File "C:\Users\asus\.gemini\antigravity\scratch\nepse-virtual\nepse\templates\base.html", line 109, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^
+  File "C:\Users\asus\.gemini\antigravity\scratch\nepse-virtual\nepse\templates\index.html", line 86, in block 'content'
+    {{ row.get('Diff %', '') }}{% if row.get('Diff %') %}%{% endif %}
+    
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\generic.py", line 1513, in __bool__
+    raise ValueError(
+    ^
+ValueError: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+2026-03-26 00:55:22,972 - INFO - 127.0.0.1 - - [26/Mar/2026 00:55:22] "GET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 304 -
+2026-03-26 00:55:23,049 - INFO - 127.0.0.1 - - [26/Mar/2026 00:55:23] "GET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 304 -
+2026-03-26 00:55:23,370 - INFO - 127.0.0.1 - - [26/Mar/2026 00:55:23] "GET /?__debugger__=yes&cmd=resource&f=console.png&s=zytYyA8qcTJqAysl1VvW HTTP/1.1" 304 -
+2026-03-26 00:55:45,263 - INFO - Starting scheduled data scrape...
+2026-03-26 00:55:45,312 - INFO - Fetching main page for CSRF token...
+2026-03-26 00:55:45,900 - INFO - Starting scheduled data scrape...
+2026-03-26 00:55:45,965 - INFO - Fetching main page for CSRF token...
+2026-03-26 00:55:46,628 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 00:55:46,687 - INFO - Main page status: 200
+2026-03-26 00:55:46,695 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 00:55:47,402 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 00:55:47,444 - INFO - Main page status: 200
+2026-03-26 00:55:47,457 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 00:55:48,549 - INFO - Fetching AJAX data with token: mXDiicnuY0...
+2026-03-26 00:55:48,721 - INFO - Fetching AJAX data with token: cPncbaG6vQ...
+2026-03-26 00:55:50,814 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 00:55:50,817 - INFO - AJAX response status: 200
+2026-03-26 00:55:50,820 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 00:55:50,823 - INFO - AJAX response status: 200
+2026-03-26 00:55:51,082 - INFO - Processing 1 tables...
+2026-03-26 00:55:51,119 - INFO - Processing 1 tables...
+2026-03-26 00:55:51,283 - INFO - Successfully found data in table 0
+2026-03-26 00:55:51,287 - INFO - Successfully updated market data.
+2026-03-26 00:55:51,325 - INFO - Successfully found data in table 0
+2026-03-26 00:55:51,328 - INFO - Successfully updated market data.
+2026-03-26 00:56:21,288 - INFO - Starting scheduled data scrape...
+2026-03-26 00:56:21,288 - INFO - Fetching main page for CSRF token...
+2026-03-26 00:56:21,329 - INFO - Starting scheduled data scrape...
+2026-03-26 00:56:21,330 - INFO - Fetching main page for CSRF token...
+2026-03-26 00:56:23,064 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 00:56:23,071 - INFO - Main page status: 200
+2026-03-26 00:56:23,072 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 00:56:23,136 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 00:56:23,142 - INFO - Main page status: 200
+2026-03-26 00:56:23,143 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 00:56:23,525 - INFO - Fetching AJAX data with token: cPncbaG6vQ...
+2026-03-26 00:56:23,851 - INFO - Fetching AJAX data with token: mXDiicnuY0...
+2026-03-26 00:56:24,615 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 00:56:24,622 - INFO - AJAX response status: 200
+2026-03-26 00:56:25,132 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 00:56:25,137 - INFO - AJAX response status: 200
+2026-03-26 00:56:25,322 - INFO - Processing 1 tables...
+2026-03-26 00:56:25,553 - INFO - Processing 1 tables...
+2026-03-26 00:56:25,617 - INFO - Successfully found data in table 0
+2026-03-26 00:56:25,627 - INFO - Successfully updated market data.
+2026-03-26 00:56:25,823 - INFO - Successfully found data in table 0
+2026-03-26 00:56:25,829 - INFO - Successfully updated market data.
+2026-03-26 00:56:55,627 - INFO - Starting scheduled data scrape...
+2026-03-26 00:56:55,628 - INFO - Fetching main page for CSRF token...
+2026-03-26 00:56:55,829 - INFO - Starting scheduled data scrape...
+2026-03-26 00:56:55,830 - INFO - Fetching main page for CSRF token...
+2026-03-26 00:56:56,960 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 00:56:56,967 - INFO - Main page status: 200
+2026-03-26 00:56:56,969 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 00:56:57,103 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 00:56:57,119 - INFO - Main page status: 200
+2026-03-26 00:56:57,121 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 00:56:57,428 - INFO - Fetching AJAX data with token: mXDiicnuY0...
+2026-03-26 00:56:57,536 - INFO - Fetching AJAX data with token: cPncbaG6vQ...
+2026-03-26 00:57:00,270 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 00:57:00,278 - INFO - AJAX response status: 200
+2026-03-26 00:57:00,284 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 00:57:00,296 - INFO - AJAX response status: 200
+2026-03-26 00:57:00,817 - INFO - Processing 1 tables...
+2026-03-26 00:57:00,820 - INFO - Processing 1 tables...
+2026-03-26 00:57:01,082 - INFO - Successfully found data in table 0
+2026-03-26 00:57:01,086 - INFO - Successfully updated market data.
+2026-03-26 00:57:01,090 - INFO - Successfully found data in table 0
+2026-03-26 00:57:01,093 - INFO - Successfully updated market data.
+2026-03-26 00:57:31,087 - INFO - Starting scheduled data scrape...
+2026-03-26 00:57:31,088 - INFO - Fetching main page for CSRF token...
+2026-03-26 00:57:31,099 - INFO - Starting scheduled data scrape...
+2026-03-26 00:57:31,100 - INFO - Fetching main page for CSRF token...
+2026-03-26 00:57:32,699 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 00:57:32,711 - INFO - Main page status: 200
+2026-03-26 00:57:32,713 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 00:57:32,720 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 00:57:32,734 - INFO - Main page status: 200
+2026-03-26 00:57:32,736 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 00:57:33,446 - INFO - Fetching AJAX data with token: mXDiicnuY0...
+2026-03-26 00:57:33,541 - INFO - Fetching AJAX data with token: cPncbaG6vQ...
+2026-03-26 00:57:35,574 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 00:57:35,582 - INFO - AJAX response status: 200
+2026-03-26 00:57:35,723 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 00:57:35,730 - INFO - AJAX response status: 200
+2026-03-26 00:57:36,133 - INFO - Processing 1 tables...
+2026-03-26 00:57:36,279 - INFO - Processing 1 tables...
+2026-03-26 00:57:36,497 - INFO - Successfully found data in table 0
+2026-03-26 00:57:36,508 - INFO - Successfully updated market data.
+2026-03-26 00:57:36,624 - INFO - Successfully found data in table 0
+2026-03-26 00:57:36,627 - INFO - Successfully updated market data.
+2026-03-26 00:58:06,508 - INFO - Starting scheduled data scrape...
+2026-03-26 00:58:06,509 - INFO - Fetching main page for CSRF token...
+2026-03-26 00:58:06,628 - INFO - Starting scheduled data scrape...
+2026-03-26 00:58:06,628 - INFO - Fetching main page for CSRF token...
+2026-03-26 00:58:08,118 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 00:58:08,128 - INFO - Main page status: 200
+2026-03-26 00:58:08,129 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 00:58:08,250 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 00:58:08,259 - INFO - Main page status: 200
+2026-03-26 00:58:08,260 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 00:58:08,748 - INFO - Fetching AJAX data with token: mXDiicnuY0...
+2026-03-26 00:58:08,845 - INFO - Fetching AJAX data with token: cPncbaG6vQ...
+2026-03-26 00:58:10,085 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 00:58:10,094 - INFO - AJAX response status: 200
+2026-03-26 00:58:10,204 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 00:58:10,212 - INFO - AJAX response status: 200
+2026-03-26 00:58:10,758 - INFO - Processing 1 tables...
+2026-03-26 00:58:10,887 - INFO - Processing 1 tables...
+2026-03-26 00:58:11,083 - INFO - Successfully found data in table 0
+2026-03-26 00:58:11,091 - INFO - Successfully updated market data.
+2026-03-26 00:58:11,149 - INFO - Successfully found data in table 0
+2026-03-26 00:58:11,152 - INFO - Successfully updated market data.
+2026-03-26 00:58:22,399 - INFO -  * Detected change in 'C:\\Users\\asus\\.gemini\\antigravity\\scratch\\nepse-virtual\\nepse\\app.py', reloading
+2026-03-26 00:58:23,148 - INFO -  * Restarting with stat
+2026-03-26 00:58:26,921 - INFO - Starting scheduled data scrape...
+2026-03-26 00:58:26,927 - INFO - Starting NEPSE Virtual app...
+2026-03-26 00:58:26,927 - INFO - Fetching main page for CSRF token...
+2026-03-26 00:58:26,937 - DEBUG - Starting new HTTPS connection (1): www.sharesansar.com:443
+2026-03-26 00:58:27,024 - WARNING -  * Debugger is active!
+2026-03-26 00:58:27,043 - INFO -  * Debugger PIN: 893-828-283
+2026-03-26 00:58:29,374 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 00:58:29,688 - INFO - Main page status: 200
+2026-03-26 00:58:29,690 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 00:58:30,301 - INFO - Fetching AJAX data with token: 4lAqngG6bp...
+2026-03-26 00:58:32,176 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 00:58:32,183 - INFO - AJAX response status: 200
+2026-03-26 00:58:32,531 - INFO - Processing 1 tables...
+2026-03-26 00:58:32,763 - INFO - Successfully found data in table 0
+2026-03-26 00:58:32,770 - INFO - Successfully updated market data.
+2026-03-26 00:58:41,152 - INFO - Starting scheduled data scrape...
+2026-03-26 00:58:41,152 - INFO - Fetching main page for CSRF token...
+2026-03-26 00:58:42,489 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 00:58:42,494 - INFO - Main page status: 200
+2026-03-26 00:58:42,495 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 00:58:42,766 - INFO - Fetching AJAX data with token: mXDiicnuY0...
+2026-03-26 00:58:44,022 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 00:58:44,026 - INFO - AJAX response status: 200
+2026-03-26 00:58:44,405 - INFO - Processing 1 tables...
+2026-03-26 00:58:44,766 - INFO - Successfully found data in table 0
+2026-03-26 00:58:44,772 - INFO - Successfully updated market data.
+2026-03-26 00:58:53,372 - INFO - 127.0.0.1 - - [26/Mar/2026 00:58:53] "GET / HTTP/1.1" 500 -
+Traceback (most recent call last):
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 1536, in __call__
+    return self.wsgi_app(environ, start_response)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 1514, in wsgi_app
+    response = self.handle_exception(e)
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\asus\.gemini\antigravity\scratch\nepse-virtual\nepse\app.py", line 197, in index
+    return render_template('index.html',
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\asus\.gemini\antigravity\scratch\nepse-virtual\nepse\templates\index.html", line 1, in top-level template code
+    {% extends 'base.html' %}
+  File "C:\Users\asus\.gemini\antigravity\scratch\nepse-virtual\nepse\templates\base.html", line 109, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^
+  File "C:\Users\asus\.gemini\antigravity\scratch\nepse-virtual\nepse\templates\index.html", line 86, in block 'content'
+    {{ row.get('Diff %', '') }}{% if row.get('Diff %') %}%{% endif %}
+    
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\generic.py", line 1513, in __bool__
+    raise ValueError(
+    ^
+ValueError: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+2026-03-26 00:58:53,505 - INFO - 127.0.0.1 - - [26/Mar/2026 00:58:53] "GET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 304 -
+2026-03-26 00:58:53,541 - INFO - 127.0.0.1 - - [26/Mar/2026 00:58:53] "GET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 304 -
+2026-03-26 00:58:53,970 - INFO - 127.0.0.1 - - [26/Mar/2026 00:58:53] "GET /?__debugger__=yes&cmd=resource&f=console.png&s=MeO1sp7l9vSc5U20xqix HTTP/1.1" 200 -
+2026-03-26 00:59:00,321 - INFO - 127.0.0.1 - - [26/Mar/2026 00:59:00] "GET / HTTP/1.1" 500 -
+Traceback (most recent call last):
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 1536, in __call__
+    return self.wsgi_app(environ, start_response)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 1514, in wsgi_app
+    response = self.handle_exception(e)
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\asus\.gemini\antigravity\scratch\nepse-virtual\nepse\app.py", line 197, in index
+    return render_template('index.html',
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\asus\.gemini\antigravity\scratch\nepse-virtual\nepse\templates\index.html", line 1, in top-level template code
+    {% extends 'base.html' %}
+  File "C:\Users\asus\.gemini\antigravity\scratch\nepse-virtual\nepse\templates\base.html", line 109, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^
+  File "C:\Users\asus\.gemini\antigravity\scratch\nepse-virtual\nepse\templates\index.html", line 86, in block 'content'
+    {{ row.get('Diff %', '') }}{% if row.get('Diff %') %}%{% endif %}
+    
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\generic.py", line 1513, in __bool__
+    raise ValueError(
+    ^
+ValueError: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+2026-03-26 00:59:00,598 - INFO - 127.0.0.1 - - [26/Mar/2026 00:59:00] "GET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 304 -
+2026-03-26 00:59:00,678 - INFO - 127.0.0.1 - - [26/Mar/2026 00:59:00] "GET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 304 -
+2026-03-26 00:59:01,013 - INFO - 127.0.0.1 - - [26/Mar/2026 00:59:01] "GET /?__debugger__=yes&cmd=resource&f=console.png&s=MeO1sp7l9vSc5U20xqix HTTP/1.1" 304 -
+2026-03-26 00:59:02,771 - INFO - Starting scheduled data scrape...
+2026-03-26 00:59:02,771 - INFO - Fetching main page for CSRF token...
+2026-03-26 00:59:05,030 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 00:59:05,038 - INFO - Main page status: 200
+2026-03-26 00:59:05,040 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 00:59:05,641 - INFO - Fetching AJAX data with token: 4lAqngG6bp...
+2026-03-26 00:59:07,098 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 00:59:07,107 - INFO - AJAX response status: 200
+2026-03-26 00:59:07,694 - INFO - Processing 1 tables...
+2026-03-26 00:59:07,922 - INFO - Successfully found data in table 0
+2026-03-26 00:59:07,929 - INFO - Successfully updated market data.
+2026-03-26 00:59:14,773 - INFO - Starting scheduled data scrape...
+2026-03-26 00:59:14,773 - INFO - Fetching main page for CSRF token...
+2026-03-26 00:59:16,171 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 00:59:16,176 - INFO - Main page status: 200
+2026-03-26 00:59:16,177 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 00:59:16,688 - INFO - Fetching AJAX data with token: mXDiicnuY0...
+2026-03-26 00:59:18,568 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 00:59:18,573 - INFO - AJAX response status: 200
+2026-03-26 00:59:18,837 - INFO - Processing 1 tables...
+2026-03-26 00:59:19,023 - INFO - Successfully found data in table 0
+2026-03-26 00:59:19,028 - INFO - Successfully updated market data.
+2026-03-26 00:59:27,224 - INFO - 127.0.0.1 - - [26/Mar/2026 00:59:27] "GET / HTTP/1.1" 500 -
+Traceback (most recent call last):
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 1536, in __call__
+    return self.wsgi_app(environ, start_response)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 1514, in wsgi_app
+    response = self.handle_exception(e)
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\asus\.gemini\antigravity\scratch\nepse-virtual\nepse\app.py", line 197, in index
+    return render_template('index.html',
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\asus\.gemini\antigravity\scratch\nepse-virtual\nepse\templates\index.html", line 1, in top-level template code
+    {% extends 'base.html' %}
+  File "C:\Users\asus\.gemini\antigravity\scratch\nepse-virtual\nepse\templates\base.html", line 109, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^
+  File "C:\Users\asus\.gemini\antigravity\scratch\nepse-virtual\nepse\templates\index.html", line 86, in block 'content'
+    {{ row.get('Diff %', '') }}{% if row.get('Diff %') %}%{% endif %}
+    
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\generic.py", line 1513, in __bool__
+    raise ValueError(
+    ^
+ValueError: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+2026-03-26 00:59:27,506 - INFO - 127.0.0.1 - - [26/Mar/2026 00:59:27] "GET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 304 -
+2026-03-26 00:59:27,599 - INFO - 127.0.0.1 - - [26/Mar/2026 00:59:27] "GET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 304 -
+2026-03-26 00:59:27,940 - INFO - 127.0.0.1 - - [26/Mar/2026 00:59:27] "GET /?__debugger__=yes&cmd=resource&f=console.png&s=MeO1sp7l9vSc5U20xqix HTTP/1.1" 304 -
+2026-03-26 00:59:37,930 - INFO - Starting scheduled data scrape...
+2026-03-26 00:59:37,930 - INFO - Fetching main page for CSRF token...
+2026-03-26 00:59:39,019 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 00:59:39,022 - INFO - Main page status: 200
+2026-03-26 00:59:39,023 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 00:59:39,307 - INFO - Fetching AJAX data with token: 4lAqngG6bp...
+2026-03-26 00:59:40,371 - INFO - 127.0.0.1 - - [26/Mar/2026 00:59:40] "GET /marketmgmt/ HTTP/1.1" 500 -
+Traceback (most recent call last):
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 1536, in __call__
+    return self.wsgi_app(environ, start_response)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 1514, in wsgi_app
+    response = self.handle_exception(e)
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\asus\.gemini\antigravity\scratch\nepse-virtual\nepse\app.py", line 209, in market_index
+    return render_template('marketmgmt/index.html', table_data=table_data, user=user)
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\asus\.gemini\antigravity\scratch\nepse-virtual\nepse\templates\marketmgmt\index.html", line 1, in top-level template code
+    {% extends 'base.html' %}
+  File "C:\Users\asus\.gemini\antigravity\scratch\nepse-virtual\nepse\templates\base.html", line 109, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^
+  File "C:\Users\asus\.gemini\antigravity\scratch\nepse-virtual\nepse\templates\marketmgmt\index.html", line 62, in block 'content'
+    {{ row.get('Diff %', '') }}{% if row.get('Diff %') %}%{% endif %}
+    ^
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\generic.py", line 1513, in __bool__
+    raise ValueError(
+    ^
+ValueError: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+2026-03-26 00:59:40,636 - INFO - 127.0.0.1 - - [26/Mar/2026 00:59:40] "GET /marketmgmt/?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 304 -
+2026-03-26 00:59:40,723 - INFO - 127.0.0.1 - - [26/Mar/2026 00:59:40] "GET /marketmgmt/?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 304 -
+2026-03-26 00:59:41,021 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 00:59:41,025 - INFO - AJAX response status: 200
+2026-03-26 00:59:41,199 - INFO - 127.0.0.1 - - [26/Mar/2026 00:59:41] "GET /marketmgmt/?__debugger__=yes&cmd=resource&f=console.png&s=MeO1sp7l9vSc5U20xqix HTTP/1.1" 200 -
+2026-03-26 00:59:41,328 - INFO - Processing 1 tables...
+2026-03-26 00:59:41,525 - INFO - Successfully found data in table 0
+2026-03-26 00:59:41,528 - INFO - Successfully updated market data.
+2026-03-26 00:59:45,686 - INFO - 127.0.0.1 - - [26/Mar/2026 00:59:45] "GET /ordermgmt/ HTTP/1.1" 200 -
+2026-03-26 00:59:46,010 - INFO - 127.0.0.1 - - [26/Mar/2026 00:59:46] "GET /static/css/styles.css HTTP/1.1" 304 -
+2026-03-26 00:59:46,353 - INFO - 127.0.0.1 - - [26/Mar/2026 00:59:46] "GET /ordermgmt/data3 HTTP/1.1" 200 -
+2026-03-26 00:59:49,028 - INFO - Starting scheduled data scrape...
+2026-03-26 00:59:49,029 - INFO - Fetching main page for CSRF token...
+2026-03-26 00:59:50,835 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 00:59:50,839 - INFO - Main page status: 200
+2026-03-26 00:59:50,840 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 00:59:51,137 - INFO - Fetching AJAX data with token: mXDiicnuY0...
+2026-03-26 00:59:51,719 - INFO - 127.0.0.1 - - [26/Mar/2026 00:59:51] "GET /marketmgmt/ HTTP/1.1" 500 -
+Traceback (most recent call last):
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 1536, in __call__
+    return self.wsgi_app(environ, start_response)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 1514, in wsgi_app
+    response = self.handle_exception(e)
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\asus\.gemini\antigravity\scratch\nepse-virtual\nepse\app.py", line 209, in market_index
+    return render_template('marketmgmt/index.html', table_data=table_data, user=user)
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\asus\.gemini\antigravity\scratch\nepse-virtual\nepse\templates\marketmgmt\index.html", line 1, in top-level template code
+    {% extends 'base.html' %}
+  File "C:\Users\asus\.gemini\antigravity\scratch\nepse-virtual\nepse\templates\base.html", line 109, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^
+  File "C:\Users\asus\.gemini\antigravity\scratch\nepse-virtual\nepse\templates\marketmgmt\index.html", line 62, in block 'content'
+    {{ row.get('Diff %', '') }}{% if row.get('Diff %') %}%{% endif %}
+    ^
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\generic.py", line 1513, in __bool__
+    raise ValueError(
+    ^
+ValueError: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+2026-03-26 00:59:52,086 - INFO - 127.0.0.1 - - [26/Mar/2026 00:59:52] "GET /marketmgmt/?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 304 -
+2026-03-26 00:59:52,095 - INFO - 127.0.0.1 - - [26/Mar/2026 00:59:52] "GET /marketmgmt/?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 304 -
+2026-03-26 00:59:52,469 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 00:59:52,474 - INFO - AJAX response status: 200
+2026-03-26 00:59:52,506 - INFO - 127.0.0.1 - - [26/Mar/2026 00:59:52] "GET /marketmgmt/?__debugger__=yes&cmd=resource&f=console.png&s=MeO1sp7l9vSc5U20xqix HTTP/1.1" 304 -
+2026-03-26 00:59:52,927 - INFO - Processing 1 tables...
+2026-03-26 00:59:53,253 - INFO - Successfully found data in table 0
+2026-03-26 00:59:53,255 - INFO - Successfully updated market data.
+2026-03-26 00:59:57,833 - INFO - 127.0.0.1 - - [26/Mar/2026 00:59:57] "GET /ordermgmt/ HTTP/1.1" 200 -
+2026-03-26 00:59:58,142 - INFO - 127.0.0.1 - - [26/Mar/2026 00:59:58] "GET /static/css/styles.css HTTP/1.1" 304 -
+2026-03-26 00:59:58,467 - INFO - 127.0.0.1 - - [26/Mar/2026 00:59:58] "GET /ordermgmt/data3 HTTP/1.1" 200 -
+2026-03-26 01:00:11,529 - INFO - Starting scheduled data scrape...
+2026-03-26 01:00:11,529 - INFO - Fetching main page for CSRF token...
+2026-03-26 01:00:12,619 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 01:00:12,623 - INFO - Main page status: 200
+2026-03-26 01:00:12,624 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 01:00:13,108 - INFO - Fetching AJAX data with token: 4lAqngG6bp...
+2026-03-26 01:00:14,490 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 01:00:14,495 - INFO - AJAX response status: 200
+2026-03-26 01:00:15,268 - INFO - Processing 1 tables...
+2026-03-26 01:00:15,793 - INFO - Successfully found data in table 0
+2026-03-26 01:00:15,802 - INFO - Successfully updated market data.
+2026-03-26 01:00:23,256 - INFO - Starting scheduled data scrape...
+2026-03-26 01:00:23,256 - INFO - Fetching main page for CSRF token...
+2026-03-26 01:00:24,868 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 01:00:24,874 - INFO - Main page status: 200
+2026-03-26 01:00:24,875 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 01:00:25,635 - INFO - Fetching AJAX data with token: mXDiicnuY0...
+2026-03-26 01:00:26,733 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 01:00:26,736 - INFO - AJAX response status: 200
+2026-03-26 01:00:27,269 - INFO - Processing 1 tables...
+2026-03-26 01:00:27,669 - INFO - Successfully found data in table 0
+2026-03-26 01:00:27,676 - INFO - Successfully updated market data.
+2026-03-26 01:00:28,439 - INFO - 127.0.0.1 - - [26/Mar/2026 01:00:28] "POST /trade/execute HTTP/1.1" 200 -
+2026-03-26 01:00:45,803 - INFO - Starting scheduled data scrape...
+2026-03-26 01:00:45,803 - INFO - Fetching main page for CSRF token...
+2026-03-26 01:00:46,881 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 01:00:46,890 - INFO - Main page status: 200
+2026-03-26 01:00:46,892 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 01:00:47,477 - INFO - Fetching AJAX data with token: 4lAqngG6bp...
+2026-03-26 01:00:48,778 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 01:00:48,785 - INFO - AJAX response status: 200
+2026-03-26 01:00:49,505 - INFO - Processing 1 tables...
+2026-03-26 01:00:49,897 - INFO - Successfully found data in table 0
+2026-03-26 01:00:49,901 - INFO - Successfully updated market data.
+2026-03-26 01:00:52,504 - INFO - 127.0.0.1 - - [26/Mar/2026 01:00:52] "POST /trade/execute HTTP/1.1" 200 -
+2026-03-26 01:00:57,677 - INFO - Starting scheduled data scrape...
+2026-03-26 01:00:57,677 - INFO - Fetching main page for CSRF token...
+2026-03-26 01:00:59,045 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 01:00:59,055 - INFO - Main page status: 200
+2026-03-26 01:00:59,057 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 01:00:59,664 - INFO - Fetching AJAX data with token: mXDiicnuY0...
+2026-03-26 01:01:00,936 - INFO - 127.0.0.1 - - [26/Mar/2026 01:01:00] "POST /trade/execute HTTP/1.1" 200 -
+2026-03-26 01:01:01,319 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 01:01:01,325 - INFO - AJAX response status: 200
+2026-03-26 01:01:01,738 - INFO - Processing 1 tables...
+2026-03-26 01:01:01,974 - INFO - Successfully found data in table 0
+2026-03-26 01:01:01,977 - INFO - Successfully updated market data.
+2026-03-26 01:01:06,835 - INFO - 127.0.0.1 - - [26/Mar/2026 01:01:06] "GET / HTTP/1.1" 500 -
+Traceback (most recent call last):
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 1536, in __call__
+    return self.wsgi_app(environ, start_response)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 1514, in wsgi_app
+    response = self.handle_exception(e)
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\asus\.gemini\antigravity\scratch\nepse-virtual\nepse\app.py", line 197, in index
+    return render_template('index.html',
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\asus\.gemini\antigravity\scratch\nepse-virtual\nepse\templates\index.html", line 1, in top-level template code
+    {% extends 'base.html' %}
+  File "C:\Users\asus\.gemini\antigravity\scratch\nepse-virtual\nepse\templates\base.html", line 109, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^
+  File "C:\Users\asus\.gemini\antigravity\scratch\nepse-virtual\nepse\templates\index.html", line 86, in block 'content'
+    {{ row.get('Diff %', '') }}{% if row.get('Diff %') %}%{% endif %}
+    
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\generic.py", line 1513, in __bool__
+    raise ValueError(
+    ^
+ValueError: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+2026-03-26 01:01:06,867 - INFO - 127.0.0.1 - - [26/Mar/2026 01:01:06] "GET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 304 -
+2026-03-26 01:01:07,021 - INFO - 127.0.0.1 - - [26/Mar/2026 01:01:07] "GET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 304 -
+2026-03-26 01:01:07,374 - INFO - 127.0.0.1 - - [26/Mar/2026 01:01:07] "GET /?__debugger__=yes&cmd=resource&f=console.png&s=MeO1sp7l9vSc5U20xqix HTTP/1.1" 304 -
+2026-03-26 01:01:19,901 - INFO - Starting scheduled data scrape...
+2026-03-26 01:01:19,902 - INFO - Fetching main page for CSRF token...
+2026-03-26 01:01:20,998 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 01:01:21,007 - INFO - Main page status: 200
+2026-03-26 01:01:21,008 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 01:01:21,198 - INFO - 127.0.0.1 - - [26/Mar/2026 01:01:21] "GET /ordermgmt/ HTTP/1.1" 200 -
+2026-03-26 01:01:21,569 - INFO - 127.0.0.1 - - [26/Mar/2026 01:01:21] "GET /static/css/styles.css HTTP/1.1" 304 -
+2026-03-26 01:01:21,868 - INFO - Fetching AJAX data with token: 4lAqngG6bp...
+2026-03-26 01:01:21,894 - INFO - 127.0.0.1 - - [26/Mar/2026 01:01:21] "GET /ordermgmt/data3 HTTP/1.1" 200 -
+2026-03-26 01:01:23,368 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 01:01:23,371 - INFO - AJAX response status: 200
+2026-03-26 01:01:23,817 - INFO - Processing 1 tables...
+2026-03-26 01:01:24,210 - INFO - Successfully found data in table 0
+2026-03-26 01:01:24,216 - INFO - Successfully updated market data.
+2026-03-26 01:01:31,978 - INFO - Starting scheduled data scrape...
+2026-03-26 01:01:31,978 - INFO - Fetching main page for CSRF token...
+2026-03-26 01:01:33,112 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 01:01:33,151 - INFO - Main page status: 200
+2026-03-26 01:01:33,157 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 01:01:34,306 - INFO - Fetching AJAX data with token: mXDiicnuY0...
+2026-03-26 01:01:35,666 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 01:01:35,670 - INFO - AJAX response status: 200
+2026-03-26 01:01:35,936 - INFO - Processing 1 tables...
+2026-03-26 01:01:36,096 - INFO - Successfully found data in table 0
+2026-03-26 01:01:36,098 - INFO - Successfully updated market data.
+2026-03-26 01:01:46,964 - INFO - 127.0.0.1 - - [26/Mar/2026 01:01:46] "GET / HTTP/1.1" 500 -
+Traceback (most recent call last):
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 1536, in __call__
+    return self.wsgi_app(environ, start_response)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 1514, in wsgi_app
+    response = self.handle_exception(e)
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\asus\.gemini\antigravity\scratch\nepse-virtual\nepse\app.py", line 197, in index
+    return render_template('index.html',
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\asus\.gemini\antigravity\scratch\nepse-virtual\nepse\templates\index.html", line 1, in top-level template code
+    {% extends 'base.html' %}
+  File "C:\Users\asus\.gemini\antigravity\scratch\nepse-virtual\nepse\templates\base.html", line 109, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^
+  File "C:\Users\asus\.gemini\antigravity\scratch\nepse-virtual\nepse\templates\index.html", line 86, in block 'content'
+    {{ row.get('Diff %', '') }}{% if row.get('Diff %') %}%{% endif %}
+    
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\generic.py", line 1513, in __bool__
+    raise ValueError(
+    ^
+ValueError: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+2026-03-26 01:01:47,197 - INFO - 127.0.0.1 - - [26/Mar/2026 01:01:47] "GET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 304 -
+2026-03-26 01:01:47,333 - INFO - 127.0.0.1 - - [26/Mar/2026 01:01:47] "GET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 304 -
+2026-03-26 01:01:47,664 - INFO - 127.0.0.1 - - [26/Mar/2026 01:01:47] "GET /?__debugger__=yes&cmd=resource&f=console.png&s=MeO1sp7l9vSc5U20xqix HTTP/1.1" 304 -
+2026-03-26 01:01:54,219 - INFO - Starting scheduled data scrape...
+2026-03-26 01:01:54,219 - INFO - Fetching main page for CSRF token...
+2026-03-26 01:01:55,899 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 01:01:55,905 - INFO - Main page status: 200
+2026-03-26 01:01:55,906 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 01:01:56,258 - INFO - Fetching AJAX data with token: 4lAqngG6bp...
+2026-03-26 01:01:58,155 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 01:01:58,158 - INFO - AJAX response status: 200
+2026-03-26 01:01:58,769 - INFO - Processing 1 tables...
+2026-03-26 01:01:59,033 - INFO - Successfully found data in table 0
+2026-03-26 01:01:59,035 - INFO - Successfully updated market data.
+2026-03-26 01:02:01,378 - INFO - 127.0.0.1 - - [26/Mar/2026 01:02:01] "GET /ordermgmt/ HTTP/1.1" 200 -
+2026-03-26 01:02:01,689 - INFO - 127.0.0.1 - - [26/Mar/2026 01:02:01] "GET /static/css/styles.css HTTP/1.1" 304 -
+2026-03-26 01:02:02,065 - INFO - 127.0.0.1 - - [26/Mar/2026 01:02:02] "GET /ordermgmt/data3 HTTP/1.1" 200 -
+2026-03-26 01:02:03,789 - INFO - 127.0.0.1 - - [26/Mar/2026 01:02:03] "GET /marketmgmt/ HTTP/1.1" 500 -
+Traceback (most recent call last):
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 1536, in __call__
+    return self.wsgi_app(environ, start_response)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 1514, in wsgi_app
+    response = self.handle_exception(e)
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\asus\.gemini\antigravity\scratch\nepse-virtual\nepse\app.py", line 209, in market_index
+    return render_template('marketmgmt/index.html', table_data=table_data, user=user)
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\asus\.gemini\antigravity\scratch\nepse-virtual\nepse\templates\marketmgmt\index.html", line 1, in top-level template code
+    {% extends 'base.html' %}
+  File "C:\Users\asus\.gemini\antigravity\scratch\nepse-virtual\nepse\templates\base.html", line 109, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^
+  File "C:\Users\asus\.gemini\antigravity\scratch\nepse-virtual\nepse\templates\marketmgmt\index.html", line 62, in block 'content'
+    {{ row.get('Diff %', '') }}{% if row.get('Diff %') %}%{% endif %}
+    ^
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\generic.py", line 1513, in __bool__
+    raise ValueError(
+    ^
+ValueError: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+2026-03-26 01:02:04,014 - INFO - 127.0.0.1 - - [26/Mar/2026 01:02:04] "GET /marketmgmt/?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 304 -
+2026-03-26 01:02:04,134 - INFO - 127.0.0.1 - - [26/Mar/2026 01:02:04] "GET /marketmgmt/?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 304 -
+2026-03-26 01:02:04,472 - INFO - 127.0.0.1 - - [26/Mar/2026 01:02:04] "GET /marketmgmt/?__debugger__=yes&cmd=resource&f=console.png&s=MeO1sp7l9vSc5U20xqix HTTP/1.1" 304 -
+2026-03-26 01:02:06,099 - INFO - Starting scheduled data scrape...
+2026-03-26 01:02:06,100 - INFO - Fetching main page for CSRF token...
+2026-03-26 01:02:07,233 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 01:02:07,241 - INFO - Main page status: 200
+2026-03-26 01:02:07,242 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 01:02:07,923 - INFO - Fetching AJAX data with token: mXDiicnuY0...
+2026-03-26 01:02:08,998 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 01:02:09,002 - INFO - AJAX response status: 200
+2026-03-26 01:02:09,437 - INFO - Processing 1 tables...
+2026-03-26 01:02:09,814 - INFO - Successfully found data in table 0
+2026-03-26 01:02:09,821 - INFO - Successfully updated market data.
+2026-03-26 01:02:10,534 - INFO - 127.0.0.1 - - [26/Mar/2026 01:02:10] "GET /marketmgmt/ HTTP/1.1" 500 -
+Traceback (most recent call last):
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 1536, in __call__
+    return self.wsgi_app(environ, start_response)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 1514, in wsgi_app
+    response = self.handle_exception(e)
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\asus\.gemini\antigravity\scratch\nepse-virtual\nepse\app.py", line 209, in market_index
+    return render_template('marketmgmt/index.html', table_data=table_data, user=user)
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\asus\.gemini\antigravity\scratch\nepse-virtual\nepse\templates\marketmgmt\index.html", line 1, in top-level template code
+    {% extends 'base.html' %}
+  File "C:\Users\asus\.gemini\antigravity\scratch\nepse-virtual\nepse\templates\base.html", line 109, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^
+  File "C:\Users\asus\.gemini\antigravity\scratch\nepse-virtual\nepse\templates\marketmgmt\index.html", line 62, in block 'content'
+    {{ row.get('Diff %', '') }}{% if row.get('Diff %') %}%{% endif %}
+    ^
+  File "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\generic.py", line 1513, in __bool__
+    raise ValueError(
+    ^
+ValueError: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+2026-03-26 01:02:10,804 - INFO - 127.0.0.1 - - [26/Mar/2026 01:02:10] "GET /marketmgmt/?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 304 -
+2026-03-26 01:02:10,866 - INFO - 127.0.0.1 - - [26/Mar/2026 01:02:10] "GET /marketmgmt/?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 304 -
+2026-03-26 01:02:11,195 - INFO - 127.0.0.1 - - [26/Mar/2026 01:02:11] "GET /marketmgmt/?__debugger__=yes&cmd=resource&f=console.png&s=MeO1sp7l9vSc5U20xqix HTTP/1.1" 304 -
+2026-03-26 01:02:29,036 - INFO - Starting scheduled data scrape...
+2026-03-26 01:02:29,036 - INFO - Fetching main page for CSRF token...
+2026-03-26 01:02:30,488 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 01:02:30,514 - INFO - Main page status: 200
+2026-03-26 01:02:30,523 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 01:02:31,637 - INFO - Fetching AJAX data with token: 4lAqngG6bp...
+2026-03-26 01:02:32,990 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 01:02:32,999 - INFO - AJAX response status: 200
+2026-03-26 01:02:33,575 - INFO - Processing 1 tables...
+2026-03-26 01:02:34,074 - INFO - Successfully found data in table 0
+2026-03-26 01:02:34,080 - INFO - Successfully updated market data.
+2026-03-26 01:02:39,822 - INFO - Starting scheduled data scrape...
+2026-03-26 01:02:39,822 - INFO - Fetching main page for CSRF token...
+2026-03-26 01:02:40,954 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 01:02:40,958 - INFO - Main page status: 200
+2026-03-26 01:02:40,960 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 01:02:41,271 - INFO - Fetching AJAX data with token: mXDiicnuY0...
+2026-03-26 01:02:42,503 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 01:02:42,506 - INFO - AJAX response status: 200
+2026-03-26 01:02:42,922 - INFO - Processing 1 tables...
+2026-03-26 01:02:43,098 - INFO - Successfully found data in table 0
+2026-03-26 01:02:43,103 - INFO - Successfully updated market data.
+2026-03-26 01:03:04,080 - INFO - Starting scheduled data scrape...
+2026-03-26 01:03:04,080 - INFO - Fetching main page for CSRF token...
+2026-03-26 01:03:05,480 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 01:03:05,484 - INFO - Main page status: 200
+2026-03-26 01:03:05,485 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 01:03:06,048 - INFO - Fetching AJAX data with token: 4lAqngG6bp...
+2026-03-26 01:03:07,113 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 01:03:07,117 - INFO - AJAX response status: 200
+2026-03-26 01:03:07,364 - INFO - Processing 1 tables...
+2026-03-26 01:03:07,550 - INFO - Successfully found data in table 0
+2026-03-26 01:03:07,553 - INFO - Successfully updated market data.
+2026-03-26 01:03:13,104 - INFO - Starting scheduled data scrape...
+2026-03-26 01:03:13,104 - INFO - Fetching main page for CSRF token...
+2026-03-26 01:03:14,329 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 01:03:14,335 - INFO - Main page status: 200
+2026-03-26 01:03:14,336 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 01:03:14,665 - INFO - Fetching AJAX data with token: mXDiicnuY0...
+2026-03-26 01:03:15,722 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 01:03:15,726 - INFO - AJAX response status: 200
+2026-03-26 01:03:15,978 - INFO - Processing 1 tables...
+2026-03-26 01:03:16,337 - INFO - Successfully found data in table 0
+2026-03-26 01:03:16,348 - INFO - Successfully updated market data.
+2026-03-26 01:03:37,554 - INFO - Starting scheduled data scrape...
+2026-03-26 01:03:37,555 - INFO - Fetching main page for CSRF token...
+2026-03-26 01:03:38,716 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 01:03:38,723 - INFO - Main page status: 200
+2026-03-26 01:03:38,726 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 01:03:39,197 - INFO - Fetching AJAX data with token: 4lAqngG6bp...
+2026-03-26 01:03:40,243 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 01:03:40,251 - INFO - AJAX response status: 200
+2026-03-26 01:03:40,567 - INFO - Processing 1 tables...
+2026-03-26 01:03:40,742 - INFO - Successfully found data in table 0
+2026-03-26 01:03:40,745 - INFO - Successfully updated market data.
+2026-03-26 01:03:46,348 - INFO - Starting scheduled data scrape...
+2026-03-26 01:03:46,349 - INFO - Fetching main page for CSRF token...
+2026-03-26 01:03:47,980 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 01:03:47,988 - INFO - Main page status: 200
+2026-03-26 01:03:47,989 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 01:03:48,945 - INFO - Fetching AJAX data with token: mXDiicnuY0...
+2026-03-26 01:03:50,059 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 01:03:50,066 - INFO - AJAX response status: 200
+2026-03-26 01:03:50,577 - INFO - Processing 1 tables...
+2026-03-26 01:03:50,883 - INFO - Successfully found data in table 0
+2026-03-26 01:03:50,885 - INFO - Successfully updated market data.
+2026-03-26 01:04:10,746 - INFO - Starting scheduled data scrape...
+2026-03-26 01:04:10,746 - INFO - Fetching main page for CSRF token...
+2026-03-26 01:04:12,009 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 01:04:12,016 - INFO - Main page status: 200
+2026-03-26 01:04:12,017 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 01:04:12,993 - INFO - Fetching AJAX data with token: 4lAqngG6bp...
+2026-03-26 01:04:14,296 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 01:04:14,304 - INFO - AJAX response status: 200
+2026-03-26 01:04:14,562 - INFO - Processing 1 tables...
+2026-03-26 01:04:14,796 - INFO - Successfully found data in table 0
+2026-03-26 01:04:14,801 - INFO - Successfully updated market data.
+2026-03-26 01:04:20,893 - INFO - Starting scheduled data scrape...
+2026-03-26 01:04:20,895 - INFO - Fetching main page for CSRF token...
+2026-03-26 01:04:22,162 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 01:04:22,175 - INFO - Main page status: 200
+2026-03-26 01:04:22,178 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 01:04:22,785 - INFO - Fetching AJAX data with token: mXDiicnuY0...
+2026-03-26 01:04:23,946 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 01:04:23,954 - INFO - AJAX response status: 200
+2026-03-26 01:04:24,812 - INFO - Processing 1 tables...
+2026-03-26 01:04:25,214 - INFO - Successfully found data in table 0
+2026-03-26 01:04:25,220 - INFO - Successfully updated market data.
+2026-03-26 01:04:28,954 - INFO -  * Detected change in 'C:\\Users\\asus\\.gemini\\antigravity\\scratch\\nepse-virtual\\nepse\\app.py', reloading
+2026-03-26 01:04:29,445 - INFO -  * Restarting with stat
+2026-03-26 01:04:31,828 - INFO - Starting scheduled data scrape...
+2026-03-26 01:04:31,830 - INFO - Starting NEPSE Virtual app...
+2026-03-26 01:04:31,830 - INFO - Fetching main page for CSRF token...
+2026-03-26 01:04:31,835 - DEBUG - Starting new HTTPS connection (1): www.sharesansar.com:443
+2026-03-26 01:04:31,872 - WARNING -  * Debugger is active!
+2026-03-26 01:04:31,880 - INFO -  * Debugger PIN: 893-828-283
+2026-03-26 01:04:34,636 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 01:04:34,972 - INFO - Main page status: 200
+2026-03-26 01:04:34,974 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 01:04:35,387 - INFO - Fetching AJAX data with token: 6wP7PeRrH8...
+2026-03-26 01:04:36,886 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 01:04:36,895 - INFO - AJAX response status: 200
+2026-03-26 01:04:37,213 - INFO - Processing 1 tables...
+2026-03-26 01:04:37,430 - INFO - Successfully found data in table 0
+2026-03-26 01:04:37,432 - INFO - Successfully updated market data.
+2026-03-26 01:04:55,249 - INFO - Starting scheduled data scrape...
+2026-03-26 01:04:55,257 - INFO - Fetching main page for CSRF token...
+2026-03-26 01:04:56,482 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 01:04:56,612 - INFO - Main page status: 200
+2026-03-26 01:04:56,648 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 01:05:00,881 - INFO - Fetching AJAX data with token: mXDiicnuY0...
+2026-03-26 01:05:02,281 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 01:05:02,393 - INFO - AJAX response status: 200
+2026-03-26 01:05:07,498 - INFO - Starting scheduled data scrape...
+2026-03-26 01:05:07,507 - INFO - Fetching main page for CSRF token...
+2026-03-26 01:05:08,731 - INFO - Processing 1 tables...
+2026-03-26 01:05:08,758 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 01:05:08,849 - INFO - Main page status: 200
+2026-03-26 01:05:09,209 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 01:05:18,379 - INFO - Successfully found data in table 0
+2026-03-26 01:05:18,437 - INFO - Successfully updated market data.
+2026-03-26 01:05:24,749 - INFO - Fetching AJAX data with token: 6wP7PeRrH8...
+2026-03-26 01:05:25,821 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 01:05:25,852 - INFO - AJAX response status: 200
+2026-03-26 01:05:33,705 - INFO - Processing 1 tables...
+2026-03-26 01:05:37,008 - INFO - Successfully found data in table 0
+2026-03-26 01:05:37,037 - INFO - Successfully updated market data.
+2026-03-26 01:05:48,455 - INFO - Starting scheduled data scrape...
+2026-03-26 01:05:48,457 - INFO - Fetching main page for CSRF token...
+2026-03-26 01:05:49,557 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 01:05:49,560 - INFO - Main page status: 200
+2026-03-26 01:05:49,560 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 01:05:49,796 - INFO - Fetching AJAX data with token: mXDiicnuY0...
+2026-03-26 01:05:51,008 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 01:05:51,043 - INFO - AJAX response status: 200
+2026-03-26 01:05:52,857 - INFO - Processing 1 tables...
+2026-03-26 01:05:53,231 - INFO - Successfully found data in table 0
+2026-03-26 01:05:53,241 - INFO - Successfully updated market data.
+2026-03-26 01:06:07,044 - INFO - Starting scheduled data scrape...
+2026-03-26 01:06:07,044 - INFO - Fetching main page for CSRF token...
+2026-03-26 01:06:08,170 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 01:06:08,174 - INFO - Main page status: 200
+2026-03-26 01:06:08,175 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 01:06:08,522 - INFO - Fetching AJAX data with token: 6wP7PeRrH8...
+2026-03-26 01:06:09,882 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 01:06:09,902 - INFO - AJAX response status: 200
+2026-03-26 01:06:10,214 - INFO - Processing 1 tables...
+2026-03-26 01:06:10,393 - INFO - Successfully found data in table 0
+2026-03-26 01:06:10,395 - INFO - Successfully updated market data.
+2026-03-26 01:06:23,242 - INFO - Starting scheduled data scrape...
+2026-03-26 01:06:23,242 - INFO - Fetching main page for CSRF token...
+2026-03-26 01:06:24,286 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 01:06:24,295 - INFO - Main page status: 200
+2026-03-26 01:06:24,297 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 01:06:24,606 - INFO - Fetching AJAX data with token: mXDiicnuY0...
+2026-03-26 01:06:25,820 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 01:06:25,827 - INFO - AJAX response status: 200
+2026-03-26 01:06:26,169 - INFO - Processing 1 tables...
+2026-03-26 01:06:26,381 - INFO - Successfully found data in table 0
+2026-03-26 01:06:26,389 - INFO - Successfully updated market data.
+2026-03-26 01:06:40,398 - INFO - Starting scheduled data scrape...
+2026-03-26 01:06:40,398 - INFO - Fetching main page for CSRF token...
+2026-03-26 01:06:42,271 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 01:06:42,274 - INFO - Main page status: 200
+2026-03-26 01:06:42,275 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 01:06:42,542 - INFO - Fetching AJAX data with token: 6wP7PeRrH8...
+2026-03-26 01:06:44,016 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 01:06:44,024 - INFO - AJAX response status: 200
+2026-03-26 01:06:44,694 - INFO - Processing 1 tables...
+2026-03-26 01:06:45,040 - INFO - Successfully found data in table 0
+2026-03-26 01:06:45,043 - INFO - Successfully updated market data.
+2026-03-26 01:06:56,390 - INFO - Starting scheduled data scrape...
+2026-03-26 01:06:56,390 - INFO - Fetching main page for CSRF token...
+2026-03-26 01:06:57,787 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 01:06:57,794 - INFO - Main page status: 200
+2026-03-26 01:06:57,797 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 01:06:58,681 - INFO - Fetching AJAX data with token: mXDiicnuY0...
+2026-03-26 01:06:59,751 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 01:06:59,757 - INFO - AJAX response status: 200
+2026-03-26 01:07:00,142 - INFO - Processing 1 tables...
+2026-03-26 01:07:00,523 - INFO - Successfully found data in table 0
+2026-03-26 01:07:00,532 - INFO - Successfully updated market data.

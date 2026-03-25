@@ -105,7 +105,21 @@ def fetch_data_from_website():
                 table_dfs = pd.read_html(io.StringIO(str(table)))
                 if not table_dfs: continue
                 new_df = table_dfs[0]
-                new_df.columns = [str(col).strip() for col in new_df.columns]
+                # Deduplicate columns if any
+                new_df = new_df.loc[:, ~new_df.columns.duplicated()]
+                
+                # Select and rename columns to standardize
+                cols = []
+                count = {}
+                for col in new_df.columns:
+                    col_name = str(col).strip()
+                    if col_name in count:
+                        count[col_name] += 1
+                        cols.append(f"{col_name}_{count[col_name]}")
+                    else:
+                        count[col_name] = 0
+                        cols.append(col_name)
+                new_df.columns = cols
                 
                 # Check for symbol column
                 symbol_col = next((c for c in new_df.columns if 'SYMBOL' in c.upper()), None)
@@ -155,20 +169,35 @@ def index():
         table_data = df.copy()
     
     # Calculate portfolio value and gain/loss
-    portfolio_value = 0
+    portfolio_value = user.balance
     day_gain = 0
     holdings_count = len(user.holdings)
     
+    # Strictly deduplicate for calculation
+    df_calc = table_data.loc[:, ~table_data.columns.duplicated()].copy()
+    
     for holding in user.holdings:
-        current_price_row = table_data[table_data['Symbol'] == holding.symbol]
+        current_price_row = df_calc[df_calc['Symbol'] == holding.symbol]
         if not current_price_row.empty:
-            ltp_str = str(current_price_row.iloc[0]['LTP']).replace(',', '')
-            current_price = float(ltp_str)
-            portfolio_value += current_price * holding.quantity
-            day_gain += (current_price - holding.wacc) * holding.quantity
+            try:
+                # LTP might be duplicated, take first scalar
+                val = current_price_row.iloc[0]['LTP']
+                ltp_str = str(val).replace(',', '').strip()
+                if not ltp_str or ltp_str == 'nan':
+                     current_price = 0.0
+                else:
+                    current_price = float(ltp_str)
+                
+                portfolio_value += current_price * holding.quantity
+                day_gain += (current_price - holding.wacc) * holding.quantity
+            except Exception as e:
+                logger.error(f"Error calculating value for {holding.symbol}: {e}")
+    
+    # Convert to list of dicts for Jinja2 safety
+    table_dict = df_calc.to_dict('records')
     
     return render_template('index.html', 
-                          table_data=table_data, 
+                          table_data=table_dict, 
                           user=user, 
                           portfolio_value=round(portfolio_value, 2),
                           day_gain=round(day_gain, 2),
@@ -178,15 +207,21 @@ def index():
 def market_index():
     user = User.query.first()
     with df_lock:
-        table_data = df.copy()
-    return render_template('marketmgmt/index.html', table_data=table_data, user=user)
+        if df.empty:
+            table_dict = []
+        else:
+            table_dict = df.loc[:, ~df.columns.duplicated()].to_dict('records')
+    return render_template('marketmgmt/index.html', table_data=table_dict, user=user)
 
 @app.route('/ordermgmt/')
 def order_index():
     user = User.query.first()
     with df_lock:
-        table_data = df.copy()
-    return render_template('ordermgmt/index.html', table_data=table_data, user=user)
+        if df.empty:
+            table_dict = []
+        else:
+            table_dict = df.loc[:, ~df.columns.duplicated()].to_dict('records')
+    return render_template('ordermgmt/index.html', table_data=table_dict, user=user)
 
 @app.route('/ordermgmt/data')
 def order_data():
@@ -212,12 +247,20 @@ def order_sinfo():
     with df_lock:
         if df.empty:
             return jsonify({"symbols": [], "ltps": [], "lows": [], "highs": [], "pcloses": []})
+        
+        # Ensure we have scalars by taking the first if duplicated (shouldn't happen with dedupe above but safe)
+        def get_list(col_name):
+            col = df[col_name]
+            if isinstance(col, pd.DataFrame):
+                col = col.iloc[:, 0]
+            return col.tolist()
+
         data = {
-            "symbols": df["Symbol"].tolist(),
-            "ltps": df["LTP"].tolist(),
-            "lows": df["Low"].tolist(),
-            "highs": df["High"].tolist(),
-            "pcloses": df["Prev. Close"].tolist()
+            "symbols": get_list("Symbol"),
+            "ltps": get_list("LTP"),
+            "lows": get_list("Low"),
+            "highs": get_list("High"),
+            "pcloses": get_list("Prev. Close")
         }
     return jsonify(data)
 

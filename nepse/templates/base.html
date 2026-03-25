@@ -13,15 +13,18 @@
         <!-- Sidebar -->
         <aside class="sidebar">
             <div class="logo-container">
-                <i class="fas fa-chart-line"></i>
-                <span>NEPSE TMS</span>
+                <i class="fas fa-university"></i>
+                <div>
+                    <span>NEPAL STOCK EXCHANGE</span><br>
+                    <span style="font-size: 0.65rem; color: var(--tms-text-light);">Trade Management System</span>
+                </div>
             </div>
             <div class="search-menu">
                 <input type="text" id="sidebarSearch" placeholder="Search Menu/Submenus..." onkeyup="filterMenu()">
             </div>
             <nav id="sidebarNav">
                 <a href="{{ url_for('index') }}" class="{{ 'active' if request.endpoint == 'index' else '' }}">
-                    <i class="fas fa-th-large"></i>
+                    <i class="fas fa-tachometer-alt"></i>
                     <span>NEPSE TMS Dashboard</span>
                 </a>
                 <a href="#">
@@ -29,7 +32,11 @@
                     <span>My Information</span>
                 </a>
                 <a href="#">
-                    <i class="fas fa-wallet"></i>
+                    <i class="fas fa-search-plus"></i>
+                    <span>Search Client</span>
+                </a>
+                <a href="#">
+                    <i class="fas fa-dollar-sign"></i>
                     <span>Fund Management</span>
                 </a>
                 <a href="{{ url_for('order_index') }}" class="{{ 'active' if request.endpoint == 'order_index' else '' }}">
@@ -37,15 +44,15 @@
                     <span>Order Management</span>
                 </a>
                 <a href="#">
-                    <i class="fas fa-exchange-alt"></i>
+                    <i class="fas fa-users"></i>
                     <span>Trade Management</span>
                 </a>
                 <a href="{{ url_for('market_index') }}" class="{{ 'active' if request.endpoint == 'market_index' else '' }}">
-                    <i class="fas fa-chart-bar"></i>
+                    <i class="fas fa-chart-line"></i>
                     <span>Market Data</span>
                 </a>
                 <a href="#">
-                    <i class="fas fa-building"></i>
+                    <i class="fas fa-file-alt"></i>
                     <span>Broker Back Office</span>
                 </a>
             </nav>
@@ -57,14 +64,23 @@
                 <div class="index-container">
                     <div class="index-item">
                         <span class="index-label">NEPSE</span>
-                        <span class="index-value positive">2,345.67 <i class="fas fa-caret-up"></i> 12.34 (0.53%)</span>
+                        <span class="index-value positive">2,605.63 <i class="fas fa-caret-up"></i> 4.02 (0.15%)</span>
                     </div>
                     <div class="index-item">
-                        <span class="index-label">FLOATIND</span>
-                        <span class="index-value negative">165.43 <i class="fas fa-caret-down"></i> -0.12 (-0.07%)</span>
+                        <span class="index-label">SENSIND</span>
+                        <span class="index-value positive">448.27 <i class="fas fa-caret-up"></i> 0.74 (0.16%)</span>
+                    </div>
+                    <div style="border-left: 1px solid var(--tms-border); height: 30px; margin: 0 10px;"></div>
+                    <div class="index-item">
+                        <span class="index-label">Active Sessions</span>
+                        <span class="index-value" style="color: var(--tms-blue);">CONTINUOUS (11:00 - 15:00)</span>
+                    </div>
+                    <div class="index-item">
+                        <span class="index-label">Turnover</span>
+                        <span class="index-value" style="color: var(--tms-blue-dark);">364,766,488.49</span>
                     </div>
                     <div class="market-status">
-                        <i class="fas fa-circle"></i> MARKET OPEN
+                        <i class="fas fa-circle"></i> LIVE
                     </div>
                 </div>
 
@@ -74,7 +90,7 @@
                         <span class="wallet-amount">NPR {{ "{:,.2f}".format(user.balance) }}</span>
                     </div>
                     <div class="user-profile">
-                        <i class="fas fa-user-circle fa-2x" style="color: var(--primary-color);"></i>
+                        <i class="fas fa-user-circle fa-2x" style="color: var(--tms-blue);"></i>
                     </div>
                 </div>
             </header>

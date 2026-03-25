@@ -1,25 +1,49 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<!-- DataTables CSS/JS -->
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+<style>
+    .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+        background: var(--tms-blue) !important;
+        color: white !important;
+        border: 1px solid var(--tms-blue-dark) !important;
+    }
+
+    table.dataTable thead th {
+        background-color: #f8f9fa;
+        color: var(--tms-text-light);
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        border-bottom: 2px solid var(--tms-border);
+    }
+</style>
+
 <div class="dashboard-header" style="margin-bottom: 20px;">
     <h1 style="font-size: 1.5rem; margin: 0; color: var(--tms-blue-dark);">NEPSE TMS Dashboard</h1>
+    <p style="font-size: 0.85rem; color: var(--tms-text-light);">Welcome back. Here is your portfolio overview and
+        market summary.</p>
 </div>
 
 <!-- Summary Widgets -->
-<div class="dashboard-grid">
+<div class="stats-row">
+    <div class="widget">
+        <div class="widget-label">Available Cash</div>
+        <div class="widget-value">NPR {{ "{:,.2f}".format(user.balance) }}</div>
+    </div>
     <div class="widget">
         <div class="widget-label">Total Portfolio Value</div>
         <div class="widget-value">NPR {{ "{:,.2f}".format(portfolio_value) }}</div>
     </div>
-    <div class="widget">
+    <div class="widget {{ 'widget-positive' if day_gain >= 0 else 'widget-negative' }}">
         <div class="widget-label">Total Day Gain/Loss</div>
         <div class="widget-value {{ 'text-positive' if day_gain >= 0 else 'text-negative' }}">
             NPR {{ "{:,.2f}".format(day_gain) }}
         </div>
     </div>
     <div class="widget">
-        <div class="widget-label">Holdings Count</div>
-        <div class="widget-value">{{ holdings_count }} Securities</div>
+        <div class="widget-label">Securities in Portfolio</div>
+        <div class="widget-value">{{ holdings_count }} Items</div>
     </div>
 </div>
 
@@ -27,13 +51,14 @@
 <div class="card">
     <div class="card-header">
         <h3><i class="fas fa-list-ul"></i> Market Watch</h3>
-        <div class="header-actions" style="display: flex; gap: 10px;">
-            <input type="text" id="marketSearch" placeholder="Search Security..." style="padding: 4px 10px; border: 1px solid var(--border-color); border-radius: 4px; font-size: 0.8rem; width: 200px;" onkeyup="searchMarket()">
-            <button onclick="location.reload()" class="badge-buy" style="border: none; cursor: pointer; padding: 4px 10px; border-radius: 4px;"><i class="fas fa-sync-alt"></i> Refresh</button>
+        <div class="header-actions">
+            <button onclick="location.reload()" class="btn btn-primary" style="font-size: 0.75rem; padding: 4px 10px;">
+                <i class="fas fa-sync-alt"></i> Refresh Data
+            </button>
         </div>
     </div>
-    <div class="table-container">
-        <table id="marketTable">
+    <div class="table-container" style="padding: 15px;">
+        <table id="marketWatchTable" class="display" style="width:100%">
             <thead>
                 <tr>
                     <th>Symbol</th>
@@ -48,52 +73,41 @@
             </thead>
             <tbody>
                 {% if not table_data.empty %}
-                    {% for index, row in table_data.iterrows() %}
-                    <tr>
-                        <td class="symbol-cell">{{ row['Symbol'] }}</td>
-                        <td class="bold">{{ row['LTP'] }}</td>
-                        <td>{{ row['High'] }}</td>
-                        <td>{{ row['Low'] }}</td>
-                        <td>{{ row['Open'] }}</td>
-                        <td>{{ row['Prev. Close'] }}</td>
-                        <td class="{{ 'text-positive' if row['Diff']|float > 0 else 'text-negative' if row['Diff']|float < 0 else '' }}">
-                            {{ row['Diff'] }}
-                        </td>
-                        <td class="{{ 'text-positive' if row['Diff %']|float > 0 else 'text-negative' if row['Diff %']|float < 0 else '' }} bold">
-                            {{ row['Diff %'] }}%
-                        </td>
-                    </tr>
-                    {% endfor %}
-                {% else %}
-                    <tr>
-                        <td colspan="8" style="text-align: center; padding: 40px; color: var(--text-secondary);">
-                            <i class="fas fa-info-circle"></i> No market data available at the moment.
-                        </td>
-                    </tr>
+                {% for index, row in table_data.iterrows() %}
+                <tr>
+                    <td class="symbol-cell bold" style="color: var(--tms-blue);">{{ row.get('Symbol', '') }}</td>
+                    <td class="bold">{{ row.get('LTP', '') }}</td>
+                    <td>{{ row.get('High', '') }}</td>
+                    <td>{{ row.get('Low', '') }}</td>
+                    <td>{{ row.get('Open', '') }}</td>
+                    <td>{{ row.get('Prev. Close', '') }}</td>
+                    <td
+                        class="{{ 'text-positive' if row.get('Diff', '0')|string|replace(',', '')|float > 0 else 'text-negative' if row.get('Diff', '0')|string|replace(',', '')|float < 0 else '' }}">
+                        {{ row.get('Diff', '') }}
+                    </td>
+                    <td
+                        class="{{ 'text-positive' if row.get('Diff %', '0')|string|replace('%', '')|replace(',', '')|float > 0 else 'text-negative' if row.get('Diff %', '0')|string|replace('%', '')|replace(',', '')|float < 0 else '' }} bold">
+                        {{ row.get('Diff %', '') }}{% if row.get('Diff %') %}%{% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
                 {% endif %}
             </tbody>
         </table>
     </div>
 </div>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
 <script>
-function searchMarket() {
-    let input = document.getElementById('marketSearch');
-    let filter = input.value.toUpperCase();
-    let table = document.getElementById('marketTable');
-    let tr = table.getElementsByTagName('tr');
-
-    for (let i = 1; i < tr.length; i++) {
-        let symbolCell = tr[i].getElementsByTagName('td')[0];
-        if (symbolCell) {
-            let txtValue = symbolCell.textContent || symbolCell.innerText;
-            if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                tr[i].style.display = "";
-            } else {
-                tr[i].style.display = "none";
+    $(document).ready(function () {
+        $('#marketWatchTable').DataTable({
+            "pageLength": 10,
+            "order": [[0, "asc"]],
+            "language": {
+                "search": "Filter:",
             }
-        }
-    }
-}
+        });
+    });
 </script>
 {% endblock %}

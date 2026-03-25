@@ -1,76 +1,146 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<style>
+    .order-toggle-container {
+        display: flex;
+        background: #f1f1f1;
+        border-radius: 4px;
+        padding: 4px;
+        margin-bottom: 20px;
+    }
+    .order-toggle-item {
+        flex: 1;
+        text-align: center;
+        padding: 10px;
+        cursor: pointer;
+        font-weight: 700;
+        border-radius: 4px;
+        transition: all 0.3s;
+    }
+    .order-toggle-item.active-buy { background: var(--positive); color: white; }
+    .order-toggle-item.active-sell { background: var(--negative); color: white; }
+    
+    .price-info-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+        margin-bottom: 20px;
+        background: #f8f9fa;
+        padding: 15px;
+        border-radius: 4px;
+        border: 1px dashed var(--tms-border);
+    }
+    .info-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .info-label { font-size: 0.7rem; color: var(--tms-text-light); text-transform: uppercase; }
+    .info-value { font-size: 1rem; font-weight: 700; color: var(--tms-blue-dark); }
+</style>
+
 <div class="dashboard-header" style="margin-bottom: 20px;">
-    <h1 style="font-size: 1.5rem; margin: 0; color: var(--tms-blue-dark);">Order Management - Trading Terminal</h1>
+    <h1 style="font-size: 1.5rem; margin: 0; color: var(--tms-blue-dark);">Order Management</h1>
+    <p style="font-size: 0.85rem; color: var(--tms-text-light);">Direct Market Access - Execute Buy/Sell Orders.</p>
 </div>
 
-<div class="card">
+<div class="card" style="max-width: 800px; margin: 0 auto;">
     <div class="card-header">
-        <h3><i class="fas fa-shopping-cart"></i> Buy/Sell Order Entry</h3>
+        <h3><i class="fas fa-shopping-cart"></i> Create New Order</h3>
     </div>
     <div class="card-body">
         <form id="orderForm" style="padding: 20px;">
-            <div class="trade-form-grid" style="grid-template-columns: repeat(2, 1fr);">
-                <!-- Left Column -->
+            <div class="order-toggle-container">
+                <div class="order-toggle-item active-buy" id="buyToggle" onclick="setOrderType('BUY')">BUY</div>
+                <div class="order-toggle-item" id="sellToggle" onclick="setOrderType('SELL')">SELL</div>
+                <input type="hidden" name="trade_type" id="tradeType" value="BUY">
+            </div>
+
+            <div class="trade-form-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;">
+                <div class="form-group">
+                    <label>Security Symbol</label>
+                    <input list="symbols" name="symbol" id="symbolInput" placeholder="Enter Symbol (e.g. NICA)" onchange="updatePriceInfo()" style="width: 100%; padding: 10px; border: 1px solid var(--tms-border); border-radius: 4px;">
+                    <datalist id="symbols"></datalist>
+                </div>
+
                 <div class="form-group">
                     <label>Order Type</label>
-                    <div class="order-toggle">
-                        <input type="radio" name="trade_type" id="buyCheck" value="BUY" checked>
-                        <label for="buyCheck" class="buy-label">BUY</label>
-                        <input type="radio" name="trade_type" id="sellCheck" value="SELL">
-                        <label for="sellCheck" class="sell-label">SELL</label>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label>Symbol</label>
-                    <input list="symbols" name="symbol" id="symbolInput" placeholder="Symbol (e.g. ADL)" onchange="updatePriceInfo()">
-                    <datalist id="symbols">
-                        <!-- Filled by JS -->
-                    </datalist>
-                </div>
-
-                <div class="form-group">
-                    <label>Quantity</label>
-                    <input type="number" id="quantity" placeholder="Quantity (e.g. 10)" step="10" min="10">
-                </div>
-
-                <div class="form-group">
-                    <label>Price Type</label>
-                    <select id="priceType" style="padding: 8px 12px; border: 1px solid var(--border-color); border-radius: 4px;">
-                        <option value="LMT">Limit (LMT)</option>
-                        <option value="MKT">Market (MKT)</option>
+                    <select id="priceType" style="width: 100%; padding: 10px; border: 1px solid var(--tms-border); border-radius: 4px;">
+                        <option value="LMT">Limit Order (LMT)</option>
+                        <option value="MKT">Market Order (MKT)</option>
                     </select>
                 </div>
 
                 <div class="form-group">
-                    <label>Price</label>
-                    <input type="number" id="price" placeholder="Price" step="0.10">
+                    <label>Quantity</label>
+                    <input type="number" id="quantity" placeholder="Units" step="10" min="10" style="width: 100%; padding: 10px; border: 1px solid var(--tms-border); border-radius: 4px;">
                 </div>
-                
+
                 <div class="form-group">
-                    <label>Total Amount (Inc. Commissions)</label>
-                    <input type="text" id="totalAmount" disabled style="background-color: #f1f1f1; font-weight: 700;">
+                    <label>Limit Price (NPR)</label>
+                    <input type="number" id="price" placeholder="Price" step="0.10" style="width: 100%; padding: 10px; border: 1px solid var(--tms-border); border-radius: 4px;">
                 </div>
             </div>
 
             <!-- Price Info Bar -->
-            <div id="priceInfo" style="margin: 0 20px 20px; padding: 10px; background: #e3f2fd; border-radius: 4px; display: none; font-size: 0.85rem;">
-                <span id="lowInfo">Low: 0</span> | <span id="highInfo">High: 0</span> | <span id="ltpInfo">LTP: 0</span> | <span id="pcloseInfo">Prev. Close: 0</span>
+            <div id="priceInfo" class="price-info-grid" style="display: none; margin-top: 20px;">
+                <div class="info-item">
+                    <span class="info-label">LTP</span>
+                    <span class="info-value" id="ltpInfo">0.00</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Daily High</span>
+                    <span class="info-value" id="highInfo">0.00</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Daily Low</span>
+                    <span class="info-value" id="lowInfo">0.00</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Prev. Close</span>
+                    <span class="info-value" id="pcloseInfo">0.00</span>
+                </div>
             </div>
 
-            <div style="padding: 0 20px 20px; text-align: right;">
-                <button type="button" class="badge-buy" style="padding: 10px 30px; border: none; font-weight: 700; cursor: pointer; background: var(--tms-blue-dark); color: white;" id="submitOrderBtn">Execute Order</button>
-                <button type="reset" class="badge-sell" style="padding: 10px 20px; border: none; font-weight: 700; cursor: pointer;">Clear</button>
+            <div style="margin-top: 30px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--tms-border); padding-top: 20px;">
+                <div class="total-est">
+                    <span style="font-size: 0.8rem; color: var(--tms-text-light);">Estimated Total:</span>
+                    <div style="font-size: 1.25rem; font-weight: 800; color: var(--tms-blue-dark);">NPR <span id="totalDisplay">0.00</span></div>
+                </div>
+                <div class="actions">
+                    <button type="button" class="btn btn-primary" id="submitOrderBtn" style="padding: 12px 40px; font-weight: 700; background: var(--positive); border-color: var(--positive);">Execute BUY Order</button>
+                </div>
             </div>
         </form>
     </div>
 </div>
 
 <script>
-    // Fetch symbols for datalist and market info
     let marketData = {};
+    let currentOrderType = 'BUY';
+
+    function setOrderType(type) {
+        currentOrderType = type;
+        document.getElementById('tradeType').value = type;
+        const buyToggle = document.getElementById('buyToggle');
+        const sellToggle = document.getElementById('sellToggle');
+        const submitBtn = document.getElementById('submitOrderBtn');
+
+        if (type === 'BUY') {
+            buyToggle.classList.add('active-buy');
+            sellToggle.classList.remove('active-sell');
+            submitBtn.style.background = 'var(--positive)';
+            submitBtn.style.borderColor = 'var(--positive)';
+            submitBtn.innerText = 'Execute BUY Order';
+        } else {
+            buyToggle.classList.remove('active-buy');
+            sellToggle.classList.add('active-sell');
+            submitBtn.style.background = 'var(--negative)';
+            submitBtn.style.borderColor = 'var(--negative)';
+            submitBtn.innerText = 'Execute SELL Order';
+        }
+    }
 
     fetch('/ordermgmt/data3')
         .then(response => response.json())
@@ -93,11 +163,11 @@
         const symbol = document.getElementById('symbolInput').value;
         const info = marketData[symbol];
         if(info) {
-            document.getElementById('priceInfo').style.display = 'block';
-            document.getElementById('lowInfo').innerText = 'Low: ' + info.low;
-            document.getElementById('highInfo').innerText = 'High: ' + info.high;
-            document.getElementById('ltpInfo').innerText = 'LTP: ' + info.ltp;
-            document.getElementById('pcloseInfo').innerText = 'P. Close: ' + info.pclose;
+            document.getElementById('priceInfo').style.display = 'grid';
+            document.getElementById('lowInfo').innerText = info.low;
+            document.getElementById('highInfo').innerText = info.high;
+            document.getElementById('ltpInfo').innerText = info.ltp;
+            document.getElementById('pcloseInfo').innerText = info.pclose;
             document.getElementById('price').value = info.ltp;
             calculateTotal();
         }
@@ -107,9 +177,8 @@
         const price = parseFloat(document.getElementById('price').value) || 0;
         const qty = parseInt(document.getElementById('quantity').value) || 0;
         const total = price * qty;
-        // Mock commission
         const commission = total * 0.004; 
-        document.getElementById('totalAmount').value = (total + commission).toFixed(2);
+        document.getElementById('totalDisplay').innerText = (total + commission).toLocaleString(undefined, {minimumFractionDigits: 2});
     }
 
     document.getElementById('price').addEventListener('input', calculateTotal);
@@ -119,7 +188,7 @@
         const symbol = document.getElementById('symbolInput').value;
         const price = document.getElementById('price').value;
         const quantity = document.getElementById('quantity').value;
-        const type = document.querySelector('input[name="trade_type"]:checked').value;
+        const type = currentOrderType;
 
         if(!symbol || !price || !quantity) {
             alert('Please fill all fields');

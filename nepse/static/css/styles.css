@@ -99,143 +99,255 @@ body {
 }
 
 .sidebar nav i {
-  width: 20px;
-  text-align: center;
-  color: var(--text-secondary);
+    width: 260px;
+    background-color: var(--tms-sidebar-bg);
+    border-right: 1px solid var(--tms-border);
+    display: flex;
+    flex-direction: column;
 }
 
-.sidebar nav a.active i {
-  color: var(--primary-color);
+.logo-container {
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px solid var(--tms-border);
 }
 
-/* Main Content area */
+.logo-container i {
+    font-size: 1.8rem;
+    color: var(--tms-blue);
+}
+
+.logo-container span {
+    font-weight: 700;
+    font-size: 0.9rem;
+    line-height: 1.2;
+    color: var(--tms-blue-dark);
+}
+
+.search-menu {
+    padding: 15px;
+}
+
+.search-menu input {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid var(--tms-border);
+    border-radius: 4px;
+    font-size: 0.85rem;
+}
+
+nav#sidebarNav {
+    flex: 1;
+    overflow-y: auto;
+}
+
+nav#sidebarNav a {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    text-decoration: none;
+    color: var(--tms-text);
+    font-size: 0.9rem;
+    gap: 12px;
+    border-left: 4px solid transparent;
+    transition: all 0.2s;
+}
+
+nav#sidebarNav a:hover {
+    background-color: var(--tms-sidebar-hover);
+}
+
+nav#sidebarNav a.active {
+    background-color: #e8f0fe;
+    color: var(--tms-blue);
+    border-left-color: var(--tms-blue);
+    font-weight: 600;
+}
+
+/* Main Content Styling */
 .main-content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
 }
 
 .top-bar {
-  background-color: var(--header-bg);
-  height: 60px;
-  border-bottom: 1px solid var(--border-color);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 20px;
-  position: sticky;
-  top: 0;
-  z-index: 900;
+    height: 70px;
+    background-color: var(--white);
+    border-bottom: 1px solid var(--tms-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    box-shadow: var(--shadow);
+    z-index: 10;
 }
 
-/* TMS Ticker/Header info */
 .index-container {
-  display: flex;
-  gap: 20px;
-  align-items: center;
-  font-size: 0.85rem;
+    display: flex;
+    gap: 20px;
+    align-items: center;
 }
 
 .index-item {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
 .index-label {
-  font-weight: 700;
-  color: var(--text-secondary);
-  font-size: 0.75rem;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--tms-text-light);
+    text-transform: uppercase;
 }
 
 .index-value {
-  font-weight: 700;
+    font-size: 0.85rem;
+    font-weight: 600;
 }
 
-.index-value.positive { color: var(--success-color); }
-.index-value.negative { color: var(--error-color); }
+.index-value.positive { color: var(--positive); }
+.index-value.negative { color: var(--negative); }
 
 .market-status {
-  background-color: #e8f5e9;
-  color: #2e7d32;
-  padding: 4px 12px;
-  border-radius: 20px;
-  font-weight: 700;
-  font-size: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 12px;
+    background-color: #f0fdf4;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--positive);
 }
 
+.market-status i { font-size: 0.5rem; }
+
 .user-nav {
-  display: flex;
-  align-items: center;
-  gap: 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
 }
 
 .wallet-info {
-  text-align: right;
+    text-align: right;
 }
 
 .wallet-label {
-  display: block;
-  font-size: 0.7rem;
-  color: var(--text-secondary);
-  text-transform: uppercase;
+    display: block;
+    font-size: 0.7rem;
+    color: var(--tms-text-light);
 }
 
 .wallet-amount {
-  font-weight: 700;
-  color: var(--primary-color);
+    font-weight: 700;
+    color: var(--tms-blue-dark);
 }
 
-/* Content Wrapper */
 .content-wrapper {
-  padding: 20px;
-  flex: 1;
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
 }
 
-/* Dashboard Cards */
+/* Table Styling */
 .card {
-  background: white;
-  border: 1px solid var(--border-color);
-  border-radius: 4px;
-  margin-bottom: 20px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    background-color: var(--white);
+    border-radius: 4px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--tms-border);
+    margin-bottom: 20px;
 }
 
 .card-header {
-  padding: 12px 16px;
-  border-bottom: 1px solid var(--border-color);
-  background-color: #fafafa;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+    padding: 15px 20px;
+    border-bottom: 1px solid var(--tms-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fafafa;
 }
 
 .card-header h3 {
-  margin: 0;
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: var(--primary-color);
+    font-size: 1rem;
+    color: var(--tms-blue-dark);
 }
 
-/* Tables - TMS style */
+/* Dashboard Layout */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.widget {
+    background-color: var(--white);
+    padding: 20px;
+    border-radius: 4px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--tms-border);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    position: relative;
+    overflow: hidden;
+}
+
+.widget::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background-color: var(--tms-blue);
+}
+
+.widget-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--tms-text-light);
+    text-transform: uppercase;
+}
+
+.widget-value {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--tms-blue-dark);
+}
+
+.widget-positive::before {
+    background-color: var(--positive);
+}
+
+.widget-negative::before {
+    background-color: var(--negative);
+}
+
+.table-container {
+    overflow-x: auto;
+}
+
 table {
-  width: 100%;
-  border-collapse: collapse;
+    width: 100%;
+    border-collapse: collapse;
 }
 
 th {
-  background: #f1f1f1;
-  padding: 8px 12px;
-  text-align: left;
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  color: #666;
-  border-bottom: 2px solid var(--border-color);
+    background-color: #f8f9fa;
+    padding: 12px 15px;
+    text-align: left;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: var(--tms-text-light);
+    border-bottom: 2px solid var(--tms-border);
 }
 
 td {
-  padding: 10px 12px;
-  border-bottom: 1px solid #eeeeee;
   font-size: 0.85rem;
 }
 
