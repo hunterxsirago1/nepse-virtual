@@ -3,6 +3,7 @@ from flask import Flask, jsonify, render_template, request, flash, redirect, url
 import requests
 import pandas as pd
 from bs4 import BeautifulSoup
+import io
 import threading
 import time
 import logging
@@ -77,8 +78,7 @@ def fetch_data_from_website():
             today = datetime.now().strftime("%Y-%m-%d")
             payload = {
                 '_token': token,
-                'sector': 'all_sec',
-                'date': today
+                'sector': 'all_sec'
             }
             ajax_headers = headers.copy()
             ajax_headers['Content-Type'] = 'application/x-www-form-urlencoded'
@@ -102,7 +102,7 @@ def fetch_data_from_website():
         logger.info(f"Processing {len(tables)} tables...")
         for i, table in enumerate(tables):
             try:
-                table_dfs = pd.read_html(str(table))
+                table_dfs = pd.read_html(io.StringIO(str(table)))
                 if not table_dfs: continue
                 new_df = table_dfs[0]
                 new_df.columns = [str(col).strip() for col in new_df.columns]

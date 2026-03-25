@@ -1,0 +1,162 @@
+2026-03-26 00:36:45,642 - INFO - Starting scheduled data scrape...
+2026-03-26 00:36:45,647 - INFO - Fetching main page for CSRF token...
+2026-03-26 00:36:45,647 - INFO - Starting NEPSE Virtual app...
+ * Serving Flask app 'app'
+ * Debug mode: on
+2026-03-26 00:36:45,653 - DEBUG - Starting new HTTPS connection (1): www.sharesansar.com:443
+2026-03-26 00:36:45,718 - INFO - WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.68:5000
+2026-03-26 00:36:45,718 - INFO - Press CTRL+C to quit
+2026-03-26 00:36:45,721 - INFO -  * Restarting with stat
+2026-03-26 00:36:48,362 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 00:36:48,616 - INFO - Starting scheduled data scrape...
+2026-03-26 00:36:48,616 - INFO - Fetching main page for CSRF token...
+2026-03-26 00:36:48,619 - INFO - Starting NEPSE Virtual app...
+2026-03-26 00:36:48,634 - DEBUG - Starting new HTTPS connection (1): www.sharesansar.com:443
+2026-03-26 00:36:48,644 - WARNING -  * Debugger is active!
+2026-03-26 00:36:48,653 - INFO -  * Debugger PIN: 893-828-283
+2026-03-26 00:36:48,687 - INFO - Main page status: 200
+2026-03-26 00:36:48,688 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 00:36:49,030 - INFO - Fetching AJAX data with token: mXDiicnuY0...
+2026-03-26 00:36:50,255 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 00:36:50,263 - INFO - AJAX response status: 200
+2026-03-26 00:36:50,655 - INFO - Processing 1 tables...
+2026-03-26 00:36:50,835 - INFO - Successfully found data in table 0
+2026-03-26 00:36:50,839 - INFO - Successfully updated market data.
+2026-03-26 00:36:50,996 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 00:36:51,318 - INFO - Main page status: 200
+2026-03-26 00:36:51,320 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 00:36:51,837 - INFO - Fetching AJAX data with token: XFMsO7NLEo...
+2026-03-26 00:36:52,878 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 00:36:52,884 - INFO - AJAX response status: 200
+2026-03-26 00:36:53,298 - INFO - Processing 1 tables...
+2026-03-26 00:36:53,466 - INFO - Successfully found data in table 0
+2026-03-26 00:36:53,469 - INFO - Successfully updated market data.
+2026-03-26 00:37:20,840 - INFO - Starting scheduled data scrape...
+2026-03-26 00:37:20,840 - INFO - Fetching main page for CSRF token...
+2026-03-26 00:37:22,157 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 00:37:22,163 - INFO - Main page status: 200
+2026-03-26 00:37:22,164 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 00:37:22,459 - INFO - Fetching AJAX data with token: mXDiicnuY0...
+2026-03-26 00:37:23,469 - INFO - Starting scheduled data scrape...
+2026-03-26 00:37:23,469 - INFO - Fetching main page for CSRF token...
+2026-03-26 00:37:23,730 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 00:37:23,736 - INFO - AJAX response status: 200
+2026-03-26 00:37:24,113 - INFO - Processing 1 tables...
+2026-03-26 00:37:24,268 - INFO - Successfully found data in table 0
+2026-03-26 00:37:24,270 - INFO - Successfully updated market data.
+2026-03-26 00:37:25,218 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 00:37:25,223 - INFO - Main page status: 200
+2026-03-26 00:37:25,223 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 00:37:25,652 - INFO - Fetching AJAX data with token: XFMsO7NLEo...
+2026-03-26 00:37:27,090 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 00:37:27,099 - INFO - AJAX response status: 200
+2026-03-26 00:37:27,900 - INFO - Processing 1 tables...
+2026-03-26 00:37:28,225 - INFO - Successfully found data in table 0
+2026-03-26 00:37:28,229 - INFO - Successfully updated market data.
+2026-03-26 00:37:54,271 - INFO - Starting scheduled data scrape...
+2026-03-26 00:37:54,271 - INFO - Fetching main page for CSRF token...
+2026-03-26 00:37:55,533 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 00:37:55,551 - INFO - Main page status: 200
+2026-03-26 00:37:55,555 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 00:37:56,305 - INFO - Fetching AJAX data with token: mXDiicnuY0...
+2026-03-26 00:37:57,566 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 00:37:57,573 - INFO - AJAX response status: 200
+2026-03-26 00:37:58,229 - INFO - Starting scheduled data scrape...
+2026-03-26 00:37:58,230 - INFO - Fetching main page for CSRF token...
+2026-03-26 00:37:58,289 - INFO - Processing 1 tables...
+2026-03-26 00:37:58,887 - INFO - Successfully found data in table 0
+2026-03-26 00:37:58,890 - INFO - Successfully updated market data.
+2026-03-26 00:37:59,567 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 00:37:59,575 - INFO - Main page status: 200
+2026-03-26 00:37:59,578 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 00:38:00,254 - INFO - Fetching AJAX data with token: XFMsO7NLEo...
+2026-03-26 00:38:01,568 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 00:38:01,583 - INFO - AJAX response status: 200
+2026-03-26 00:38:03,657 - INFO - Processing 1 tables...
+2026-03-26 00:38:04,262 - INFO - Successfully found data in table 0
+2026-03-26 00:38:04,273 - INFO - Successfully updated market data.
+2026-03-26 00:38:28,891 - INFO - Starting scheduled data scrape...
+2026-03-26 00:38:28,892 - INFO - Fetching main page for CSRF token...
+2026-03-26 00:38:30,987 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 00:38:30,997 - INFO - Main page status: 200
+2026-03-26 00:38:30,999 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 00:38:31,518 - INFO - Fetching AJAX data with token: mXDiicnuY0...
+2026-03-26 00:38:32,727 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 00:38:32,732 - INFO - AJAX response status: 200
+2026-03-26 00:38:33,292 - INFO - Processing 1 tables...
+2026-03-26 00:38:33,462 - INFO - Successfully found data in table 0
+2026-03-26 00:38:33,464 - INFO - Successfully updated market data.
+2026-03-26 00:38:34,275 - INFO - Starting scheduled data scrape...
+2026-03-26 00:38:34,276 - INFO - Fetching main page for CSRF token...
+2026-03-26 00:38:35,381 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 00:38:35,388 - INFO - Main page status: 200
+2026-03-26 00:38:35,390 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 00:38:35,991 - INFO - Fetching AJAX data with token: XFMsO7NLEo...
+2026-03-26 00:38:37,181 - DEBUG - https://www.sharesansar.com:443 "POST /ajaxtodayshareprice HTTP/1.1" 200 42586
+2026-03-26 00:38:37,183 - INFO - AJAX response status: 200
+2026-03-26 00:38:37,766 - INFO - Processing 1 tables...
+2026-03-26 00:38:38,217 - INFO - Successfully found data in table 0
+2026-03-26 00:38:38,223 - INFO - Successfully updated market data.
+2026-03-26 00:39:03,466 - INFO - Starting scheduled data scrape...
+2026-03-26 00:39:03,467 - INFO - Fetching main page for CSRF token...
+2026-03-26 00:39:04,520 - DEBUG - https://www.sharesansar.com:443 "GET /today-share-price HTTP/1.1" 200 None
+2026-03-26 00:39:04,528 - INFO - Main page status: 200
+2026-03-26 00:39:04,530 - DEBUG - Main page snippet: <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale = 1.0
+2026-03-26 00:39:04,966 - INFO - Fetching AJAX data with token: mXDiicnuY0...
