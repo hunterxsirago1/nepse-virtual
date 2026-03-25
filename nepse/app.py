@@ -11,7 +11,7 @@ from models import db, User, Holding, Transaction
 from trading_engine import NepseTradingEngine
 
 # Configure logging
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
@@ -127,7 +127,7 @@ def fetch_data_from_website():
                 
         logger.warning("No suitable market data table found in detected tables.")
     except Exception as e:
-        logger.error(f"Scraper error: {e}")
+        logger.exception(f"Scraper error: {e}")
     return None
 
 def scrape_worker():
