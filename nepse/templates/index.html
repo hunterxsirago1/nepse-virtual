@@ -72,8 +72,8 @@
                 </tr>
             </thead>
             <tbody>
-                {% if not table_data.empty %}
-                {% for index, row in table_data.iterrows() %}
+                {% if table_data %}
+                {% for row in table_data %}
                 <tr>
                     <td class="symbol-cell bold" style="color: var(--tms-blue);">{{ row.get('Symbol', '') }}</td>
                     <td class="bold">{{ row.get('LTP', '') }}</td>

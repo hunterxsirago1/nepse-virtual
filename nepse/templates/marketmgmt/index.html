@@ -47,7 +47,7 @@
                 </tr>
             </thead>
             <tbody>
-                {% for index, row in table_data.iterrows() %}
+                {% for row in table_data %}
                 <tr>
                     <td class="symbol-cell bold" style="color: var(--tms-blue);">{{ row.get('Symbol', '') }}</td>
                     <td class="bold">{{ row.get('LTP', '') }}</td>
