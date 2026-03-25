@@ -1,0 +1,6 @@
+flask
+requests
+pandas
+beautifulsoup4
+flask-sqlalchemy
+sqlalchemy
