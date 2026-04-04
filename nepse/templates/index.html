@@ -3,6 +3,7 @@
 {% block content %}
 <!-- DataTables CSS/JS -->
 <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <style>
     .dataTables_wrapper .dataTables_paginate .paginate_button.current {
         background: var(--tms-blue) !important;
@@ -11,34 +12,66 @@
     }
 
     table.dataTable thead th {
-        background-color: #f8f9fa;
+        background-color: var(--bg-widget);
         color: var(--tms-text-light);
         font-size: 0.75rem;
         text-transform: uppercase;
         border-bottom: 2px solid var(--tms-border);
     }
+
+    .odd-lot-badge {
+        background: #f59e0b;
+        color: white;
+        font-size: 0.6rem;
+        padding: 2px 6px;
+        border-radius: 4px;
+        margin-left: 8px;
+    }
+
+    .pending-badge {
+        background: #6366f1;
+        color: white;
+        font-size: 0.6rem;
+        padding: 2px 6px;
+        border-radius: 4px;
+        margin-left: 8px;
+    }
+
+    /* Dark mode table fixes */
+    body.dark-theme .dataTables_wrapper .dataTables_filter input {
+        background-color: var(--bg-input) !important;
+        color: var(--tms-text) !important;
+        border-color: var(--tms-border) !important;
+    }
+
+    body.dark-theme table.dataTable thead th {
+        background-color: var(--bg-widget) !important;
+    }
+
+    body.dark-theme table.dataTable tbody tr:hover {
+        background-color: var(--tms-sidebar-hover) !important;
+    }
 </style>
 
 <div class="dashboard-header" style="margin-bottom: 20px;">
     <h1 style="font-size: 1.5rem; margin: 0; color: var(--tms-blue-dark);">NEPSE TMS Dashboard</h1>
-    <p style="font-size: 0.85rem; color: var(--tms-text-light);">Welcome back. Here is your portfolio overview and
-        market summary.</p>
+    <p style="font-size: 0.85rem; color: var(--tms-text-light);">Portfolio overview, P&L, and settlement tracking.</p>
 </div>
 
 <!-- Summary Widgets -->
-<div class="dashboard-grid">
+<div class="dashboard-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; margin-bottom: 25px;">
     <div class="widget">
         <span class="widget-label">Total Portfolio Value</span>
         <div class="widget-value">NPR {{ "{:,.2f}".format(total_portfolio_value) }}</div>
-        <div class="widget-footer {{ 'text-positive' if portfolio_change >= 0 else 'text-negative' }}">
-            <i class="fas {{ 'fa-arrow-up' if portfolio_change >= 0 else 'fa-arrow-down' }}"></i>
-            <span>{{ "{:,.2f}".format(portfolio_change) }} ({{ "{:,.2f}".format(portfolio_change_pct) }}%) Todays Gain</span>
+        <div class="widget-footer {{ 'text-positive' if total_unrealized_pl >= 0 else 'text-negative' }}">
+            <i class="fas {{ 'fa-arrow-up' if total_unrealized_pl >= 0 else 'fa-arrow-down' }}"></i>
+            <span>{{ "{:,.2f}".format(total_unrealized_pl) }} ({{ "{:,.2f}".format((total_unrealized_pl/total_investment*100) if total_investment > 0 else 0) }}%) Unrealized P&L</span>
         </div>
     </div>
 
     <div class="widget">
         <span class="widget-label">Available Cash</span>
-        <div class="widget-value">NPR {{ "{:,.2f}".format(user.balance) }}</div>
+        <div class="widget-value">NPR {{ "{:,.2f}".format(user.virtual_cash) }}</div>
         <div class="widget-footer">
             <i class="fas fa-wallet" style="color: var(--tms-blue);"></i>
             <span style="color: var(--tms-text-light);">Buying Power</span>
@@ -46,11 +79,98 @@
     </div>
 
     <div class="widget">
+        <span class="widget-label">Total Equity</span>
+        <div class="widget-value">NPR {{ "{:,.2f}".format(total_equity) }}</div>
+        <div class="widget-footer">
+            <i class="fas fa-chart-line"></i>
+            <span>Market Value</span>
+        </div>
+    </div>
+
+    <div class="widget">
         <span class="widget-label">Total Investment</span>
         <div class="widget-value">NPR {{ "{:,.2f}".format(total_investment) }}</div>
         <div class="widget-footer text-positive">
-            <i class="fas fa-check-circle"></i>
-            <span>Fully Invested</span>
+            <i class="fas fa-coins"></i>
+            <span>Cost Basis</span>
+        </div>
+    </div>
+</div>
+
+<!-- Market Index & Watchlist Row -->
+<div class="dashboard-secondary-grid" style="display: grid; grid-template-columns: 2fr 1fr; gap: 20px; margin-bottom: 25px;">
+    <!-- NEPSE Index Chart -->
+    <div class="card" style="margin-bottom: 0;">
+        <div class="card-header" style="justify-content: space-between;">
+            <h3><i class="fas fa-chart-area" style="margin-right: 8px; color: var(--tms-blue);"></i> NEPSE Index (Intraday)</h3>
+            <span class="text-positive" style="font-weight: 700; font-size: 0.9rem;">2,605.63 (+0.84%)</span>
+        </div>
+        <div style="padding: 15px; height: 300px;">
+            <canvas id="indexChart"></canvas>
+        </div>
+    </div>
+
+    <!-- My Watchlist -->
+    <div class="card" style="margin-bottom: 0; display: flex; flex-direction: column;">
+        <div class="card-header">
+            <h3><i class="fas fa-star" style="margin-right: 8px; color: #f59e0b;"></i> My Watchlist</h3>
+            <a href="{{ url_for('market_index') }}" style="font-size: 0.75rem; color: var(--tms-blue);">Explore</a>
+        </div>
+        <div id="watchlistContent" style="flex: 1; overflow-y: auto; padding: 0;">
+            <div style="padding: 20px; text-align: center; color: var(--tms-text-light);">
+                <i class="fas fa-spinner fa-spin"></i> Loading...
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="dashboard-secondary-grid" style="display: grid; grid-template-columns: 1fr 2fr; gap: 20px; margin-bottom: 25px;">
+    <!-- Asset Allocation -->
+    <div class="card" style="margin-bottom: 0;">
+        <div class="card-header">
+            <h3><i class="fas fa-chart-pie" style="margin-right: 8px;"></i> Asset Allocation</h3>
+        </div>
+        <div style="padding: 20px; min-height: 250px; display: flex; justify-content: center; align-items: center;">
+            <canvas id="portfolioChart"></canvas>
+        </div>
+    </div>
+
+    <!-- Top Movers -->
+    <div class="card" style="margin-bottom: 0;">
+        <div class="card-header">
+            <h3><i class="fas fa-bolt" style="margin-right: 8px;"></i> Market Highlights</h3>
+            <div style="display: flex; gap: 2px; background: var(--bg-widget); padding: 2px; border-radius: 6px; overflow-x: auto; white-space: nowrap;">
+                <button onclick="showMovers('gainers')" id="gainerTab" style="border:none; padding: 6px 10px; border-radius: 4px; font-size: 0.65rem; cursor:pointer; font-weight: 700; background: var(--bg-card); color: var(--positive);">GAINERS</button>
+                <button onclick="showMovers('losers')" id="loserTab" style="border:none; padding: 6px 10px; border-radius: 4px; font-size: 0.65rem; cursor:pointer; font-weight: 700; background: transparent; color: var(--tms-text-light);">LOSERS</button>
+            </div>
+        </div>
+        <div style="padding: 0;">
+            <div id="gainersList" style="display: block;">
+                <table style="width: 100%; border-collapse: collapse;">
+                    <tbody>
+                        {% for item in top_gainers %}
+                        <tr style="border-bottom: 1px solid var(--tms-border);">
+                            <td style="padding: 10px 20px; font-weight: 700;">{{ item.Symbol }}</td>
+                            <td style="padding: 10px 20px; text-align: right;">{{ item.LTP }}</td>
+                            <td style="padding: 10px 20px; text-align: right; color: var(--positive); font-weight: 800;">+{{ item['Diff %'] }}%</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div id="losersList" style="display: none;">
+                <table style="width: 100%; border-collapse: collapse;">
+                    <tbody>
+                        {% for item in top_losers %}
+                        <tr style="border-bottom: 1px solid var(--tms-border);">
+                            <td style="padding: 10px 20px; font-weight: 700;">{{ item.Symbol }}</td>
+                            <td style="padding: 10px 20px; text-align: right;">{{ item.LTP }}</td>
+                            <td style="padding: 10px 20px; text-align: right; color: var(--negative); font-weight: 800;">{{ item['Diff %'] }}%</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>
@@ -67,34 +187,48 @@
             <thead>
                 <tr>
                     <th>Symbol</th>
-                    <th style="text-align: right;">Quantity</th>
-                    <th style="text-align: right;">Avg Cost</th>
+                    <th style="text-align: right;">Total Qty</th>
+                    <th style="text-align: right;">Settled</th>
+                    <th style="text-align: right;">Pending</th>
+                    <th style="text-align: right;">WACC</th>
                     <th style="text-align: right;">LTP</th>
-                    <th style="text-align: right;">Current Value</th>
-                    <th style="text-align: right;">Profit/Loss</th>
+                    <th style="text-align: right;">Day %</th>
+                    <th style="text-align: right;">P&L</th>
                     <th style="text-align: center;">Action</th>
                 </tr>
             </thead>
             <tbody>
-                {% for symbol, stock in portfolio.items() %}
+                {% for h in holdings %}
                 <tr>
-                    <td><span class="symbol-cell">{{ symbol }}</span></td>
-                    <td style="text-align: right;">{{ stock.quantity }}</td>
-                    <td style="text-align: right;">{{ "{:,.2f}".format(stock.avg_price) }}</td>
-                    <td style="text-align: right;">{{ "{:,.2f}".format(market_prices.get(symbol, 0)) }}</td>
-                    <td style="text-align: right;">{{ "{:,.2f}".format(stock.quantity * market_prices.get(symbol, 0)) }}</td>
-                    <td style="text-align: right;" class="{{ 'text-positive' if (market_prices.get(symbol, 0) - stock.avg_price) >= 0 else 'text-negative' }}">
-                        {{ "{:,.2f}".format((market_prices.get(symbol, 0) - stock.avg_price) * stock.quantity) }}
+                    <td>
+                        <span class="symbol-cell">{{ h.symbol }}</span>
+                        {% if h.is_odd_lot %}
+                        <span class="odd-lot-badge">ODD LOT</span>
+                        {% endif %}
+                    </td>
+                    <td style="text-align: right; font-weight: 700;">{{ h.total_qty }}</td>
+                    <td style="text-align: right;">{{ h.settled_qty }}</td>
+                    <td style="text-align: right; color: #6366f1;">{{ h.pending_qty }}</td>
+                    <td style="text-align: right;">{{ "{:,.2f}".format(h.wacc) }}</td>
+                    <td style="text-align: right;">{{ "{:,.2f}".format(h.ltp) }}</td>
+                    <td style="text-align: right;" class="{{ 'text-positive' if h.diff_pct >= 0 else 'text-negative' }}">
+                        {{ "{:+.2f}".format(h.diff_pct) }}%
+                    </td>
+                    <td style="text-align: right;" class="{{ 'text-positive' if h.unrealized_pl >= 0 else 'text-negative' }}">
+                        {{ "{:,.2f}".format(h.unrealized_pl) }}
                         <br>
-                        <small>({{ "{:,.2f}".format(((market_prices.get(symbol, 0) - stock.avg_price) / stock.avg_price) * 100) }}%)</small>
+                        <small>({{ "{:,.2f}".format(h.unrealized_pl_pct) }}%)</small>
                     </td>
                     <td style="text-align: center;">
-                        <a href="{{ url_for('order_index', symbol=symbol) }}" title="Sell" style="color: var(--negative); font-size: 1.1rem;"><i class="fas fa-minus-circle"></i></a>
+                        <div style="display: flex; gap: 8px; justify-content: center;">
+                            <a href="{{ url_for('order_index', symbol=h.symbol, type='BUY') }}" title="Buy More" style="color: var(--positive); font-size: 1.1rem;"><i class="fas fa-plus-circle"></i></a>
+                            <a href="{{ url_for('order_index', symbol=h.symbol, type='SELL') }}" title="Sell" style="color: var(--negative); font-size: 1.1rem;"><i class="fas fa-minus-circle"></i></a>
+                        </div>
                     </td>
                 </tr>
                 {% else %}
                 <tr>
-                    <td colspan="7" style="text-align: center; padding: 40px; color: var(--tms-text-light);">
+                    <td colspan="9" style="text-align: center; padding: 40px; color: var(--tms-text-light);">
                         <i class="fas fa-folder-open" style="font-size: 2rem; display: block; margin-bottom: 12px; opacity: 0.5;"></i>
                         You don't have any stocks in your portfolio yet.
                     </td>
@@ -108,14 +242,94 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
 <script>
-    $(document).ready(function () {
-        $('#marketWatchTable').DataTable({
-            "pageLength": 10,
-            "order": [[0, "asc"]],
-            "language": {
-                "search": "Filter:",
+    // Portfolio Chart
+    const ctx = document.getElementById('portfolioChart').getContext('2d');
+    const userCash = {{ user.virtual_cash }};
+    const userEquity = {{ total_equity }};
+
+    new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: ['Cash', 'Equity'],
+            datasets: [{
+                data: [userCash, userEquity],
+                backgroundColor: ['#3b82f6', '#10b981'],
+                borderWidth: 0,
+                hoverOffset: 10
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                    labels: {
+                        usePointStyle: true,
+                        padding: 20,
+                        color: document.body.classList.contains('dark-theme') ? '#f8fafc' : '#334155'
+                    }
+                }
+            },
+            cutout: '70%'
+        }
+    });
+
+    // Market Index Chart
+    fetch('/api/market_index')
+        .then(res => res.json())
+        .then(json => {
+            if (json.success) {
+                const ctxIndex = document.getElementById('indexChart').getContext('2d');
+                const isDark = document.body.classList.contains('dark-theme');
+                new Chart(ctxIndex, {
+                    type: 'line',
+                    data: {
+                        labels: json.data.map(d => d.time),
+                        datasets: [{
+                            label: 'NEPSE Index',
+                            data: json.data.map(d => d.value),
+                            borderColor: '#3b82f6',
+                            backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                            fill: true,
+                            tension: 0.4,
+                            pointRadius: 0
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: { legend: { display: false } },
+                        scales: {
+                            x: { display: true, grid: { display: false }, ticks: { maxTicksLimit: 8, color: isDark ? '#94a3b8' : '#64748b' } },
+                            y: { position: 'right', grid: { color: isDark ? '#334155' : '#f1f5f9' }, ticks: { color: isDark ? '#94a3b8' : '#64748b' } }
+                        }
+                    }
+                });
             }
         });
-    });
+
+    function showMovers(type) {
+        const gainerBtn = document.getElementById('gainerTab');
+        const loserBtn = document.getElementById('loserTab');
+        const gainersList = document.getElementById('gainersList');
+        const losersList = document.getElementById('losersList');
+
+        if (type === 'gainers') {
+            gainerBtn.style.background = 'var(--bg-card)';
+            gainerBtn.style.color = 'var(--positive)';
+            loserBtn.style.background = 'transparent';
+            loserBtn.style.color = 'var(--tms-text-light)';
+            gainersList.style.display = 'block';
+            losersList.style.display = 'none';
+        } else {
+            gainerBtn.style.background = 'transparent';
+            gainerBtn.style.color = 'var(--tms-text-light)';
+            loserBtn.style.background = 'var(--bg-card)';
+            loserBtn.style.color = 'var(--negative)';
+            gainersList.style.display = 'none';
+            losersList.style.display = 'block';
+        }
+    }
 </script>
 {% endblock %}

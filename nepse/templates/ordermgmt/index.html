@@ -3,23 +3,25 @@
 {% block content %}
 <div style="margin-bottom: 24px;">
     <h2 style="font-size: 1.25rem; margin: 0; color: var(--tms-blue-dark); font-weight: 800; letter-spacing: -0.5px;">Trading Terminal</h2>
-    <p style="font-size: 0.85rem; color: var(--tms-text-light); margin-top: 4px; font-weight: 500;">Direct market access - Fast, secure order execution.</p>
+    <p style="font-size: 0.85rem; color: var(--tms-text-light); margin-top: 4px; font-weight: 500;">Direct market access - Auto execution at LTP.</p>
 </div>
 
 <div class="trade-container">
     <!-- Left: Order Entry -->
     <div class="order-entry-card">
         <div class="card-header">
-            <h3><i class="fas fa-plus-circle" style="margin-right: 8px;"></i> Place New Order</h3>
-            <span id="market-status-indicator" style="font-size: 0.7rem; font-weight: 700; color: var(--positive); background: #f0fdf4; padding: 4px 8px; border-radius: 12px; display: flex; align-items: center; gap: 6px;">
-                <i class="fas fa-circle" style="font-size: 0.5rem;"></i> MARKET OPEN
+            <h3><i class="fas fa-bolt" style="margin-right: 8px;"></i> Quick Trade</h3>
+            <span id="market-status-indicator" style="font-size: 0.7rem; font-weight: 700; color: var(--positive); background: var(--dark-success-bg, #f0fdf4); padding: 4px 8px; border-radius: 12px; display: flex; align-items: center; gap: 6px;">
+                <i class="fas fa-circle" style="font-size: 0.5rem;"></i> <span id="marketStatusText">LOADING...</span>
             </span>
         </div>
-        
+
+        <div id="statusBanner" style="display: none; padding: 12px 24px; font-size: 0.85rem; font-weight: 600; text-align: center;"></div>
+
         <form id="orderForm" style="padding: 24px;">
             <div class="order-toggle-group">
-                <button type="button" class="toggle-btn active-buy" id="buyToggle" onclick="setOrderType('BUY')">BUY SECURITY</button>
-                <button type="button" class="toggle-btn" id="sellToggle" onclick="setOrderType('SELL')">SELL SECURITY</button>
+                <button type="button" class="toggle-btn active-buy" id="buyToggle" onclick="setOrderType('BUY')">BUY</button>
+                <button type="button" class="toggle-btn" id="sellToggle" onclick="setOrderType('SELL')">SELL</button>
                 <input type="hidden" name="trade_type" id="tradeType" value="BUY">
             </div>
 
@@ -30,107 +32,123 @@
                     <datalist id="symbols"></datalist>
                 </div>
                 <div class="form-group">
-                    <label>Order Type</label>
-                    <select id="priceType" class="form-control">
-                        <option value="LMT">Limit Order (LMT)</option>
-                        <option value="MKT">Market Order (MKT)</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="form-row">
-                <div class="form-group">
                     <label>Quantity</label>
-                    <input type="number" id="quantity" class="form-control" placeholder="Min. 10 Units" step="10" min="10">
-                </div>
-                <div class="form-group">
-                    <label>Price (NPR)</label>
-                    <input type="number" id="price" class="form-control" placeholder="0.00" step="0.10">
+                    <input type="number" id="quantity" class="form-control" placeholder="Any positive integer" min="1" step="1">
+                    <small id="qtyHint" style="color: var(--tms-text-light); font-size: 0.7rem;"></small>
                 </div>
             </div>
 
-            <!-- Price Info Bar -->
-            <div id="priceInfo" class="market-info-strip" style="display: none;">
+            <!-- Price Info (Read-only) -->
+            <div id="priceInfo" class="market-info-strip" style="display: none; margin-bottom: 20px;">
                 <div class="info-box">
                     <span class="info-box-label">LTP</span>
-                    <span class="info-box-value" id="ltpInfo">0.00</span>
+                    <span class="info-box-value" id="ltpInfo" style="font-size: 1.1rem; font-weight: 700;">0.00</span>
                 </div>
                 <div class="info-box">
-                    <span class="info-box-label">High</span>
-                    <span class="info-box-value" id="highInfo">0.00</span>
+                    <span class="info-box-label">Prev Close</span>
+                    <span class="info-box-value" id="prevInfo">0.00</span>
                 </div>
                 <div class="info-box">
-                    <span class="info-box-label">Low</span>
-                    <span class="info-box-value" id="lowInfo">0.00</span>
+                    <span class="info-box-label">Upper (+10%)</span>
+                    <span class="info-box-value" id="upperInfo" style="color: var(--positive);">0.00</span>
                 </div>
                 <div class="info-box">
-                    <span class="info-box-label">Prev. Close</span>
-                    <span class="info-box-value" id="pcloseInfo">0.00</span>
+                    <span class="info-box-label">Lower (-10%)</span>
+                    <span class="info-box-value" id="lowerInfo" style="color: var(--negative);">0.00</span>
+                </div>
+            </div>
+
+            <!-- Fee Breakdown -->
+            <div id="feeBreakdown" style="background: var(--bg-widget); padding: 16px; border-radius: 8px; margin-bottom: 20px; display: none; color: var(--tms-text);">
+                <h4 style="margin: 0 0 12px 0; font-size: 0.85rem;">Order Summary</h4>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 0.85rem;">
+                    <div>Gross Amount:</div>
+                    <div style="text-align: right; font-weight: 600;" id="grossAmount">0.00</div>
+
+                    <div>Commission:</div>
+                    <div style="text-align: right;" id="commissionAmt">0.00</div>
+
+                    <div>SEBON Fee:</div>
+                    <div style="text-align: right;" id="sebonAmt">0.00</div>
+
+                    <div>DP Charge:</div>
+                    <div style="text-align: right;" id="dpAmt">0.00</div>
+
+                    <div style="border-top: 1px solid var(--tms-border); padding-top: 8px; font-weight: 700;">Total Fees:</div>
+                    <div style="border-top: 1px solid var(--tms-border); padding-top: 8px; text-align: right; font-weight: 700;" id="totalFees">0.00</div>
+
+                    <div id="cgtLabel" style="display: none; color: var(--negative);">CGT:</div>
+                    <div id="cgtAmt" style="display: none; text-align: right; color: var(--negative);">0.00</div>
+
+                    <div id="netLabel" style="border-top: 2px solid var(--tms-text); padding-top: 8px; font-weight: 800; font-size: 1rem;">Total:</div>
+                    <div id="netAmount" style="border-top: 2px solid var(--tms-text); padding-top: 8px; text-align: right; font-weight: 800; font-size: 1.1rem; color: var(--tms-blue);">0.00</div>
                 </div>
             </div>
 
             <div class="order-footer">
                 <div>
-                    <span class="total-summary-label">Estimated Transaction Value</span>
+                    <span class="total-summary-label">Total Amount</span>
                     <div class="total-summary-value">NPR <span id="totalDisplay">0.00</span></div>
-                    <small style="color: var(--tms-text-light); font-size: 0.75rem;">Includes 0.4% brokerage & taxes</small>
+                    <small style="color: var(--tms-text-light); font-size: 0.75rem;">Auto-executes at LTP</small>
                 </div>
                 <button type="button" class="btn-execute" id="submitOrderBtn" style="background: var(--positive);">EXECUTE BUY</button>
             </div>
         </form>
     </div>
 
-    <!-- Right: Market Context / Portfolio Quick View -->
+    <!-- Right: Market Context -->
     <div style="display: flex; flex-direction: column; gap: 20px;">
         <div class="card">
-            <div class="card-header" style="background: #f8fafc;">
+            <div class="card-header" style="background: var(--bg-widget);">
                 <h3 style="font-size: 0.85rem; font-weight: 800;"><i class="fas fa-wallet" style="margin-right: 8px;"></i> Account Balance</h3>
             </div>
             <div style="padding: 20px;">
                 <span style="font-size: 0.75rem; color: var(--tms-text-light); font-weight: 700;">AVAILABLE FUNDS</span>
-                <div style="font-size: 1.5rem; font-weight: 800; color: var(--tms-blue-dark); margin-top: 4px;">NPR {{ "{:,.2f}".format(user.balance) }}</div>
-                <div style="margin-top: 16px; font-size: 0.8rem; color: var(--tms-text-light); display: flex; justify-content: space-between;">
-                    <span>Daily Limit</span>
-                    <span style="font-weight: 700; color: var(--tms-text);">NPR 500k</span>
-                </div>
+                <div style="font-size: 1.5rem; font-weight: 800; color: var(--tms-blue-dark); margin-top: 4px;">NPR {{ "{:,.2f}".format(user.virtual_cash) }}</div>
             </div>
         </div>
 
         <div class="card" style="background: var(--tms-blue-dark); color: white; border: none;">
             <div style="padding: 24px;">
-                <h3 style="color: white; font-size: 1rem; margin-bottom: 12px;">Trading Tips</h3>
-                <p style="font-size: 0.85rem; opacity: 0.8; line-height: 1.5;">Always check the Last Traded Price (LTP) before placing a limit order to ensure timely execution.</p>
-                <a href="#" style="color: #60a5fa; font-size: 0.85rem; font-weight: 700; text-decoration: none; margin-top: 12px; display: inline-block;">Learn more →</a>
+                <h3 style="color: white; font-size: 1rem; margin-bottom: 12px;">NEPSE Rules</h3>
+                <ul style="font-size: 0.85rem; opacity: 0.8; line-height: 1.6; padding-left: 20px;">
+                    <li>T+2 Settlement</li>
+                    <li>No same-day selling</li>
+                    <li>±10% price band</li>
+                    <li>CGT: 7.5% / 5%</li>
+                </ul>
             </div>
         </div>
 
         <!-- Recent Executions -->
         <div class="card">
-            <div class="card-header" style="background: #f8fafc;">
-                <h3 style="font-size: 0.85rem; font-weight: 800;"><i class="fas fa-history" style="margin-right: 8px;"></i> Recent Executions</h3>
+            <div class="card-header" style="background: var(--bg-widget);">
+                <h3 style="font-size: 0.85rem; font-weight: 800;"><i class="fas fa-history" style="margin-right: 8px;"></i> Recent Trades</h3>
             </div>
             <div style="padding: 0;">
                 <table style="width: 100%; border-collapse: collapse; font-size: 0.75rem;">
                     <thead>
-                        <tr style="background: #f1f5f9; text-align: left;">
-                            <th style="padding: 10px; border-bottom: 1px solid var(--tms-border);">Symbol</th>
-                            <th style="padding: 10px; border-bottom: 1px solid var(--tms-border);">Type</th>
-                            <th style="padding: 10px; border-bottom: 1px solid var(--tms-border);">Qty</th>
+                        <tr style="background: var(--bg-widget); text-align: left;">
+                            <th style="padding: 10px;">Symbol</th>
+                            <th style="padding: 10px;">Type</th>
+                            <th style="padding: 10px;">Qty</th>
+                            <th style="padding: 10px;">Price</th>
                         </tr>
                     </thead>
                     <tbody>
                         {% for txn in recent_transactions %}
                         <tr>
-                            <td style="padding: 10px; border-bottom: 1px solid #f1f5f9; font-weight: 700;">{{ txn.symbol }}</td>
-                            <td style="padding: 10px; border-bottom: 1px solid #f1f5f9;">
+                            <td style="padding: 10px; border-bottom: 1px solid var(--tms-border); font-weight: 700;">{{ txn.symbol }}</td>
+                            <td style="padding: 10px; border-bottom: 1px solid var(--tms-border);">
                                 <span style="color: {% if txn.type == 'BUY' %}var(--positive){% else %}var(--negative){% endif %}; font-weight: 800;">{{ txn.type }}</span>
                             </td>
-                            <td style="padding: 10px; border-bottom: 1px solid #f1f5f9;">{{ txn.quantity }}</td>
+                            <td style="padding: 10px; border-bottom: 1px solid var(--tms-border);">{{ txn.qty }}</td>
+                            <td style="padding: 10px; border-bottom: 1px solid var(--tms-border);">{{ txn.price }}</td>
                         </tr>
                         {% endfor %}
                         {% if not recent_transactions %}
                         <tr>
-                            <td colspan="3" style="padding: 20px; text-align: center; color: var(--tms-text-light);">No recent trades</td>
+                            <td colspan="4" style="padding: 20px; text-align: center; color: var(--tms-text-light);">No recent trades</td>
                         </tr>
                         {% endif %}
                     </tbody>
@@ -143,6 +161,52 @@
 <script>
     let marketData = {};
     let currentOrderType = 'BUY';
+    let currentHolding = null;
+    let currentLTP = 0;
+
+    // Check market status
+    fetch('/api/market_status')
+        .then(res => res.json())
+        .then(data => {
+            const statusText = document.getElementById('marketStatusText');
+            const indicator = document.getElementById('market-status-indicator');
+            if (data.is_open) {
+                statusText.innerText = data.phase;
+                indicator.style.color = 'var(--positive)';
+                indicator.style.background = 'var(--dark-success-bg, #f0fdf4)';
+            } else {
+                statusText.innerText = 'CLOSED';
+                indicator.style.color = 'var(--negative)';
+                indicator.style.background = 'var(--dark-error-bg, #fef2f2)';
+            }
+        });
+
+    // Load market data
+    fetch('/api/market_data')
+        .then(res => res.json())
+        .then(data => {
+            const dl = document.getElementById('symbols');
+            marketData = data.data;
+            for (let symbol in marketData) {
+                let opt = document.createElement('option');
+                opt.value = symbol;
+                dl.appendChild(opt);
+            }
+
+            // Handle URL Parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            const symbolParam = urlParams.get('symbol');
+            const typeParam = urlParams.get('type');
+
+            if (symbolParam) {
+                document.getElementById('symbolInput').value = symbolParam;
+                updatePriceInfo();
+            }
+
+            if (typeParam) {
+                setOrderType(typeParam.toUpperCase());
+            }
+        });
 
     function setOrderType(type) {
         currentOrderType = type;
@@ -162,74 +226,153 @@
             submitBtn.style.background = 'var(--negative)';
             submitBtn.innerText = 'EXECUTE SELL';
         }
+        calculateTotal();
     }
 
-    fetch('/ordermgmt/data3')
-        .then(response => response.json())
-        .then(data => {
-            const dl = document.getElementById('symbols');
-            for(let i=0; i < data.symbols.length; i++){
-                let opt = document.createElement('option');
-                opt.value = data.symbols[i];
-                dl.appendChild(opt);
-                marketData[data.symbols[i]] = {
-                    ltp: data.ltps[i],
-                    low: data.lows[i],
-                    high: data.highs[i],
-                    pclose: data.pcloses[i]
-                };
-            }
-        });
-
     function updatePriceInfo() {
-        const symbol = document.getElementById('symbolInput').value;
+        const symbol = document.getElementById('symbolInput').value.toUpperCase();
         const info = marketData[symbol];
-        if(info) {
+
+        if (info) {
+            currentLTP = info.ltp;
             document.getElementById('priceInfo').style.display = 'grid';
-            document.getElementById('lowInfo').innerText = info.low;
-            document.getElementById('highInfo').innerText = info.high;
-            document.getElementById('ltpInfo').innerText = info.ltp;
-            document.getElementById('pcloseInfo').innerText = info.pclose;
-            document.getElementById('price').value = info.ltp;
-            calculateTotal();
+            document.getElementById('ltpInfo').innerText = info.ltp.toFixed(2);
+            document.getElementById('prevInfo').innerText = info.prev_close.toFixed(2);
+            document.getElementById('upperInfo').innerText = info.upper_circuit.toFixed(2);
+            document.getElementById('lowerInfo').innerText = info.lower_circuit.toFixed(2);
+
+            // Check if user owns this stock (for sell)
+            if (currentOrderType === 'SELL') {
+                fetch('/api/holdings')
+                    .then(res => res.json())
+                    .then(data => {
+                        const holding = data.holdings.find(h => h.symbol === symbol);
+                        currentHolding = holding;
+                        const qtyHint = document.getElementById('qtyHint');
+                        if (holding) {
+                            qtyHint.innerText = `Owned: ${holding.total_qty} shares (${holding.settled_qty} settled)`;
+                        } else {
+                            qtyHint.innerText = 'You do not own this stock';
+                        }
+                        calculateTotal();
+                    });
+            } else {
+                currentHolding = null;
+                document.getElementById('qtyHint').innerText = 'Any positive integer accepted';
+                calculateTotal();
+            }
+        } else {
+            document.getElementById('priceInfo').style.display = 'none';
+            currentLTP = 0;
         }
     }
 
     function calculateTotal() {
-        const price = parseFloat(document.getElementById('price').value) || 0;
+        const symbol = document.getElementById('symbolInput').value.toUpperCase();
         const qty = parseInt(document.getElementById('quantity').value) || 0;
-        const total = price * qty;
-        const commission = total * 0.004; 
-        document.getElementById('totalDisplay').innerText = (total + commission).toLocaleString(undefined, {minimumFractionDigits: 2});
+        const price = currentLTP;
+
+        if (symbol && qty > 0 && price > 0) {
+            const endpoint = currentOrderType === 'BUY' ? '/api/calculate/buy' : '/api/calculate/sell';
+            fetch(endpoint, {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({symbol, quantity: qty, price})
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    document.getElementById('feeBreakdown').style.display = 'block';
+
+                    const fees = data.fees;
+                    document.getElementById('grossAmount').innerText = fees.gross.toLocaleString();
+                    document.getElementById('commissionAmt').innerText = fees.commission.toLocaleString();
+                    document.getElementById('sebonAmt').innerText = fees.sebon.toLocaleString();
+                    document.getElementById('dpAmt').innerText = fees.dp.toLocaleString();
+                    document.getElementById('totalFees').innerText = fees.total_fees.toLocaleString();
+
+                    if (currentOrderType === 'BUY') {
+                        document.getElementById('netLabel').innerText = 'Total Paid:';
+                        document.getElementById('netAmount').innerText = fees.total_paid.toLocaleString();
+                        document.getElementById('netAmount').style.color = 'var(--tms-blue)';
+                        document.getElementById('cgtLabel').style.display = 'none';
+                        document.getElementById('cgtAmt').style.display = 'none';
+                        document.getElementById('totalDisplay').innerText = fees.total_paid.toLocaleString();
+                    } else {
+                        const cgt = data.cgt;
+                        document.getElementById('cgtLabel').style.display = 'block';
+                        document.getElementById('cgtAmt').style.display = 'block';
+                        document.getElementById('cgtAmt').innerText = cgt.cgt.toLocaleString();
+
+                        document.getElementById('netLabel').innerText = 'Net Received:';
+                        document.getElementById('netAmount').innerText = cgt.net_received.toLocaleString();
+                        document.getElementById('netAmount').style.color = 'var(--positive)';
+                        document.getElementById('totalDisplay').innerText = cgt.net_received.toLocaleString();
+                    }
+                } else {
+                    document.getElementById('feeBreakdown').style.display = 'none';
+                    showError(data.message);
+                }
+            });
+        } else {
+            document.getElementById('feeBreakdown').style.display = 'none';
+            document.getElementById('totalDisplay').innerText = '0.00';
+        }
     }
 
-    document.getElementById('price').addEventListener('input', calculateTotal);
+    function showError(msg) {
+        const banner = document.getElementById('statusBanner');
+        const isDark = document.body.classList.contains('dark-theme');
+        banner.style.background = isDark ? 'var(--dark-error-bg)' : '#fee2e2';
+        banner.style.color = isDark ? '#fca5a5' : '#991b1b';
+        banner.innerText = msg;
+        banner.style.display = 'block';
+        setTimeout(() => { banner.style.display = 'none'; }, 5000);
+    }
+
     document.getElementById('quantity').addEventListener('input', calculateTotal);
 
     document.getElementById('submitOrderBtn').addEventListener('click', function() {
-        const symbol = document.getElementById('symbolInput').value;
-        const price = document.getElementById('price').value;
-        const quantity = document.getElementById('quantity').value;
-        const type = currentOrderType;
+        const symbol = document.getElementById('symbolInput').value.toUpperCase();
+        const qty = parseInt(document.getElementById('quantity').value);
+        const price = currentLTP;
 
-        if(!symbol || !price || !quantity) {
-            alert('Please fill all fields');
+        if (!symbol || !qty || !price) {
+            showError('Please select a symbol and enter quantity');
             return;
         }
 
-        fetch('/trade/execute', {
+        const statusBanner = document.getElementById('statusBanner');
+        statusBanner.style.display = 'none';
+
+        const endpoint = currentOrderType === 'BUY' ? '/api/execute/buy' : '/api/execute/sell';
+
+        fetch(endpoint, {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({symbol, price, quantity, type})
+            body: JSON.stringify({symbol, quantity: qty, price})
         })
         .then(res => res.json())
         .then(data => {
-            if(data.status === 'success') {
-                alert('Order Executed Successfully!');
-                location.href = '/';
+            const isDark = document.body.classList.contains('dark-theme');
+            if (data.success) {
+                statusBanner.style.background = isDark ? 'var(--dark-success-bg)' : '#dcfce7';
+                statusBanner.style.color = isDark ? '#86efac' : '#166534';
+                statusBanner.innerText = data.message;
+                statusBanner.style.display = 'block';
+
+                setTimeout(() => {
+                    location.href = '/';
+                }, 1500);
             } else {
-                alert('Error: ' + data.message);
+                statusBanner.style.background = isDark ? 'var(--dark-error-bg)' : '#fee2e2';
+                statusBanner.style.color = isDark ? '#fca5a5' : '#991b1b';
+                statusBanner.innerText = 'Error: ' + data.message;
+                statusBanner.style.display = 'block';
             }
+        })
+        .catch(err => {
+            showError('Network Error: ' + err.message);
         });
     });
 </script>

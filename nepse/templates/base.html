@@ -52,7 +52,7 @@
                     <i class="fas fa-exchange-alt"></i>
                     <span>Buy/Sell Stocks</span>
                 </a>
-                <a href="#">
+                <a href="{{ url_for('order_history') }}">
                     <i class="fas fa-history"></i>
                     <span>Order History</span>
                 </a>
@@ -81,15 +81,26 @@
                     <span>My Information</span>
                 </a>
             </nav>
+            <div style="padding: 15px; background: rgba(59, 130, 246, 0.1); border-radius: 12px; margin-bottom: 20px;">
+                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+                    <div style="width: 8px; height: 8px; background: #10b981; border-radius: 50%;"></div>
+                    <span style="font-size: 0.75rem; font-weight: 700; color: var(--tms-blue);">2026 COMPLIANT</span>
+                </div>
+                <div style="font-size: 0.85rem; font-weight: 600;">Margin Trading: <span style="color: var(--positive);">Active</span></div>
+                <div style="font-size: 0.7rem; color: var(--tms-text-light); margin-top: 4px;">Settlement: T+2 Standard</div>
+            </div>
 
             <div class="sidebar-footer">
                 <div class="market-mini-widget">
                     <div class="mini-widget-header">
-                        <span class="mini-widget-label">NEPSE INDEX</span>
-                        <span class="mini-widget-status"><i class="fas fa-circle"></i> LIVE</span>
+                        <span class="mini-widget-label">MY NET WORTH</span>
+                        <span class="mini-widget-status"><i class="fas fa-circle" style="color: var(--positive);"></i> LIVE</span>
                     </div>
-                    <div class="mini-widget-value">2,605.63</div>
-                    <div class="mini-widget-change text-positive">+4.02 (0.15%)</div>
+                    <div class="mini-widget-value" style="font-size: 1.1rem; letter-spacing: -0.5px;">NPR {{ "{:,.2f}".format(global_net_worth) }}</div>
+                    <div class="mini-widget-change {{ 'text-positive' if global_day_gain >= 0 else 'text-negative' }}" style="font-size: 0.75rem; font-weight: 700;">
+                        <i class="fas {{ 'fa-caret-up' if global_day_gain >= 0 else 'fa-caret-down' }}"></i>
+                        {{ "{:,.2f}".format(global_day_gain) }} ({{ "{:,.2f}".format(global_day_gain_pct) }}%)
+                    </div>
                 </div>
             </div>
         </aside>
@@ -107,13 +118,14 @@
                         <span class="index-value" style="color: var(--tms-blue);">NPR 364.76M</span>
                     </div>
                     <div class="market-status">
-                        <i class="fas fa-circle"></i> CONTINUOUS SESSION
+                        <i class="fas fa-circle"></i> <span id="marketSession">CONTINUOUS SESSION</span>
+                        <span style="margin-left: 10px; opacity: 0.7; font-weight: 400; font-family: monospace;" id="liveClock">00:00:00</span>
                     </div>
                 </div>
                 <div class="user-nav">
                     <div class="wallet-info">
                         <span class="wallet-label">Trading Balance</span>
-                        <span class="wallet-amount">NPR {{ "{:,.2f}".format(user.balance) }}</span>
+                    <span class="wallet-amount">NPR {{ "{:,.2f}".format(global_user.virtual_cash) }}</span>
                     </div>
                     <div class="user-profile" style="display: flex; align-items: center; gap: 15px;">
                         <button id="themeToggle" onclick="toggleTheme()" class="avatar-circle" style="background: var(--bg-app); border: 1px solid var(--tms-border); color: var(--tms-text-light); width: 36px; height: 36px;">

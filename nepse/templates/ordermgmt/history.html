@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="dashboard-header">
+    <h1 class="page-title">Transaction History</h1>
+    <p class="page-subtitle">Complete audit log with full fee breakdown</p>
+</div>
+
+<div class="card" style="margin-top: 20px;">
+    <div class="card-header">
+        <h2 class="card-title">All Transactions</h2>
+        <div class="table-search">
+            <i class="fas fa-search"></i>
+            <input type="text" id="historySearch" placeholder="Search symbol..." onkeyup="filterHistory()">
+        </div>
+    </div>
+    <div class="table-container" style="overflow-x: auto;">
+        <table class="tms-table" id="historyTable">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Symbol</th>
+                    <th>Type</th>
+                    <th class="text-right">Qty</th>
+                    <th class="text-right">Price</th>
+                    <th class="text-right">Net Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for txn in transactions %}
+                <tr class="{{ 'row-positive' if txn.type == 'SELL' else 'row-negative' }}">
+                    <td style="font-size: 0.75rem; color: var(--tms-text-light); white-space: nowrap;">
+                        {{ txn.timestamp.strftime('%Y-%m-%d') if txn.timestamp else txn.trade_date }}
+                    </td>
+                    <td style="font-weight: 700;">{{ txn.symbol }}</td>
+                    <td>
+                        <span class="badge {{ 'badge-positive' if txn.type == 'SELL' else 'badge-negative' }}">
+                            {{ txn.type }}
+                        </span>
+                    </td>
+                    <td class="text-right">{{ txn.qty }}</td>
+                    <td class="text-right">{{ "{:,.2f}".format(txn.price) }}</td>
+                    <td class="text-right">
+                        <strong>
+                        {% if txn.type == 'BUY' %}
+                            {{ "{:,.2f}".format(txn.total_paid) }}
+                        {% else %}
+                            {{ "{:,.2f}".format(txn.net_received) }}
+                        {% endif %}
+                        </strong>
+                    </td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="6" class="text-center" style="padding: 40px; color: var(--tms-text-light);">
+                        <i class="fas fa-history" style="font-size: 2rem; margin-bottom: 10px; opacity: 0.3; display: block;"></i>
+                        No transactions yet. Start trading!
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+function filterHistory() {
+    let input = document.getElementById('historySearch');
+    let filter = input.value.toUpperCase();
+    let table = document.getElementById('historyTable');
+    let tr = table.getElementsByTagName('tr');
+
+    for (let i = 1; i < tr.length; i++) {
+        let tdSymbol = tr[i].getElementsByTagName('td')[1];
+        if (tdSymbol) {
+            let txtValue = tdSymbol.textContent || tdSymbol.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+        }
+    }
+}
+</script>
+
+<style>
+.table-search {
+    position: relative;
+    min-width: 150px;
+}
+.table-search i {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--tms-text-light);
+}
+.table-search input {
+    width: 100%;
+    padding: 6px 10px 6px 30px;
+    border-radius: 6px;
+    border: 1px solid var(--tms-border);
+    background: var(--bg-input);
+    color: var(--tms-text);
+    font-size: 0.85rem;
+}
+.table-search input:focus {
+    outline: none;
+    border-color: var(--tms-blue);
+}
+.badge {
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 700;
+}
+.badge-positive { background: var(--row-positive); color: var(--positive); }
+.badge-negative { background: var(--row-negative); color: var(--negative); }
+
+@media (max-width: 768px) {
+    .card-header { flex-direction: column; gap: 10px; align-items: flex-start; }
+    .table-search { width: 100%; }
+}
+</style>
+{% endblock %}

@@ -130,7 +130,17 @@
                         <small>({{ row.get('Diff %', '') }}%)</small>
                     </td>
                     <td style="text-align: center;">
-                        <a href="{{ url_for('order_index', symbol=row.get('Symbol')) }}" title="Trade" style="color: var(--tms-blue); font-size: 1rem;"><i class="fas fa-shopping-cart"></i></a>
+                        <div style="display: flex; gap: 10px; justify-content: center; align-items: center;">
+                            {% set is_watched = row.get('Symbol') in watchlist_symbols %}
+                            <button onclick="toggleWatchlist('{{ row.get('Symbol') }}', this)" 
+                                    class="watchlist-btn {{ 'active' if is_watched else '' }}" 
+                                    style="background: none; border: none; cursor: pointer; color: var(--watchlist-color, {{ '#f59e0b' if is_watched else '#cbd5e1' }}); font-size: 1.1rem; padding: 0;"
+                                    title="{{ 'Remove from Watchlist' if is_watched else 'Add to Watchlist' }}">
+                                <i class="fas fa-star"></i>
+                            </button>
+                            <a href="{{ url_for('order_index', symbol=row.get('Symbol'), type='BUY') }}" title="Buy" style="color: var(--positive); font-size: 1.1rem;"><i class="fas fa-plus-circle"></i></a>
+                            <a href="{{ url_for('order_index', symbol=row.get('Symbol'), type='SELL') }}" title="Sell" style="color: var(--negative); font-size: 1.1rem;"><i class="fas fa-minus-circle"></i></a>
+                        </div>
                     </td>
                 </tr>
                 {% endfor %}
@@ -156,5 +166,26 @@ $(document).ready(function() {
         }
     });
 });
+
+function toggleWatchlist(symbol, btn) {
+    const isActive = btn.classList.contains('active');
+    const url = isActive ? `/watchlist/delete/${symbol}` : `/watchlist/add/${symbol}`;
+    
+    fetch(url, { method: 'POST' })
+        .then(res => res.json())
+        .then(json => {
+            if (json.success) {
+                if (isActive) {
+                    btn.classList.remove('active');
+                    btn.style.color = '#cbd5e1';
+                    btn.title = 'Add to Watchlist';
+                } else {
+                    btn.classList.add('active');
+                    btn.style.color = '#f59e0b';
+                    btn.title = 'Remove from Watchlist';
+                }
+            }
+        });
+}
 </script>
 {% endblock %}

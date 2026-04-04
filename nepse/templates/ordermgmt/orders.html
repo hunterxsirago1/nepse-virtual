@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="dashboard-header animate-fade-in">
+    <div class="header-main">
+        <h1 class="page-title">Order Book</h1>
+        <p class="page-subtitle">Open, pending, and expired orders</p>
+    </div>
+    <div class="header-actions">
+        <a href="{{ url_for('order_index') }}" class="btn btn-secondary">
+            <i class="fas fa-plus"></i> New Order
+        </a>
+    </div>
+</div>
+
+<div class="card animate-slide-up" style="margin-top: 24px;">
+    <div class="card-header">
+        <h2 class="card-title">Open Orders</h2>
+    </div>
+    <div class="table-container">
+        <table class="tms-table" id="ordersTable">
+            <thead>
+                <tr>
+                    <th>Created</th>
+                    <th>Symbol</th>
+                    <th>Side</th>
+                    <th>Type</th>
+                    <th class="text-right">Qty</th>
+                    <th class="text-right">Price</th>
+                    <th>Validity</th>
+                    <th>Status</th>
+                    <th class="text-center">Action</th>
+                </tr>
+            </thead>
+            <tbody id="ordersList">
+                <!-- Populated by JS -->
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    function loadOrders() {
+        fetch('/api/orders')
+            .then(res => res.json())
+            .then(data => {
+                const tbody = document.getElementById('ordersList');
+                if (data.orders && data.orders.length > 0) {
+                    data.orders.forEach(order => {
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                            <td style="font-size: 0.8rem; color: var(--tms-text-light);">${order.created_at}</td>
+                            <td><strong>${order.symbol}</strong></td>
+                            <td>
+                                <span class="badge ${order.side === 'BUY' ? 'badge-negative' : 'badge-positive'}">
+                                    ${order.side}
+                                </span>
+                            </td>
+                            <td>${order.order_type}</td>
+                            <td class="text-right">${order.qty}</td>
+                            <td class="text-right">${order.price.toFixed(2)}</td>
+                            <td>${order.validity}</td>
+                            <td><span class="badge" style="background: var(--dark-warning-bg); color: #fbbf24;">${order.status}</span></td>
+                            <td class="text-center">
+                                <button onclick="cancelOrder(${order.id})" style="background: var(--dark-error-bg); border: none; padding: 6px 12px; border-radius: 4px; color: #f87171; cursor: pointer; font-weight: 600;">
+                                    Cancel
+                                </button>
+                            </td>
+                        `;
+                        tbody.appendChild(row);
+                    });
+                } else {
+                    tbody.innerHTML = `
+                        <tr>
+                            <td colspan="9" class="text-center" style="padding: 40px; color: var(--tms-text-light);">
+                                <i class="fas fa-inbox" style="font-size: 2rem; margin-bottom: 15px; opacity: 0.3; display: block;"></i>
+                                No open orders
+                            </td>
+                        </tr>
+                    `;
+                }
+            });
+    }
+
+    function cancelOrder(orderId) {
+        if (!confirm('Are you sure you want to cancel this order?')) return;
+
+        fetch(`/api/orders/${orderId}`, { method: 'DELETE' })
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    alert(data.message);
+                    loadOrders();
+                } else {
+                    alert('Error: ' + data.message);
+                }
+            });
+    }
+
+    loadOrders();
+</script>
+
+<style>
+.badge {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+.badge-positive {
+    background: var(--row-positive);
+    color: var(--positive);
+}
+.badge-negative {
+    background: var(--row-negative);
+    color: var(--negative);
+}
+</style>
+{% endblock %}
