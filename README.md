@@ -1,46 +1,63 @@
 # NEPSE Virtual Trading Simulator
 
-A professional, real-time NEPSE (Nepal Stock Exchange) live trading simulator and dashboard. This application scrapes live trading data from Sharesansar and provides a virtual platform for monitoring and simulating stock trades.
+A realistic NEPSE (Nepal Stock Exchange) paper trading simulator with accurate trading rules, T+2 settlement, and full fee breakdown.
 
 ## Features
-- **Real-time Live Trading Dashboard**: Monitor NEPSE stocks with live updates every 30 seconds.
-- **Market Management**: Comprehensive market data view with search and filter capabilities.
-- **Order Management (Simulation)**: Simulate Buy/Sell orders with real-time price tracking.
-- **Watchlist & Portfolio Tracking**: Keep track of your favorite stocks and simulated holdings.
+
+- **T+2 Settlement**: Shares bought today can only be sold after 2 business days
+- **No Intraday Trading**: Cannot sell shares bought on the same day
+- **Price Band**: ±10% circuit breaker validation
+- **Full Fee Breakdown**: Commission, SEBON, DP charges, CGT
+- **CGT Calculation**: 7.5% (<365 days), 5% (≥365 days), 10% institutional
+- **WACC**: Weighted Average Cost Capital calculation per NEPSE rules
+- **Debug Mode**: Market always open for testing
+
+## Running the App
+
+```bash
+cd nepse
+python app.py
+```
+
+Open http://localhost:5000 in your browser.
+
+## Trading Rules Implemented
+
+1. **Market Hours**: 11:00 AM - 3:00 PM NST (Debug mode: always open)
+2. **Settlement**: T+2 business days (skipping weekends/holidays)
+3. **Commission Slabs**:
+   - Up to Rs. 50,000: 0.36%
+   - Rs. 50,001 - 500,000: 0.33%
+   - Rs. 500,001 - 20,00,000: 0.306%
+   - Rs. 20,00,001 - 1,00,00,000: 0.27%
+   - Above Rs. 1 crore: 0.243%
+4. **SEBON Fee**: 0.015% on gross (both buy/sell)
+5. **DP Charge**: Rs. 25 flat per transaction
+6. **CGT**: Short-term 7.5%, Long-term 5%, Institutional 10%
+
+## Pages
+
+- **Dashboard**: Portfolio overview, P&L, pending settlements
+- **Trading Terminal**: Buy/Sell with live fee preview
+- **Market Explorer**: Live market data with watchlist
+- **Order History**: Full transaction log with fee breakdown
+
+## TODO
+
+- [ ] Today's and Total Profit/Loss Tracker
+- [ ] Implement limit and stop-loss orders
+- [ ] Add more Nepal holidays
+- [ ] User authentication
+- [ ] Reset account / start fresh
+- [ ] Fetch real market buy/sell prices (currently using scraped LTP) (maybe?)
 
 ## Tech Stack
-- **Backend**: Flask (Python)
-- **Data Processing**: Pandas, BeautifulSoup4
-- **Frontend**: HTML5, Vanilla CSS3, JavaScript (ES6+)
-- **Scheduler**: APScheduler for background data synchronization
 
-## Getting Started
+- Flask + SQLAlchemy
+- Pandas for data processing
+- BeautifulSoup for web scraping
+- Chart.js for visualizations
 
-### Prerequisites
-- Python 3.8+
-- `pip` package manager
+## Data Source
 
-### Installation
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/hunterxsirago1/nepse-virtual.git
-   cd nepse-virtual
-   ```
-2. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
-3. Run the application:
-   ```bash
-   python nepse/app.py
-   ```
-4. Access the dashboard:
-   Open your browser and navigate to `http://127.0.0.1:5000/`
-
-## Project Structure
-- `nepse/app.py`: Main Flask application and data scraping logic.
-- `nepse/static/`: Static assets (CSS, JS, Images).
-- `nepse/templates/`: HTML templates for different management views.
-
-## License
-MIT License - Feel free to use and contribute!
+Market data is scraped from ShareSansar.com
