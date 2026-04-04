@@ -11,7 +11,9 @@
       "Bash(curl -s http://localhost:5000/ordermgmt/)",
       "Bash(curl -s http://localhost:5000/marketmgmt/)",
       "Bash(curl:*)",
-      "Bash(python -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(d['data'].get\\('NICA', 'Not found'\\)\\)\")"
+      "Bash(python -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(d['data'].get\\('NICA', 'Not found'\\)\\)\")",
+      "Bash(sqlite3 \"C:\\\\Users\\\\asus\\\\.gemini\\\\antigravity\\\\scratch\\\\nepse-virtual\\\\nepse\\\\instance\\\\nepse_sim.db\" \"UPDATE holding SET settled_qty = total_qty WHERE settled_qty = 0;\")",
+      "Bash(sqlite3:*)"
     ]
   }
 }

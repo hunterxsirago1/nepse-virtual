@@ -517,7 +517,7 @@ def api_execute_buy():
     # Deduct cash
     user.virtual_cash -= total_required
 
-    # Update or create holding
+    # Update or create holding (settled immediately for testing)
     holding = Holding.query.filter_by(user_id=user.id, symbol=symbol).first()
 
     if holding:
@@ -533,29 +533,20 @@ def api_execute_buy():
         holding.total_qty = new_qty
         holding.wacc = round(new_wacc, 2)
         holding.total_cost_basis = round(new_cost_basis, 2)
-        # settled_qty stays same until T+2
+        holding.settled_qty = new_qty  # Settled immediately for testing
     else:
         holding = Holding(
             user_id=user.id,
             symbol=symbol,
             total_qty=qty,
-            settled_qty=0,
+            settled_qty=qty,  # Settled immediately for testing
             wacc=round(fees['total_paid'] / qty, 2),
             total_cost_basis=round(fees['total_paid'], 2),
             purchase_date=trade_date.date()
         )
         db.session.add(holding)
 
-    # Create pending settlement
-    pending = PendingSettlement(
-        user_id=user.id,
-        symbol=symbol,
-        qty=qty,
-        trade_date=trade_date.date(),
-        settle_date=settle_date,
-        status='PENDING'
-    )
-    db.session.add(pending)
+    # Note: Not creating pending settlement since shares are settled immediately for testing
 
     # Record transaction
     txn = Transaction(
