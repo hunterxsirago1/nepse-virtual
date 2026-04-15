@@ -1,36 +1,50 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="dashboard-header">
-    <h1 class="page-title">Transaction History</h1>
-    <p class="page-subtitle">Complete audit log with full fee breakdown</p>
+<div class="dashboard-header animate-fade-in">
+    <div class="header-main">
+        <h1 class="page-title">Transaction History</h1>
+        <p class="page-subtitle">Complete audit log with full fee breakdown and P&L</p>
+    </div>
 </div>
 
-<div class="card" style="margin-top: 20px;">
+<div class="card animate-slide-up" style="margin-top: 24px;">
     <div class="card-header">
         <h2 class="card-title">All Transactions</h2>
-        <div class="table-search">
-            <i class="fas fa-search"></i>
-            <input type="text" id="historySearch" placeholder="Search symbol..." onkeyup="filterHistory()">
+        <div style="display: flex; gap: 12px; align-items: center;">
+            <div class="table-search">
+                <i class="fas fa-search"></i>
+                <input type="text" id="historySearch" placeholder="Search symbol..." onkeyup="filterHistory()">
+            </div>
+            <select id="typeFilter" onchange="filterHistory()" style="padding: 6px 10px; border: 1px solid var(--tms-border); border-radius: 6px; background: var(--bg-input); color: var(--tms-text); font-size: 0.85rem;">
+                <option value="">All Types</option>
+                <option value="BUY">BUY</option>
+                <option value="SELL">SELL</option>
+            </select>
         </div>
     </div>
     <div class="table-container" style="overflow-x: auto;">
         <table class="tms-table" id="historyTable">
             <thead>
                 <tr>
-                    <th>Date</th>
+                    <th>Date / Time</th>
                     <th>Symbol</th>
                     <th>Type</th>
                     <th class="text-right">Qty</th>
                     <th class="text-right">Price</th>
+                    <th class="text-right">Gross</th>
+                    <th class="text-right">Fees</th>
+                    <th class="text-right">CGT</th>
                     <th class="text-right">Net Amount</th>
+                    <th class="text-right">P&L</th>
                 </tr>
             </thead>
             <tbody>
                 {% for txn in transactions %}
-                <tr class="{{ 'row-positive' if txn.type == 'SELL' else 'row-negative' }}">
+                <tr class="{{ 'row-positive' if txn.type == 'SELL' else 'row-negative' }}" data-type="{{ txn.type }}">
                     <td style="font-size: 0.75rem; color: var(--tms-text-light); white-space: nowrap;">
                         {{ txn.timestamp.strftime('%Y-%m-%d') if txn.timestamp else txn.trade_date }}
+                        <br><small>{{ txn.timestamp.strftime('%H:%M') if txn.timestamp else '' }}</small>
                     </td>
                     <td style="font-weight: 700;">{{ txn.symbol }}</td>
                     <td>
@@ -40,19 +54,33 @@
                     </td>
                     <td class="text-right">{{ txn.qty }}</td>
                     <td class="text-right">{{ "{:,.2f}".format(txn.price) }}</td>
+                    <td class="text-right">{{ "{:,.2f}".format(txn.gross or 0) }}</td>
+                    <td class="text-right" style="font-size: 0.8rem; color: var(--tms-text-light);">
+                        <span title="Commission: {{ "{:,.2f}".format(txn.commission or 0) }}, SEBON: {{ "{:,.2f}".format(txn.sebon_fee or 0) }}, DP: {{ "{:,.2f}".format(txn.dp_fee or 0) }}">
+                            {{ "{:,.2f}".format(txn.total_fees or 0) }}
+                        </span>
+                    </td>
+                    <td class="text-right" style="color: {{ 'var(--negative)' if (txn.cgt or 0) > 0 else 'var(--tms-text-light)' }}; font-size: 0.8rem;">
+                        {{ "{:,.2f}".format(txn.cgt or 0) if txn.type == 'SELL' else '—' }}
+                    </td>
                     <td class="text-right">
                         <strong>
                         {% if txn.type == 'BUY' %}
-                            {{ "{:,.2f}".format(txn.total_paid) }}
+                            <span style="color: var(--negative);">-{{ "{:,.2f}".format(txn.total_paid or 0) }}</span>
                         {% else %}
-                            {{ "{:,.2f}".format(txn.net_received) }}
+                            <span style="color: var(--positive);">+{{ "{:,.2f}".format(txn.net_received or 0) }}</span>
                         {% endif %}
                         </strong>
+                    </td>
+                    <td class="text-right" style="font-size: 0.8rem;">
+                        {% if txn.type == 'SELL' and txn.holding_days is not none %}
+                        <span style="color: var(--tms-text-light);">{{ txn.holding_days }}d held</span>
+                        {% endif %}
                     </td>
                 </tr>
                 {% else %}
                 <tr>
-                    <td colspan="6" class="text-center" style="padding: 40px; color: var(--tms-text-light);">
+                    <td colspan="10" class="text-center" style="padding: 40px; color: var(--tms-text-light);">
                         <i class="fas fa-history" style="font-size: 2rem; margin-bottom: 10px; opacity: 0.3; display: block;"></i>
                         No transactions yet. Start trading!
                     </td>
@@ -63,31 +91,18 @@
     </div>
 </div>
 
-<script>
-function filterHistory() {
-    let input = document.getElementById('historySearch');
-    let filter = input.value.toUpperCase();
-    let table = document.getElementById('historyTable');
-    let tr = table.getElementsByTagName('tr');
-
-    for (let i = 1; i < tr.length; i++) {
-        let tdSymbol = tr[i].getElementsByTagName('td')[1];
-        if (tdSymbol) {
-            let txtValue = tdSymbol.textContent || tdSymbol.innerText;
-            if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                tr[i].style.display = "";
-            } else {
-                tr[i].style.display = "none";
-            }
-        }
-    }
-}
-</script>
-
 <style>
+.badge {
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 700;
+}
+.badge-positive { background: var(--row-positive); color: var(--positive); }
+.badge-negative { background: var(--row-negative); color: var(--negative); }
 .table-search {
     position: relative;
-    min-width: 150px;
+    min-width: 180px;
 }
 .table-search i {
     position: absolute;
@@ -109,18 +124,27 @@ function filterHistory() {
     outline: none;
     border-color: var(--tms-blue);
 }
-.badge {
-    padding: 3px 8px;
-    border-radius: 4px;
-    font-size: 0.7rem;
-    font-weight: 700;
-}
-.badge-positive { background: var(--row-positive); color: var(--positive); }
-.badge-negative { background: var(--row-negative); color: var(--negative); }
-
-@media (max-width: 768px) {
-    .card-header { flex-direction: column; gap: 10px; align-items: flex-start; }
-    .table-search { width: 100%; }
-}
 </style>
+
+<script>
+function filterHistory() {
+    const searchFilter = document.getElementById('historySearch').value.toUpperCase();
+    const typeFilter = document.getElementById('typeFilter').value;
+    const table = document.getElementById('historyTable');
+    const tr = table.getElementsByTagName('tr');
+
+    for (let i = 1; i < tr.length; i++) {
+        const cells = tr[i].getElementsByTagName('td');
+        if (cells.length < 2) continue;
+
+        const symbolText = cells[1].textContent || cells[1].innerText;
+        const typeText = tr[i].getAttribute('data-type') || '';
+
+        const matchesSearch = symbolText.toUpperCase().indexOf(searchFilter) > -1;
+        const matchesType = !typeFilter || typeText === typeFilter;
+
+        tr[i].style.display = (matchesSearch && matchesType) ? '' : 'none';
+    }
+}
+</script>
 {% endblock %}

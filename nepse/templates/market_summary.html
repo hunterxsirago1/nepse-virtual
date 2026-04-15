@@ -1,0 +1,190 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="page-header animate-fade-in">
+    <div>
+        <h1 class="page-title">Market Summary</h1>
+        <p class="page-subtitle">NEPSE market overview, movers, and market breadth</p>
+    </div>
+    <div class="header-actions">
+        <span class="market-badge">
+            <i class="fas fa-circle" style="color: var(--positive); font-size: 0.6rem;"></i>
+            Live Market
+        </span>
+    </div>
+</div>
+
+<!-- Market Stats Cards -->
+<div class="stats-grid animate-slide-up">
+    <div class="stat-card">
+        <div class="stat-icon" style="background: rgba(16, 185, 129, 0.1); color: var(--positive);">
+            <i class="fas fa-arrow-up"></i>
+        </div>
+        <div class="stat-info">
+            <span class="stat-label">Advancers</span>
+            <span class="stat-value" style="color: var(--positive);">{{ advancers }}</span>
+        </div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon" style="background: rgba(239, 68, 68, 0.1); color: var(--negative);">
+            <i class="fas fa-arrow-down"></i>
+        </div>
+        <div class="stat-info">
+            <span class="stat-label">Decliners</span>
+            <span class="stat-value" style="color: var(--negative);">{{ decliners }}</span>
+        </div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon" style="background: rgba(107, 114, 128, 0.1); color: var(--tms-text-light);">
+            <i class="fas fa-minus"></i>
+        </div>
+        <div class="stat-info">
+            <span class="stat-label">Unchanged</span>
+            <span class="stat-value">{{ unchanged }}</span>
+        </div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon" style="background: rgba(59, 130, 246, 0.1); color: var(--tms-blue);">
+            <i class="fas fa-globe"></i>
+        </div>
+        <div class="stat-info">
+            <span class="stat-label">Total Symbols</span>
+            <span class="stat-value">{{ total_symbols }}</span>
+        </div>
+    </div>
+</div>
+
+<!-- Index Chart -->
+<div class="card animate-slide-up" style="margin-bottom: 24px;">
+    <div class="card-header">
+        <h3 class="card-title">NEPSE Index Today</h3>
+        <span class="index-value" style="color: var(--positive);">2,605.63 <i class="fas fa-caret-up"></i></span>
+    </div>
+    <div style="height: 250px; position: relative;">
+        <canvas id="indexChart"></canvas>
+    </div>
+</div>
+
+<div class="two-column-grid">
+    <!-- Top Gainers -->
+    <div class="card animate-slide-up">
+        <div class="card-header">
+            <h3 class="card-title"><i class="fas fa-arrow-up" style="color: var(--positive);"></i> Top Gainers</h3>
+        </div>
+        <div class="table-container">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Symbol</th>
+                        <th>LTP</th>
+                        <th>Change</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in top_gainers[:8] %}
+                    <tr>
+                        <td><strong>{{ row.Symbol }}</strong></td>
+                        <td>{{ row.get('LTP', '-') }}</td>
+                        <td class="text-positive">+{{ "%.2f"|format(row.get('Diff %', 0)) }}%</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Top Losers -->
+    <div class="card animate-slide-up">
+        <div class="card-header">
+            <h3 class="card-title"><i class="fas fa-arrow-down" style="color: var(--negative);"></i> Top Losers</h3>
+        </div>
+        <div class="table-container">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Symbol</th>
+                        <th>LTP</th>
+                        <th>Change</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in top_losers[:8] %}
+                    <tr>
+                        <td><strong>{{ row.Symbol }}</strong></td>
+                        <td>{{ row.get('LTP', '-') }}</td>
+                        <td class="text-negative">{{ "%.2f"|format(row.get('Diff %', 0)) }}%</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Volume Leaders -->
+<div class="card animate-slide-up" style="margin-top: 24px;">
+    <div class="card-header">
+        <h3 class="card-title"><i class="fas fa-fire" style="color: #f59e0b;"></i> Volume Leaders</h3>
+    </div>
+    <div class="table-container">
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Symbol</th>
+                    <th>LTP</th>
+                    <th>Change</th>
+                    <th>Volume</th>
+                    <th>Turnover</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in top_volume[:10] %}
+                <tr>
+                    <td><strong>{{ row.Symbol }}</strong></td>
+                    <td>{{ row.get('LTP', '-') }}</td>
+                    <td class="{{ 'text-positive' if row.get('Diff %', 0) > 0 else 'text-negative' }}">{{ "%.2f"|format(row.get('Diff %', 0)) }}%</td>
+                    <td>{{ row.get('Volume', row.get('Qty', '-')) }}</td>
+                    <td>NPR {{ (float(row.get('LTP', 0).replace(',','') or 0) * 1000)|round|int }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const ctx = document.getElementById('indexChart').getContext('2d');
+    const data = {{ index_history | tojson }};
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: data.map(d => d.time),
+            datasets: [{
+                label: 'NEPSE Index',
+                data: data.map(d => d.value),
+                borderColor: '#00bf8b',
+                backgroundColor: 'rgba(0, 191, 139, 0.1)',
+                fill: true,
+                tension: 0.4,
+                pointRadius: 0,
+                borderWidth: 2,
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { legend: { display: false } },
+            scales: {
+                x: { grid: { display: false }, ticks: { maxTicksLimit: 10 } },
+                y: {
+                    grid: { color: 'rgba(0,0,0,0.05)' },
+                    ticks: { callback: v => v.toFixed(0) }
+                }
+            }
+        }
+    });
+});
+</script>
+{% endblock %}

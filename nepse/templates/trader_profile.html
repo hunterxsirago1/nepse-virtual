@@ -1,0 +1,175 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="page-header animate-fade-in">
+    <div>
+        <h1 class="page-title">Trader Profile</h1>
+        <p class="page-subtitle">Your trading profile, style quiz, and personalized recommendations</p>
+    </div>
+</div>
+
+<div class="three-column-grid">
+    <!-- Profile Card -->
+    <div class="card profile-card animate-slide-up">
+        <div class="profile-avatar">
+            <i class="fas fa-user-circle"></i>
+        </div>
+        <h2 class="profile-name">{{ user.username }}</h2>
+        <span class="profile-badge">Active Trader</span>
+        <div class="profile-stats">
+            <div class="profile-stat">
+                <span class="stat-val">{{ total_trades }}</span>
+                <span class="stat-lbl">Total Trades</span>
+            </div>
+            <div class="profile-stat">
+                <span class="stat-val text-positive">{{ buy_trades }}</span>
+                <span class="stat-lbl">Buys</span>
+            </div>
+            <div class="profile-stat">
+                <span class="stat-val text-negative">{{ sell_trades }}</span>
+                <span class="stat-lbl">Sells</span>
+            </div>
+        </div>
+        <div class="profile-balance">
+            <span>Virtual Cash</span>
+            <strong>NPR {{ "%.2f"|format(user.virtual_cash) }}</strong>
+        </div>
+    </div>
+
+    <!-- Holdings Mini -->
+    <div class="card animate-slide-up" style="grid-column: span 2;">
+        <div class="card-header">
+            <h3 class="card-title">Your Portfolio</h3>
+            <a href="{{ url_for('index') }}" class="btn btn-secondary btn-sm">View All</a>
+        </div>
+        {% if holdings %}
+        <div class="table-container">
+            <table class="data-table">
+                <thead><tr><th>Symbol</th><th>Qty</th><th>WACC</th><th>Current</th><th>P&L</th></tr></thead>
+                <tbody>
+                    {% for h in holdings[:5] %}
+                    <tr>
+                        <td><strong>{{ h.symbol }}</strong></td>
+                        <td>{{ h.total_qty }}</td>
+                        <td>{{ h.wacc }}</td>
+                        <td>{{ h.ltp }}</td>
+                        <td class="{{ 'text-positive' if h.unrealized_pl >= 0 else 'text-negative' }}">
+                            NPR {{ "%.2f"|format(h.unrealized_pl) }}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <div class="empty-state">
+            <i class="fas fa-chart-pie"></i>
+            <p>No holdings yet. Start trading!</p>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+<!-- Trading Style Quiz -->
+<div class="card animate-slide-up" style="margin-top: 24px;">
+    <div class="card-header">
+        <h3 class="card-title"><i class="fas fa-question-circle" style="color: var(--tms-blue);"></i> Trading Style Quiz</h3>
+        <span class="quiz-progress">Question 1 of {{ quiz|length }}</span>
+    </div>
+    <div class="quiz-container" id="quizContainer">
+        {% for q in quiz %}
+        <div class="quiz-question" data-id="{{ q.id }}" style="{{ 'display:none' if loop.index > 1 else '' }}">
+            <h4>{{ q.question }}</h4>
+            <div class="quiz-options">
+                {% for opt in q.options %}
+                <label class="quiz-option">
+                    <input type="radio" name="q{{ q.id }}" value="{{ opt }}">
+                    <span>{{ opt }}</span>
+                </label>
+                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+        <div class="quiz-nav">
+            <button class="btn btn-secondary" onclick="prevQuestion()">Previous</button>
+            <button class="btn btn-primary" onclick="nextQuestion()">Next</button>
+        </div>
+    </div>
+</div>
+
+<!-- Personalized Recommendations -->
+<div class="card animate-slide-up" style="margin-top: 24px;">
+    <div class="card-header">
+        <h3 class="card-title"><i class="fas fa-star" style="color: #f59e0b;"></i> Personalized Recommendations</h3>
+    </div>
+    <div class="recommendations-grid">
+        {% for rec in recommendations %}
+        <div class="rec-card">
+            <div class="rec-header">
+                <strong class="rec-symbol">{{ rec.symbol }}</strong>
+                <span class="rec-score">{{ rec.score }}%</span>
+            </div>
+            <p class="rec-name">{{ rec.name }}</p>
+            <p class="rec-reason">{{ rec.reason }}</p>
+            <div class="rec-actions">
+                <a href="/charts/{{ rec.symbol }}" class="btn btn-primary btn-sm"><i class="fas fa-chart-line"></i> Chart</a>
+                <a href="/ordermgmt/" class="btn btn-secondary btn-sm"><i class="fas fa-plus"></i> Add</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<style>
+.three-column-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 20px; }
+.profile-card { text-align: center; padding: 32px 24px; }
+.profile-avatar { font-size: 4rem; color: var(--tms-blue); margin-bottom: 16px; }
+.profile-name { font-size: 1.4rem; font-weight: 700; margin-bottom: 8px; }
+.profile-badge { background: var(--tms-blue); color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 600; }
+.profile-stats { display: flex; justify-content: space-around; margin: 24px 0; padding: 16px 0; border-top: 1px solid var(--tms-border); border-bottom: 1px solid var(--tms-border); }
+.profile-stat { text-align: center; }
+.stat-val { font-size: 1.5rem; font-weight: 800; display: block; }
+.stat-lbl { font-size: 0.7rem; color: var(--tms-text-light); text-transform: uppercase; }
+.profile-balance { padding: 16px; background: var(--bg-app); border-radius: 12px; }
+.profile-balance span { font-size: 0.75rem; color: var(--tms-text-light); display: block; }
+.profile-balance strong { font-size: 1.2rem; font-weight: 700; }
+.quiz-progress { font-size: 0.85rem; color: var(--tms-text-light); }
+.quiz-container { padding: 24px; }
+.quiz-question h4 { font-size: 1.1rem; font-weight: 600; margin-bottom: 20px; }
+.quiz-options { display: flex; flex-direction: column; gap: 10px; }
+.quiz-option { display: flex; align-items: center; gap: 12px; padding: 14px 16px; background: var(--bg-app); border: 1px solid var(--tms-border); border-radius: 10px; cursor: pointer; font-size: 0.9rem; transition: all 0.2s; }
+.quiz-option:hover { border-color: var(--tms-blue); background: rgba(59, 130, 246, 0.05); }
+.quiz-option input { accent-color: var(--tms-blue); }
+.quiz-nav { display: flex; justify-content: space-between; margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--tms-border); }
+.btn-sm { padding: 6px 14px; font-size: 0.8rem; }
+.recommendations-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; padding: 24px; }
+.rec-card { background: var(--bg-app); border-radius: 12px; padding: 20px; }
+.rec-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+.rec-symbol { font-size: 1.1rem; font-weight: 700; }
+.rec-score { background: var(--positive); color: white; padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; }
+.rec-name { font-size: 0.85rem; color: var(--tms-text-light); margin-bottom: 8px; }
+.rec-reason { font-size: 0.8rem; color: var(--tms-text); line-height: 1.5; margin-bottom: 16px; }
+.rec-actions { display: flex; gap: 8px; }
+.empty-state { text-align: center; padding: 48px; color: var(--tms-text-light); }
+.empty-state i { font-size: 3rem; margin-bottom: 12px; display: block; }
+</style>
+
+<script>
+let currentQ = 1;
+const totalQ = {{ quiz|length }};
+
+function showQuestion(n) {
+    document.querySelectorAll('.quiz-question').forEach((q, i) => {
+        q.style.display = i === n - 1 ? '' : 'none';
+    });
+    document.querySelector('.quiz-progress').textContent = 'Question ' + n + ' of ' + totalQ;
+}
+
+function nextQuestion() {
+    if (currentQ < totalQ) { currentQ++; showQuestion(currentQ); }
+}
+function prevQuestion() {
+    if (currentQ > 1) { currentQ--; showQuestion(currentQ); }
+}
+</script>
+{% endblock %}

@@ -1,0 +1,153 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="page-header animate-fade-in">
+    <div>
+        <h1 class="page-title">Technical Analysis</h1>
+        <p class="page-subtitle">RSI, MACD, Moving Averages, and technical scores</p>
+    </div>
+</div>
+
+<!-- Legend -->
+<div class="card animate-slide-up" style="margin-bottom: 24px;">
+    <div class="tech-legend">
+        <div class="legend-item"><span class="legend-dot positive"></span> RSI < 30 (Oversold)</div>
+        <div class="legend-item"><span class="legend-dot negative"></span> RSI > 70 (Overbought)</div>
+        <div class="legend-item"><span class="legend-dot neutral"></span> RSI 30-70 (Neutral)</div>
+    </div>
+</div>
+
+<div class="table-card card animate-slide-up">
+    <div class="card-header">
+        <h3 class="card-title">Technical Indicators Dashboard</h3>
+        <div class="header-actions">
+            <select class="filter-select">
+                <option>All Sectors</option>
+                <option>Banking</option>
+                <option>Finance</option>
+                <option>Hydropower</option>
+            </select>
+        </div>
+    </div>
+    <div class="table-container">
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Symbol</th>
+                    <th>LTP</th>
+                    <th>RSI</th>
+                    <th>MACD</th>
+                    <th>MA20</th>
+                    <th>MA50</th>
+                    <th>Trend</th>
+                    <th>Tech Score</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in tech_data %}
+                <tr>
+                    <td><strong>{{ row.symbol }}</strong></td>
+                    <td>{{ row.ltp }}</td>
+                    <td>
+                        <span class="rsi-badge {{ 'oversold' if row.rsi < 30 else 'overbought' if row.rsi > 70 else 'neutral' }}">
+                            {{ row.rsi }}
+                        </span>
+                    </td>
+                    <td>
+                        <span class="macd-badge {{ 'bullish' if row.macd == 'Bullish' else 'bearish' if row.macd == 'Bearish' else 'neutral' }}">
+                            {{ row.macd }}
+                        </span>
+                    </td>
+                    <td>{{ row.ma20 }}</td>
+                    <td>{{ row.ma50 }}</td>
+                    <td>
+                        <span class="trend-badge {{ 'up' if row.trend == 'Uptrend' else 'down' }}">
+                            <i class="fas fa-{{ 'arrow-up' if row.trend == 'Uptrend' else 'arrow-down' }}"></i>
+                            {{ row.trend }}
+                        </span>
+                    </td>
+                    <td>
+                        <div class="score-bar">
+                            <div class="score-fill" style="width: {{ row.score }}%; background: {{ 'var(--positive)' if row.score >= 70 else 'var(--tms-blue)' if row.score >= 40 else 'var(--negative)' }};"></div>
+                        </div>
+                        <span class="score-label">{{ row.score }}/100</span>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Indicator Cards -->
+<div class="stats-grid animate-slide-up" style="margin-top: 24px;">
+    <div class="card indicator-card">
+        <div class="indicator-icon" style="background: rgba(0, 191, 139, 0.1); color: var(--positive);">
+            <i class="fas fa-arrow-up"></i>
+        </div>
+        <h4>Bullish Signals</h4>
+        <div class="indicator-value" style="color: var(--positive);">
+            {{ tech_data|selectattr('score', '>', 70)|list|length }}
+        </div>
+        <p>Stocks showing strong buy signals</p>
+    </div>
+    <div class="card indicator-card">
+        <div class="indicator-icon" style="background: rgba(239, 68, 68, 0.1); color: var(--negative);">
+            <i class="fas fa-arrow-down"></i>
+        </div>
+        <h4>Bearish Signals</h4>
+        <div class="indicator-value" style="color: var(--negative);">
+            {{ tech_data|selectattr('score', '<', 40)|list|length }}
+        </div>
+        <p>Stocks showing sell signals</p>
+    </div>
+    <div class="card indicator-card">
+        <div class="indicator-icon" style="background: rgba(59, 130, 246, 0.1); color: var(--tms-blue);">
+            <i class="fas fa-balance-scale"></i>
+        </div>
+        <h4>Neutral Zone</h4>
+        <div class="indicator-value" style="color: var(--tms-blue);">
+            {{ tech_data|selectattr('score', '>=', 40)|selectattr('score', '<=', 70)|list|length }}
+        </div>
+        <p>Stocks in neutral territory</p>
+    </div>
+    <div class="card indicator-card">
+        <div class="indicator-icon" style="background: rgba(139, 92, 246, 0.1); color: #8b5cf6;">
+            <i class="fas fa-fire"></i>
+        </div>
+        <h4>Strong Uptrend</h4>
+        <div class="indicator-value" style="color: #8b5cf6;">
+            {{ tech_data|selectattr('trend', 'equalto', 'Uptrend')|list|length }}
+        </div>
+        <p>Stocks in strong uptrend</p>
+    </div>
+</div>
+
+<style>
+.rsi-badge { padding: 4px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: 600; }
+.rsi-badge.oversold { background: rgba(0, 191, 139, 0.15); color: var(--positive); }
+.rsi-badge.overbought { background: rgba(239, 68, 68, 0.15); color: var(--negative); }
+.rsi-badge.neutral { background: rgba(107, 114, 128, 0.15); color: var(--tms-text-light); }
+.macd-badge { padding: 4px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: 600; }
+.macd-badge.bullish { background: rgba(0, 191, 139, 0.15); color: var(--positive); }
+.macd-badge.bearish { background: rgba(239, 68, 68, 0.15); color: var(--negative); }
+.macd-badge.neutral { background: rgba(107, 114, 128, 0.15); color: var(--tms-text-light); }
+.trend-badge { padding: 4px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: 600; display: inline-flex; align-items: center; gap: 4px; }
+.trend-badge.up { background: rgba(0, 191, 139, 0.15); color: var(--positive); }
+.trend-badge.down { background: rgba(239, 68, 68, 0.15); color: var(--negative); }
+.score-bar { width: 80px; height: 6px; background: var(--tms-border); border-radius: 3px; display: inline-block; vertical-align: middle; margin-right: 6px; overflow: hidden; }
+.score-fill { height: 100%; border-radius: 3px; }
+.score-label { font-size: 0.7rem; font-weight: 600; }
+.tech-legend { display: flex; gap: 24px; padding: 12px 0; }
+.legend-item { display: flex; align-items: center; gap: 8px; font-size: 0.85rem; }
+.legend-dot { width: 10px; height: 10px; border-radius: 50%; }
+.legend-dot.positive { background: var(--positive); }
+.legend-dot.negative { background: var(--negative); }
+.legend-dot.neutral { background: var(--tms-text-light); }
+.indicator-card { text-align: center; padding: 24px; }
+.indicator-card h4 { margin: 12px 0 8px; font-size: 0.9rem; color: var(--tms-text-light); }
+.indicator-value { font-size: 2.5rem; font-weight: 800; }
+.indicator-card p { margin: 8px 0 0; font-size: 0.8rem; color: var(--tms-text-light); }
+.indicator-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin: 0 auto; font-size: 1.2rem; }
+</style>
+{% endblock %}

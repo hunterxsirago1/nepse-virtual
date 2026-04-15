@@ -43,42 +43,80 @@
             </div>
 
             <nav id="sidebarNav">
-                <div class="nav-group-label">Trading</div>
+                <div class="nav-group-label">Dashboard</div>
                 <a href="{{ url_for('index') }}" class="{{ 'active' if request.endpoint == 'index' else '' }}">
                     <i class="fas fa-chart-pie"></i>
-                    <span>Dashboard</span>
+                    <span>Portfolio</span>
+                </a>
+
+                <div class="nav-group-label">Market</div>
+                <a href="{{ url_for('market_summary') }}" class="{{ 'active' if request.endpoint == 'market_summary' else '' }}">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Market Summary</span>
+                </a>
+                <a href="{{ url_for('sector_analysis') }}" class="{{ 'active' if request.endpoint == 'sector_analysis' else '' }}">
+                    <i class="fas fa-layer-group"></i>
+                    <span>Sector Analysis</span>
+                </a>
+                <a href="{{ url_for('volume_analysis') }}" class="{{ 'active' if request.endpoint == 'volume_analysis' else '' }}">
+                    <i class="fas fa-chart-bar"></i>
+                    <span>Volume Analysis</span>
+                </a>
+                <a href="{{ url_for('technical_analysis') }}" class="{{ 'active' if request.endpoint == 'technical_analysis' else '' }}">
+                    <i class="fas fa-math-operations"></i>
+                    <span>Technical Analysis</span>
+                </a>
+
+                <div class="nav-group-label">Trading</div>
+                <a href="{{ url_for('watchlist_page') }}" class="{{ 'active' if request.endpoint == 'watchlist_page' else '' }}">
+                    <i class="fas fa-star"></i>
+                    <span>Watchlist</span>
                 </a>
                 <a href="{{ url_for('order_index') }}" class="{{ 'active' if request.endpoint == 'order_index' else '' }}">
                     <i class="fas fa-exchange-alt"></i>
-                    <span>Buy/Sell Stocks</span>
+                    <span>Paper Trading</span>
                 </a>
-                <a href="{{ url_for('order_history') }}">
-                    <i class="fas fa-history"></i>
-                    <span>Order History</span>
+                <a href="{{ url_for('charts_page') }}" class="{{ 'active' if request.endpoint == 'charts_page' else '' }}">
+                    <i class="fas fa-chart-candle"></i>
+                    <span>Charts</span>
                 </a>
 
-                <div class="nav-group-label">Market Data</div>
-                <a href="{{ url_for('market_index') }}" class="{{ 'active' if request.endpoint == 'market_index' else '' }}">
-                    <i class="fas fa-globe"></i>
-                    <span>Market Explorer</span>
+                <div class="nav-group-label">Intelligence</div>
+                <a href="{{ url_for('signals_page') }}" class="{{ 'active' if request.endpoint == 'signals_page' else '' }}">
+                    <i class="fas fa-brain"></i>
+                    <span>Signals</span>
                 </a>
-                <a href="#">
-                    <i class="fas fa-list-ul"></i>
-                    <span>Market Depth</span>
+                <a href="{{ url_for('broker_analysis') }}" class="{{ 'active' if request.endpoint == 'broker_analysis' else '' }}">
+                    <i class="fas fa-building-columns"></i>
+                    <span>Broker Analysis</span>
                 </a>
-                <a href="#">
-                    <i class="fas fa-building"></i>
-                    <span>Listed Companies</span>
+
+                <div class="nav-group-label">Research</div>
+                <a href="{{ url_for('news_page') }}" class="{{ 'active' if request.endpoint == 'news_page' else '' }}">
+                    <i class="fas fa-newspaper"></i>
+                    <span>NEPSE News</span>
+                </a>
+                <a href="{{ url_for('research_reports') }}" class="{{ 'active' if request.endpoint == 'research_reports' else '' }}">
+                    <i class="fas fa-file-alt"></i>
+                    <span>Research & Reports</span>
+                </a>
+                <a href="{{ url_for('newsletter_page') }}" class="{{ 'active' if request.endpoint == 'newsletter_page' else '' }}">
+                    <i class="fas fa-envelope-open-text"></i>
+                    <span>Newsletter</span>
                 </a>
 
                 <div class="nav-group-label">Account</div>
-                <a href="#">
-                    <i class="fas fa-wallet"></i>
-                    <span>Fund Management</span>
-                </a>
-                <a href="#">
+                <a href="{{ url_for('trader_profile') }}" class="{{ 'active' if request.endpoint == 'trader_profile' else '' }}">
                     <i class="fas fa-user-circle"></i>
-                    <span>My Information</span>
+                    <span>Trader Profile</span>
+                </a>
+                <a href="{{ url_for('order_history') }}">
+                    <i class="fas fa-history"></i>
+                    <span>Transaction History</span>
+                </a>
+                <a href="{{ url_for('order_book') }}">
+                    <i class="fas fa-clock"></i>
+                    <span>Open Orders</span>
                 </a>
             </nav>
             <div style="padding: 15px; background: rgba(59, 130, 246, 0.1); border-radius: 12px; margin-bottom: 20px;">

@@ -3,7 +3,7 @@
 {% block content %}
 <div style="margin-bottom: 24px;">
     <h2 style="font-size: 1.25rem; margin: 0; color: var(--tms-blue-dark); font-weight: 800; letter-spacing: -0.5px;">Trading Terminal</h2>
-    <p style="font-size: 0.85rem; color: var(--tms-text-light); margin-top: 4px; font-weight: 500;">Direct market access - Auto execution at LTP.</p>
+    <p style="font-size: 0.85rem; color: var(--tms-text-light); margin-top: 4px; font-weight: 500;">Direct market access — execute at live prices or place limit/stop-loss orders.</p>
 </div>
 
 <div class="trade-container">
@@ -11,34 +11,52 @@
     <div class="order-entry-card">
         <div class="card-header">
             <h3><i class="fas fa-bolt" style="margin-right: 8px;"></i> Quick Trade</h3>
-            <span id="market-status-indicator" style="font-size: 0.7rem; font-weight: 700; color: var(--positive); background: var(--dark-success-bg, #f0fdf4); padding: 4px 8px; border-radius: 12px; display: flex; align-items: center; gap: 6px;">
-                <i class="fas fa-circle" style="font-size: 0.5rem;"></i> <span id="marketStatusText">LOADING...</span>
+            <span id="market-status-indicator" style="font-size: 0.7rem; font-weight: 700; color: var(--positive); background: var(--bg-widget); padding: 4px 10px; border-radius: 12px; display: flex; align-items: center; gap: 6px;">
+                <i class="fas fa-circle" style="font-size: 0.5rem;"></i>
+                <span id="marketStatusText">LOADING...</span>
             </span>
         </div>
 
-        <div id="statusBanner" style="display: none; padding: 12px 24px; font-size: 0.85rem; font-weight: 600; text-align: center;"></div>
+        <div id="statusBanner" class="status-banner" style="display: none;"></div>
 
         <form id="orderForm" style="padding: 24px;">
+            <!-- Buy/Sell Toggle -->
             <div class="order-toggle-group">
                 <button type="button" class="toggle-btn active-buy" id="buyToggle" onclick="setOrderType('BUY')">BUY</button>
                 <button type="button" class="toggle-btn" id="sellToggle" onclick="setOrderType('SELL')">SELL</button>
                 <input type="hidden" name="trade_type" id="tradeType" value="BUY">
             </div>
 
+            <!-- Order Type Toggle -->
+            <div class="order-type-group" style="display: flex; gap: 8px; margin-bottom: 20px;">
+                <label class="order-type-option">
+                    <input type="radio" name="orderType" value="MARKET" checked onchange="setOrderMode('MARKET')">
+                    <span>Market</span>
+                </label>
+                <label class="order-type-option">
+                    <input type="radio" name="orderType" value="LIMIT" onchange="setOrderMode('LIMIT')">
+                    <span>Limit</span>
+                </label>
+                <label class="order-type-option">
+                    <input type="radio" name="orderType" value="STOP_LOSS" onchange="setOrderMode('STOP_LOSS')">
+                    <span>Stop-Loss</span>
+                </label>
+            </div>
+
             <div class="form-row">
                 <div class="form-group">
                     <label>Symbol</label>
-                    <input list="symbols" name="symbol" id="symbolInput" class="form-control" placeholder="Search (e.g. NICA)" onchange="updatePriceInfo()">
+                    <input list="symbols" name="symbol" id="symbolInput" class="form-control" placeholder="Search (e.g. NICA)" autocomplete="off" oninput="onSymbolInput()">
                     <datalist id="symbols"></datalist>
+                    <small id="symbolError" style="color: var(--negative); font-size: 0.7rem; display: none;"></small>
                 </div>
                 <div class="form-group">
                     <label>Quantity</label>
-                    <input type="number" id="quantity" class="form-control" placeholder="Any positive integer" min="1" step="1">
+                    <input type="number" id="quantity" class="form-control" placeholder="Any positive integer" min="1" step="1" oninput="calculateTotal()">
                     <small id="qtyHint" style="color: var(--tms-text-light); font-size: 0.7rem;"></small>
                 </div>
             </div>
 
-            <!-- Price Info (Read-only) -->
             <div id="priceInfo" class="market-info-strip" style="display: none; margin-bottom: 20px;">
                 <div class="info-box">
                     <span class="info-box-label">LTP</span>
@@ -58,9 +76,24 @@
                 </div>
             </div>
 
+            <!-- Limit/Stop Price Input -->
+            <div id="limitPriceGroup" style="display: none; margin-bottom: 20px;">
+                <div class="form-group">
+                    <label id="limitPriceLabel">Limit Price (NPR)</label>
+                    <input type="number" id="limitPriceInput" class="form-control" placeholder="Enter price" min="0.01" step="0.01" oninput="calculateTotal()">
+                </div>
+                <div class="form-group" style="margin-top: 12px;">
+                    <label>Validity</label>
+                    <select id="orderValidity" class="form-control">
+                        <option value="EOD">EOD (Today only)</option>
+                        <option value="GTC">GTC (Up to 15 days)</option>
+                    </select>
+                </div>
+            </div>
+
             <!-- Fee Breakdown -->
             <div id="feeBreakdown" style="background: var(--bg-widget); padding: 16px; border-radius: 8px; margin-bottom: 20px; display: none; color: var(--tms-text);">
-                <h4 style="margin: 0 0 12px 0; font-size: 0.85rem;">Order Summary</h4>
+                <h4 style="margin: 0 0 12px 0; font-size: 0.85rem; font-weight: 700;">Order Summary</h4>
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 0.85rem;">
                     <div>Gross Amount:</div>
                     <div style="text-align: right; font-weight: 600;" id="grossAmount">0.00</div>
@@ -83,15 +116,20 @@
                     <div id="netLabel" style="border-top: 2px solid var(--tms-text); padding-top: 8px; font-weight: 800; font-size: 1rem;">Total:</div>
                     <div id="netAmount" style="border-top: 2px solid var(--tms-text); padding-top: 8px; text-align: right; font-weight: 800; font-size: 1.1rem; color: var(--tms-blue);">0.00</div>
                 </div>
+                <div id="cgtInfo" style="display: none; margin-top: 8px; font-size: 0.75rem; color: var(--tms-text-light);">
+                    <i class="fas fa-info-circle"></i> <span id="cgtInfoText"></span>
+                </div>
             </div>
 
             <div class="order-footer">
                 <div>
-                    <span class="total-summary-label">Total Amount</span>
+                    <span class="total-summary-label" id="totalLabel">Total Amount</span>
                     <div class="total-summary-value">NPR <span id="totalDisplay">0.00</span></div>
-                    <small style="color: var(--tms-text-light); font-size: 0.75rem;">Auto-executes at LTP</small>
+                    <small id="orderTypeHint" style="color: var(--tms-text-light); font-size: 0.75rem;">Auto-executes at LTP</small>
                 </div>
-                <button type="button" class="btn-execute" id="submitOrderBtn" style="background: var(--positive);">EXECUTE BUY</button>
+                <button type="button" class="btn-execute" id="submitOrderBtn" style="background: var(--positive);">
+                    EXECUTE BUY
+                </button>
             </div>
         </form>
     </div>
@@ -105,17 +143,22 @@
             <div style="padding: 20px;">
                 <span style="font-size: 0.75rem; color: var(--tms-text-light); font-weight: 700;">AVAILABLE FUNDS</span>
                 <div style="font-size: 1.5rem; font-weight: 800; color: var(--tms-blue-dark); margin-top: 4px;">NPR {{ "{:,.2f}".format(user.virtual_cash) }}</div>
+                <div style="margin-top: 8px; font-size: 0.8rem; color: var(--tms-text-light);">
+                    Buying Power: <strong style="color: var(--tms-blue);">{{ "{:,.2f}".format(user.virtual_cash) }}</strong>
+                </div>
             </div>
         </div>
 
         <div class="card" style="background: var(--tms-blue-dark); color: white; border: none;">
             <div style="padding: 24px;">
-                <h3 style="color: white; font-size: 1rem; margin-bottom: 12px;">NEPSE Rules</h3>
-                <ul style="font-size: 0.85rem; opacity: 0.8; line-height: 1.6; padding-left: 20px;">
-                    <li>T+2 Settlement</li>
-                    <li>No same-day selling</li>
-                    <li>±10% price band</li>
-                    <li>CGT: 7.5% / 5%</li>
+                <h3 style="color: white; font-size: 1rem; margin-bottom: 12px;">NEPSE Trading Rules</h3>
+                <ul style="font-size: 0.85rem; opacity: 0.8; line-height: 1.8; padding-left: 20px;">
+                    <li>T+2 Settlement (T+1 in testing)</li>
+                    <li>&plusmn;10% Daily Price Band</li>
+                    <li>CGT: 7.5% (&lt;1yr) / 5% (&ge;1yr)</li>
+                    <li>Broker Commission: 0.243%–0.36%</li>
+                    <li>SEBON Fee: 0.015%</li>
+                    <li>DP Charge: NPR 25/transaction</li>
                 </ul>
             </div>
         </div>
@@ -143,12 +186,12 @@
                                 <span style="color: {% if txn.type == 'BUY' %}var(--positive){% else %}var(--negative){% endif %}; font-weight: 800;">{{ txn.type }}</span>
                             </td>
                             <td style="padding: 10px; border-bottom: 1px solid var(--tms-border);">{{ txn.qty }}</td>
-                            <td style="padding: 10px; border-bottom: 1px solid var(--tms-border);">{{ txn.price }}</td>
+                            <td style="padding: 10px; border-bottom: 1px solid var(--tms-border);">{{ "{:,.2f}".format(txn.price) }}</td>
                         </tr>
                         {% endfor %}
                         {% if not recent_transactions %}
                         <tr>
-                            <td colspan="4" style="padding: 20px; text-align: center; color: var(--tms-text-light);">No recent trades</td>
+                            <td colspan="4" style="padding: 20px; text-align: center; color: var(--tms-text-light);">No recent trades yet</td>
                         </tr>
                         {% endif %}
                     </tbody>
@@ -158,9 +201,49 @@
     </div>
 </div>
 
+<style>
+.status-banner {
+    padding: 12px 24px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-align: center;
+    border-radius: 0;
+}
+.status-banner.success {
+    background: #dcfce7;
+    color: #166534;
+}
+.status-banner.error {
+    background: #fee2e2;
+    color: #991b1b;
+}
+.order-type-group {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+.order-type-option {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--tms-text-light);
+}
+.order-type-option input[type="radio"] {
+    accent-color: var(--tms-blue);
+}
+.order-type-option:has(input:checked) {
+    color: var(--tms-blue);
+    font-weight: 700;
+}
+</style>
+
 <script>
     let marketData = {};
     let currentOrderType = 'BUY';
+    let currentOrderMode = 'MARKET'; // MARKET, LIMIT, STOP_LOSS
     let currentHolding = null;
     let currentLTP = 0;
 
@@ -173,39 +256,41 @@
             if (data.is_open) {
                 statusText.innerText = data.phase;
                 indicator.style.color = 'var(--positive)';
-                indicator.style.background = 'var(--dark-success-bg, #f0fdf4)';
             } else {
                 statusText.innerText = 'CLOSED';
                 indicator.style.color = 'var(--negative)';
-                indicator.style.background = 'var(--dark-error-bg, #fef2f2)';
             }
+        })
+        .catch(() => {
+            document.getElementById('marketStatusText').innerText = 'ERROR';
         });
 
     // Load market data
     fetch('/api/market_data')
         .then(res => res.json())
         .then(data => {
+            marketData = data.data || {};
             const dl = document.getElementById('symbols');
-            marketData = data.data;
-            for (let symbol in marketData) {
-                let opt = document.createElement('option');
+            Object.keys(marketData).forEach(symbol => {
+                const opt = document.createElement('option');
                 opt.value = symbol;
                 dl.appendChild(opt);
-            }
+            });
 
             // Handle URL Parameters
             const urlParams = new URLSearchParams(window.location.search);
             const symbolParam = urlParams.get('symbol');
             const typeParam = urlParams.get('type');
-
             if (symbolParam) {
                 document.getElementById('symbolInput').value = symbolParam;
                 updatePriceInfo();
             }
-
             if (typeParam) {
                 setOrderType(typeParam.toUpperCase());
             }
+        })
+        .catch(err => {
+            console.error('Failed to load market data:', err);
         });
 
     function setOrderType(type) {
@@ -216,103 +301,166 @@
         const submitBtn = document.getElementById('submitOrderBtn');
 
         if (type === 'BUY') {
-            buyToggle.classList.add('active-buy');
-            sellToggle.classList.remove('active-sell');
+            buyToggle.className = 'toggle-btn active-buy';
+            sellToggle.className = 'toggle-btn';
             submitBtn.style.background = 'var(--positive)';
-            submitBtn.innerText = 'EXECUTE BUY';
+            submitBtn.innerText = currentOrderMode === 'MARKET' ? 'EXECUTE BUY' : 'PLACE BUY ORDER';
         } else {
-            buyToggle.classList.remove('active-buy');
-            sellToggle.classList.add('active-sell');
+            buyToggle.className = 'toggle-btn';
+            sellToggle.className = 'toggle-btn active-sell';
             submitBtn.style.background = 'var(--negative)';
-            submitBtn.innerText = 'EXECUTE SELL';
+            submitBtn.innerText = currentOrderMode === 'MARKET' ? 'EXECUTE SELL' : 'PLACE SELL ORDER';
         }
+        updatePriceInfo();
+    }
+
+    function setOrderMode(mode) {
+        currentOrderMode = mode;
+        const limitGroup = document.getElementById('limitPriceGroup');
+        const limitLabel = document.getElementById('limitPriceLabel');
+        const hint = document.getElementById('orderTypeHint');
+        const submitBtn = document.getElementById('submitOrderBtn');
+        const totalLabel = document.getElementById('totalLabel');
+
+        if (mode === 'MARKET') {
+            limitGroup.style.display = 'none';
+            hint.innerText = 'Auto-executes at LTP';
+            totalLabel.innerText = 'Total Amount';
+        } else if (mode === 'LIMIT') {
+            limitGroup.style.display = 'block';
+            limitLabel.innerText = 'Limit Price (NPR)';
+            hint.innerText = 'Executes when price reaches limit';
+            totalLabel.innerText = 'Order Total';
+        } else {
+            limitGroup.style.display = 'block';
+            limitLabel.innerText = 'Stop Price (NPR)';
+            hint.innerText = 'Triggers market sell when price drops to stop';
+            totalLabel.innerText = 'Stop Order Total';
+        }
+
+        setOrderType(currentOrderType);
+        calculateTotal();
+    }
+
+    function onSymbolInput() {
+        updatePriceInfo();
         calculateTotal();
     }
 
     function updatePriceInfo() {
         const symbol = document.getElementById('symbolInput').value.toUpperCase();
         const info = marketData[symbol];
+        const symbolError = document.getElementById('symbolError');
 
         if (info) {
             currentLTP = info.ltp;
+            symbolError.style.display = 'none';
             document.getElementById('priceInfo').style.display = 'grid';
             document.getElementById('ltpInfo').innerText = info.ltp.toFixed(2);
             document.getElementById('prevInfo').innerText = info.prev_close.toFixed(2);
             document.getElementById('upperInfo').innerText = info.upper_circuit.toFixed(2);
             document.getElementById('lowerInfo').innerText = info.lower_circuit.toFixed(2);
 
-            // Check if user owns this stock (for sell)
+            if (currentOrderMode !== 'MARKET') {
+                const limInput = document.getElementById('limitPriceInput');
+                if (!limInput.value) {
+                    limInput.placeholder = 'e.g. ' + info.ltp.toFixed(2);
+                }
+            }
+
             if (currentOrderType === 'SELL') {
                 fetch('/api/holdings')
                     .then(res => res.json())
                     .then(data => {
-                        const holding = data.holdings.find(h => h.symbol === symbol);
+                        const holding = (data.holdings || []).find(h => h.symbol === symbol);
                         currentHolding = holding;
                         const qtyHint = document.getElementById('qtyHint');
                         if (holding) {
-                            qtyHint.innerText = `Owned: ${holding.total_qty} shares (${holding.settled_qty} settled)`;
+                            qtyHint.innerText = `Owned: ${holding.total_qty} shares (${holding.settled_qty} settled, ${holding.pending_qty} pending)`;
+                            qtyHint.style.color = 'var(--tms-text-light)';
                         } else {
                             qtyHint.innerText = 'You do not own this stock';
+                            qtyHint.style.color = 'var(--negative)';
                         }
                         calculateTotal();
                     });
             } else {
                 currentHolding = null;
                 document.getElementById('qtyHint').innerText = 'Any positive integer accepted';
+                document.getElementById('qtyHint').style.color = 'var(--tms-text-light)';
                 calculateTotal();
             }
+        } else if (symbol.length > 0) {
+            document.getElementById('priceInfo').style.display = 'none';
+            currentLTP = 0;
+            symbolError.innerText = `Symbol "${symbol}" not found in market data`;
+            symbolError.style.display = 'block';
         } else {
             document.getElementById('priceInfo').style.display = 'none';
             currentLTP = 0;
+            symbolError.style.display = 'none';
         }
+    }
+
+    function getEffectivePrice() {
+        if (currentOrderMode === 'MARKET') {
+            return currentLTP;
+        }
+        return parseFloat(document.getElementById('limitPriceInput').value) || 0;
     }
 
     function calculateTotal() {
         const symbol = document.getElementById('symbolInput').value.toUpperCase();
         const qty = parseInt(document.getElementById('quantity').value) || 0;
-        const price = currentLTP;
+        const price = getEffectivePrice();
 
         if (symbol && qty > 0 && price > 0) {
             const endpoint = currentOrderType === 'BUY' ? '/api/calculate/buy' : '/api/calculate/sell';
             fetch(endpoint, {
                 method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({symbol, quantity: qty, price})
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ symbol, quantity: qty, price })
             })
             .then(res => res.json())
             .then(data => {
                 if (data.success) {
                     document.getElementById('feeBreakdown').style.display = 'block';
-
                     const fees = data.fees;
-                    document.getElementById('grossAmount').innerText = fees.gross.toLocaleString();
-                    document.getElementById('commissionAmt').innerText = fees.commission.toLocaleString();
-                    document.getElementById('sebonAmt').innerText = fees.sebon.toLocaleString();
-                    document.getElementById('dpAmt').innerText = fees.dp.toLocaleString();
-                    document.getElementById('totalFees').innerText = fees.total_fees.toLocaleString();
+                    document.getElementById('grossAmount').innerText = fees.gross.toLocaleString('en-US', {minimumFractionDigits: 2});
+                    document.getElementById('commissionAmt').innerText = fees.commission.toLocaleString('en-US', {minimumFractionDigits: 2});
+                    document.getElementById('sebonAmt').innerText = fees.sebon.toLocaleString('en-US', {minimumFractionDigits: 2});
+                    document.getElementById('dpAmt').innerText = fees.dp.toLocaleString('en-US', {minimumFractionDigits: 2});
+                    document.getElementById('totalFees').innerText = fees.total_fees.toLocaleString('en-US', {minimumFractionDigits: 2});
 
                     if (currentOrderType === 'BUY') {
                         document.getElementById('netLabel').innerText = 'Total Paid:';
-                        document.getElementById('netAmount').innerText = fees.total_paid.toLocaleString();
+                        document.getElementById('netAmount').innerText = fees.total_paid.toLocaleString('en-US', {minimumFractionDigits: 2});
                         document.getElementById('netAmount').style.color = 'var(--tms-blue)';
                         document.getElementById('cgtLabel').style.display = 'none';
                         document.getElementById('cgtAmt').style.display = 'none';
-                        document.getElementById('totalDisplay').innerText = fees.total_paid.toLocaleString();
+                        document.getElementById('cgtInfo').style.display = 'none';
+                        document.getElementById('totalDisplay').innerText = fees.total_paid.toLocaleString('en-US', {minimumFractionDigits: 2});
                     } else {
                         const cgt = data.cgt;
                         document.getElementById('cgtLabel').style.display = 'block';
                         document.getElementById('cgtAmt').style.display = 'block';
-                        document.getElementById('cgtAmt').innerText = cgt.cgt.toLocaleString();
-
+                        document.getElementById('cgtAmt').innerText = cgt.cgt.toLocaleString('en-US', {minimumFractionDigits: 2});
+                        document.getElementById('cgtInfo').style.display = 'block';
+                        document.getElementById('cgtInfoText').innerText = `Held ${cgt.holding_days} days — ${cgt.cgt_rate} CGT applied`;
                         document.getElementById('netLabel').innerText = 'Net Received:';
-                        document.getElementById('netAmount').innerText = cgt.net_received.toLocaleString();
+                        document.getElementById('netAmount').innerText = cgt.net_received.toLocaleString('en-US', {minimumFractionDigits: 2});
                         document.getElementById('netAmount').style.color = 'var(--positive)';
-                        document.getElementById('totalDisplay').innerText = cgt.net_received.toLocaleString();
+                        document.getElementById('totalDisplay').innerText = cgt.net_received.toLocaleString('en-US', {minimumFractionDigits: 2});
                     }
                 } else {
                     document.getElementById('feeBreakdown').style.display = 'none';
-                    showError(data.message);
+                    document.getElementById('totalDisplay').innerText = '0.00';
+                    showBanner(data.message || 'Error calculating order', 'error');
                 }
+            })
+            .catch(err => {
+                console.error('Calculation error:', err);
+                document.getElementById('feeBreakdown').style.display = 'none';
             });
         } else {
             document.getElementById('feeBreakdown').style.display = 'none';
@@ -320,60 +468,84 @@
         }
     }
 
-    function showError(msg) {
+    function showBanner(msg, type) {
         const banner = document.getElementById('statusBanner');
-        const isDark = document.body.classList.contains('dark-theme');
-        banner.style.background = isDark ? 'var(--dark-error-bg)' : '#fee2e2';
-        banner.style.color = isDark ? '#fca5a5' : '#991b1b';
         banner.innerText = msg;
+        banner.className = 'status-banner ' + type;
         banner.style.display = 'block';
-        setTimeout(() => { banner.style.display = 'none'; }, 5000);
+        setTimeout(() => { banner.style.display = 'none'; }, 6000);
     }
-
-    document.getElementById('quantity').addEventListener('input', calculateTotal);
 
     document.getElementById('submitOrderBtn').addEventListener('click', function() {
         const symbol = document.getElementById('symbolInput').value.toUpperCase();
         const qty = parseInt(document.getElementById('quantity').value);
-        const price = currentLTP;
+        const price = getEffectivePrice();
 
-        if (!symbol || !qty || !price) {
-            showError('Please select a symbol and enter quantity');
-            return;
+        if (!symbol) { showBanner('Please select a symbol', 'error'); return; }
+        if (!qty || qty <= 0) { showBanner('Please enter a valid quantity', 'error'); return; }
+        if (price <= 0) { showBanner('Please enter a valid price', 'error'); return; }
+
+        const banner = document.getElementById('statusBanner');
+        banner.style.display = 'none';
+
+        const submitBtn = document.getElementById('submitOrderBtn');
+        submitBtn.disabled = true;
+        submitBtn.innerText = 'PROCESSING...';
+
+        if (currentOrderMode === 'MARKET') {
+            // Immediate execution
+            const endpoint = currentOrderType === 'BUY' ? '/api/execute/buy' : '/api/execute/sell';
+            fetch(endpoint, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ symbol, quantity: qty, price })
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    showBanner(data.message, 'success');
+                    setTimeout(() => { location.href = '/'; }, 2000);
+                } else {
+                    showBanner('Error: ' + data.message, 'error');
+                    submitBtn.disabled = false;
+                    submitBtn.innerText = currentOrderType === 'BUY' ? 'EXECUTE BUY' : 'EXECUTE SELL';
+                }
+            })
+            .catch(err => {
+                showBanner('Network Error: ' + err.message, 'error');
+                submitBtn.disabled = false;
+            });
+        } else {
+            // Place pending order
+            const validity = document.getElementById('orderValidity').value;
+            fetch('/api/orders', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    symbol,
+                    side: currentOrderType,
+                    order_type: currentOrderMode,
+                    quantity: qty,
+                    price: price,
+                    validity: validity
+                })
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    showBanner(data.message, 'success');
+                    setTimeout(() => { location.reload(); }, 2000);
+                } else {
+                    showBanner('Error: ' + data.message, 'error');
+                    submitBtn.disabled = false;
+                    submitBtn.innerText = currentOrderType === 'BUY' ? 'PLACE BUY ORDER' : 'PLACE SELL ORDER';
+                }
+            })
+            .catch(err => {
+                showBanner('Network Error: ' + err.message, 'error');
+                submitBtn.disabled = false;
+            });
         }
-
-        const statusBanner = document.getElementById('statusBanner');
-        statusBanner.style.display = 'none';
-
-        const endpoint = currentOrderType === 'BUY' ? '/api/execute/buy' : '/api/execute/sell';
-
-        fetch(endpoint, {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({symbol, quantity: qty, price})
-        })
-        .then(res => res.json())
-        .then(data => {
-            const isDark = document.body.classList.contains('dark-theme');
-            if (data.success) {
-                statusBanner.style.background = isDark ? 'var(--dark-success-bg)' : '#dcfce7';
-                statusBanner.style.color = isDark ? '#86efac' : '#166534';
-                statusBanner.innerText = data.message;
-                statusBanner.style.display = 'block';
-
-                setTimeout(() => {
-                    location.href = '/';
-                }, 1500);
-            } else {
-                statusBanner.style.background = isDark ? 'var(--dark-error-bg)' : '#fee2e2';
-                statusBanner.style.color = isDark ? '#fca5a5' : '#991b1b';
-                statusBanner.innerText = 'Error: ' + data.message;
-                statusBanner.style.display = 'block';
-            }
-        })
-        .catch(err => {
-            showError('Network Error: ' + err.message);
-        });
     });
 </script>
 {% endblock %}

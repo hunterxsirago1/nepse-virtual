@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="page-header animate-fade-in">
+    <div>
+        <h1 class="page-title">Sector Analysis</h1>
+        <p class="page-subtitle">Performance breakdown across NEPSE sectors</p>
+    </div>
+</div>
+
+{% if sector_stats %}
+<div class="sector-heatmap animate-slide-up">
+    {% for sector in sector_stats %}
+    <div class="sector-card" style="--change: {{ sector.avg_change }};">
+        <div class="sector-name">{{ sector.sector }}</div>
+        <div class="sector-change {{ 'positive' if sector.avg_change > 0 else 'negative' if sector.avg_change < 0 else 'neutral' }}">
+            {{ "%.2f"|format(sector.avg_change) }}%
+        </div>
+        <div class="sector-count">{{ sector.count }} stocks</div>
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+
+<div class="two-column-grid" style="margin-top: 24px;">
+    <div class="card animate-slide-up">
+        <div class="card-header">
+            <h3 class="card-title">Sector Performance</h3>
+        </div>
+        <div style="height: 300px;">
+            <canvas id="sectorChart"></canvas>
+        </div>
+    </div>
+    <div class="card animate-slide-up">
+        <div class="card-header">
+            <h3 class="card-title">Sector Distribution</h3>
+        </div>
+        <div style="height: 300px;">
+            <canvas id="sectorPieChart"></canvas>
+        </div>
+    </div>
+</div>
+
+<div class="card animate-slide-up" style="margin-top: 24px;">
+    <div class="card-header">
+        <h3 class="card-title">Sector Details</h3>
+    </div>
+    <div class="table-container">
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Sector</th>
+                    <th>Stocks</th>
+                    <th>Avg Change</th>
+                    <th>Performance</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for sector in sector_stats %}
+                <tr>
+                    <td><strong>{{ sector.sector }}</strong></td>
+                    <td>{{ sector.count }}</td>
+                    <td class="{{ 'text-positive' if sector.avg_change > 0 else 'text-negative' }}">
+                        {{ "%.2f"|format(sector.avg_change) }}%
+                    </td>
+                    <td>
+                        <div class="performance-bar">
+                            <div class="bar-fill {{ 'positive' if sector.avg_change > 0 else 'negative' }}" style="width: {{ (sector.avg_change + 10) * 5 }}%;"></div>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const stats = {{ sector_stats | tojson }};
+    const labels = stats.map(s => s.sector);
+    const values = stats.map(s => parseFloat(s.avg_change.toFixed(2)));
+
+    const colors = values.map(v => v >= 0 ? 'rgba(0, 191, 139, 0.7)' : 'rgba(239, 68, 68, 0.7)');
+
+    new Chart(document.getElementById('sectorChart'), {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Avg Change %',
+                data: values,
+                backgroundColor: colors,
+                borderRadius: 6,
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { legend: { display: false } },
+            scales: {
+                y: {
+                    grid: { color: 'rgba(0,0,0,0.05)' },
+                    ticks: { callback: v => v + '%' }
+                },
+                x: { grid: { display: false } }
+            }
+        }
+    });
+
+    new Chart(document.getElementById('sectorPieChart'), {
+        type: 'doughnut',
+        data: {
+            labels: labels,
+            datasets: [{
+                data: stats.map(s => s.count),
+                backgroundColor: ['#00bf8b','#3b82f6','#f59e0b','#ef4444','#8b5cf6','#ec4899','#14b8a6','#64748b'],
+                borderWidth: 0,
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { legend: { position: 'right' } }
+        }
+    });
+});
+</script>
+{% endblock %}

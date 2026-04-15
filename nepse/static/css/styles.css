@@ -716,6 +716,89 @@ tr:hover {
     color: var(--tms-blue);
 }
 
+/* Page Header Styles */
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 24px;
+    gap: 20px;
+}
+.dashboard-header .header-main {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.page-title {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--tms-blue-dark);
+    margin: 0;
+    letter-spacing: -0.5px;
+}
+.page-subtitle {
+    font-size: 0.85rem;
+    color: var(--tms-text-light);
+    margin: 0;
+    font-weight: 500;
+}
+.header-actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-shrink: 0;
+}
+.btn {
+    padding: 8px 16px;
+    border-radius: var(--radius-sm);
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+}
+.btn-primary {
+    background: var(--tms-blue);
+    color: white;
+}
+.btn-primary:hover {
+    background: var(--tms-blue-dark);
+}
+.btn-secondary {
+    background: var(--bg-widget);
+    color: var(--tms-text);
+    border: 1px solid var(--tms-border);
+}
+.btn-secondary:hover {
+    background: var(--tms-sidebar-hover);
+}
+.animate-fade-in {
+    animation: fadeIn 0.3s ease forwards;
+}
+.animate-slide-up {
+    animation: slideUp 0.3s ease forwards;
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.card-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--tms-blue-dark);
+    margin: 0;
+}
+.text-right { text-align: right !important; }
+.text-center { text-align: center !important; }
+
 /* Responsive Overrides */
 @media (max-width: 1200px) {
     .trade-container { grid-template-columns: 1fr; }

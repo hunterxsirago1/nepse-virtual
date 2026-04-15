@@ -8,7 +8,7 @@
     .dataTables_wrapper .dataTables_paginate .paginate_button.current {
         background: var(--tms-blue) !important;
         color: white !important;
-        border: 1px solid var(--tms-blue-dark) !important;
+        border: 1px solid var(--tms-border) !important;
     }
 
     table.dataTable thead th {
@@ -37,25 +37,61 @@
         margin-left: 8px;
     }
 
-    /* Dark mode table fixes */
     body.dark-theme .dataTables_wrapper .dataTables_filter input {
         background-color: var(--bg-input) !important;
         color: var(--tms-text) !important;
         border-color: var(--tms-border) !important;
     }
-
     body.dark-theme table.dataTable thead th {
         background-color: var(--bg-widget) !important;
     }
-
     body.dark-theme table.dataTable tbody tr:hover {
         background-color: var(--tms-sidebar-hover) !important;
     }
+
+    .watchlist-item {
+        padding: 12px 20px;
+        border-bottom: 1px solid var(--tms-border);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: background 0.15s;
+        cursor: pointer;
+    }
+    .watchlist-item:hover {
+        background: var(--tms-sidebar-hover);
+    }
+    .watchlist-item:last-child {
+        border-bottom: none;
+    }
+    .watchlist-symbol {
+        font-weight: 700;
+        font-size: 0.9rem;
+    }
+    .watchlist-price {
+        font-size: 0.85rem;
+        font-weight: 600;
+    }
+    .watchlist-change {
+        font-size: 0.75rem;
+        font-weight: 700;
+    }
+    .watchlist-change.positive { color: var(--positive); }
+    .watchlist-change.negative { color: var(--negative); }
+
+    .mover-item {
+        padding: 10px 20px;
+        border-bottom: 1px solid var(--tms-border);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .mover-item:last-child { border-bottom: none; }
 </style>
 
 <div class="dashboard-header" style="margin-bottom: 20px;">
     <h1 style="font-size: 1.5rem; margin: 0; color: var(--tms-blue-dark);">NEPSE TMS Dashboard</h1>
-    <p style="font-size: 0.85rem; color: var(--tms-text-light);">Portfolio overview, P&L, and settlement tracking.</p>
+    <p style="font-size: 0.85rem; color: var(--tms-text-light);">Portfolio overview, P&L, and market highlights.</p>
 </div>
 
 <!-- Summary Widgets -->
@@ -103,9 +139,9 @@
     <div class="card" style="margin-bottom: 0;">
         <div class="card-header" style="justify-content: space-between;">
             <h3><i class="fas fa-chart-area" style="margin-right: 8px; color: var(--tms-blue);"></i> NEPSE Index (Intraday)</h3>
-            <span class="text-positive" style="font-weight: 700; font-size: 0.9rem;">2,605.63 (+0.84%)</span>
+            <span id="nepseIndexValue" class="text-positive" style="font-weight: 700; font-size: 0.9rem;">Loading...</span>
         </div>
-        <div style="padding: 15px; height: 300px;">
+        <div style="padding: 15px; height: 280px;">
             <canvas id="indexChart"></canvas>
         </div>
     </div>
@@ -117,7 +153,7 @@
             <a href="{{ url_for('market_index') }}" style="font-size: 0.75rem; color: var(--tms-blue);">Explore</a>
         </div>
         <div id="watchlistContent" style="flex: 1; overflow-y: auto; padding: 0;">
-            <div style="padding: 20px; text-align: center; color: var(--tms-text-light);">
+            <div style="padding: 20px; text-align: center; color: var(--tms-text-light); font-size: 0.85rem;">
                 <i class="fas fa-spinner fa-spin"></i> Loading...
             </div>
         </div>
@@ -144,37 +180,42 @@
                 <button onclick="showMovers('losers')" id="loserTab" style="border:none; padding: 6px 10px; border-radius: 4px; font-size: 0.65rem; cursor:pointer; font-weight: 700; background: transparent; color: var(--tms-text-light);">LOSERS</button>
             </div>
         </div>
-        <div style="padding: 0;">
-            <div id="gainersList" style="display: block;">
-                <table style="width: 100%; border-collapse: collapse;">
-                    <tbody>
-                        {% for item in top_gainers %}
-                        <tr style="border-bottom: 1px solid var(--tms-border);">
-                            <td style="padding: 10px 20px; font-weight: 700;">{{ item.Symbol }}</td>
-                            <td style="padding: 10px 20px; text-align: right;">{{ item.LTP }}</td>
-                            <td style="padding: 10px 20px; text-align: right; color: var(--positive); font-weight: 800;">+{{ item['Diff %'] }}%</td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
+        <div style="padding: 0; max-height: 280px; overflow-y: auto;">
+            <div id="gainersList">
+                {% for item in top_gainers %}
+                <div class="mover-item">
+                    <div>
+                        <span class="watchlist-symbol">{{ item.Symbol }}</span>
+                    </div>
+                    <div style="text-align: right;">
+                        <div class="watchlist-price">{{ item.LTP }}</div>
+                        <div class="watchlist-change positive">+{{ item['Diff %'] }}%</div>
+                    </div>
+                </div>
+                {% else %}
+                <div style="padding: 20px; text-align: center; color: var(--tms-text-light); font-size: 0.85rem;">No gainers data</div>
+                {% endfor %}
             </div>
             <div id="losersList" style="display: none;">
-                <table style="width: 100%; border-collapse: collapse;">
-                    <tbody>
-                        {% for item in top_losers %}
-                        <tr style="border-bottom: 1px solid var(--tms-border);">
-                            <td style="padding: 10px 20px; font-weight: 700;">{{ item.Symbol }}</td>
-                            <td style="padding: 10px 20px; text-align: right;">{{ item.LTP }}</td>
-                            <td style="padding: 10px 20px; text-align: right; color: var(--negative); font-weight: 800;">{{ item['Diff %'] }}%</td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
+                {% for item in top_losers %}
+                <div class="mover-item">
+                    <div>
+                        <span class="watchlist-symbol">{{ item.Symbol }}</span>
+                    </div>
+                    <div style="text-align: right;">
+                        <div class="watchlist-price">{{ item.LTP }}</div>
+                        <div class="watchlist-change negative">{{ item['Diff %'] }}%</div>
+                    </div>
+                </div>
+                {% else %}
+                <div style="padding: 20px; text-align: center; color: var(--tms-text-light); font-size: 0.85rem;">No losers data</div>
+                {% endfor %}
             </div>
         </div>
     </div>
 </div>
 
+<!-- Portfolio Table -->
 <div class="card">
     <div class="card-header">
         <h3><i class="fas fa-briefcase" style="margin-right: 8px;"></i> My Portfolio</h3>
@@ -205,6 +246,9 @@
                         {% if h.is_odd_lot %}
                         <span class="odd-lot-badge">ODD LOT</span>
                         {% endif %}
+                        {% if h.pending_qty > 0 %}
+                        <span class="pending-badge">T+{{ h.pending_qty }}</span>
+                        {% endif %}
                     </td>
                     <td style="text-align: right; font-weight: 700;">{{ h.total_qty }}</td>
                     <td style="text-align: right;">{{ h.settled_qty }}</td>
@@ -217,7 +261,7 @@
                     <td style="text-align: right;" class="{{ 'text-positive' if h.unrealized_pl >= 0 else 'text-negative' }}">
                         {{ "{:,.2f}".format(h.unrealized_pl) }}
                         <br>
-                        <small>({{ "{:,.2f}".format(h.unrealized_pl_pct) }}%)</small>
+                        <small>({{ "{:+.2f}".format(h.unrealized_pl_pct) }}%)</small>
                     </td>
                     <td style="text-align: center;">
                         <div style="display: flex; gap: 8px; justify-content: center;">
@@ -242,94 +286,135 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
 <script>
-    // Portfolio Chart
-    const ctx = document.getElementById('portfolioChart').getContext('2d');
-    const userCash = {{ user.virtual_cash }};
-    const userEquity = {{ total_equity }};
+// Load watchlist via API
+function loadWatchlist() {
+    fetch('/api/watchlist')
+        .then(res => res.json())
+        .then(data => {
+            const container = document.getElementById('watchlistContent');
+            const items = data.watchlist || [];
+            if (items.length === 0) {
+                container.innerHTML = `
+                    <div style="padding: 20px; text-align: center; color: var(--tms-text-light); font-size: 0.85rem;">
+                        <i class="fas fa-star" style="font-size: 1.5rem; opacity: 0.3; display: block; margin-bottom: 8px;"></i>
+                        No symbols in watchlist.<br>
+                        <a href="{{ url_for('market_index') }}" style="color: var(--tms-blue); font-size: 0.8rem;">Add from Market Explorer</a>
+                    </div>`;
+                return;
+            }
+            container.innerHTML = items.map(item => `
+                <div class="watchlist-item" onclick="location.href='{{ url_for('order_index') }}?symbol=${item.symbol}'">
+                    <span class="watchlist-symbol">${item.symbol}</span>
+                    <div style="text-align: right;">
+                        <div class="watchlist-price">${item.ltp.toLocaleString('en-US', {minimumFractionDigits: 2})}</div>
+                        <div class="watchlist-change ${item.diff >= 0 ? 'positive' : 'negative'}">
+                            ${item.diff >= 0 ? '+' : ''}${item.diff_pct.toFixed(2)}%
+                        </div>
+                    </div>
+                </div>`).join('');
+        })
+        .catch(() => {
+            document.getElementById('watchlistContent').innerHTML =
+                '<div style="padding: 20px; text-align: center; color: var(--tms-text-light); font-size: 0.85rem;">Failed to load watchlist</div>';
+        });
+}
+loadWatchlist();
 
-    new Chart(ctx, {
-        type: 'doughnut',
-        data: {
-            labels: ['Cash', 'Equity'],
-            datasets: [{
-                data: [userCash, userEquity],
-                backgroundColor: ['#3b82f6', '#10b981'],
-                borderWidth: 0,
-                hoverOffset: 10
-            }]
+// Refresh watchlist every 60 seconds
+setInterval(loadWatchlist, 60000);
+
+// Portfolio Chart
+const userCash = {{ user.virtual_cash }};
+const userEquity = {{ total_equity }};
+const isDark = document.body.classList.contains('dark-theme');
+
+const chartLabelColor = isDark ? '#f8fafc' : '#334155';
+new Chart(document.getElementById('portfolioChart'), {
+    type: 'doughnut',
+    data: {
+        labels: userEquity > 0 ? ['Cash', 'Equity'] : ['Cash (No Holdings)'],
+        datasets: [{
+            data: userEquity > 0 ? [userCash, userEquity] : [userCash],
+            backgroundColor: userEquity > 0 ? ['#3b82f6', '#10b981'] : ['#3b82f6'],
+            borderWidth: 0,
+            hoverOffset: 10
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                position: 'bottom',
+                labels: {
+                    usePointStyle: true,
+                    padding: 20,
+                    color: chartLabelColor
+                }
+            }
         },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: {
-                    position: 'bottom',
-                    labels: {
-                        usePointStyle: true,
-                        padding: 20,
-                        color: document.body.classList.contains('dark-theme') ? '#f8fafc' : '#334155'
+        cutout: '70%'
+    }
+});
+
+// Market Index Chart
+fetch('/api/market_index')
+    .then(res => res.json())
+    .then(json => {
+        if (json.success && json.data && json.data.length > 0) {
+            document.getElementById('nepseIndexValue').innerText =
+                json.data[json.data.length - 1].value.toLocaleString('en-US', {minimumFractionDigits: 2});
+            new Chart(document.getElementById('indexChart'), {
+                type: 'line',
+                data: {
+                    labels: json.data.map(d => d.time),
+                    datasets: [{
+                        label: 'NEPSE Index',
+                        data: json.data.map(d => d.value),
+                        borderColor: '#3b82f6',
+                        backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                        fill: true,
+                        tension: 0.4,
+                        pointRadius: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        x: { display: true, grid: { display: false }, ticks: { maxTicksLimit: 8, color: isDark ? '#94a3b8' : '#64748b' } },
+                        y: { position: 'right', grid: { color: isDark ? '#334155' : '#f1f5f9' }, ticks: { color: isDark ? '#94a3b8' : '#64748b' } }
                     }
                 }
-            },
-            cutout: '70%'
+            });
         }
+    })
+    .catch(() => {
+        document.getElementById('nepseIndexValue').innerText = 'Unavailable';
     });
 
-    // Market Index Chart
-    fetch('/api/market_index')
-        .then(res => res.json())
-        .then(json => {
-            if (json.success) {
-                const ctxIndex = document.getElementById('indexChart').getContext('2d');
-                const isDark = document.body.classList.contains('dark-theme');
-                new Chart(ctxIndex, {
-                    type: 'line',
-                    data: {
-                        labels: json.data.map(d => d.time),
-                        datasets: [{
-                            label: 'NEPSE Index',
-                            data: json.data.map(d => d.value),
-                            borderColor: '#3b82f6',
-                            backgroundColor: 'rgba(59, 130, 246, 0.1)',
-                            fill: true,
-                            tension: 0.4,
-                            pointRadius: 0
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: { legend: { display: false } },
-                        scales: {
-                            x: { display: true, grid: { display: false }, ticks: { maxTicksLimit: 8, color: isDark ? '#94a3b8' : '#64748b' } },
-                            y: { position: 'right', grid: { color: isDark ? '#334155' : '#f1f5f9' }, ticks: { color: isDark ? '#94a3b8' : '#64748b' } }
-                        }
-                    }
-                });
-            }
-        });
+function showMovers(type) {
+    const gainerBtn = document.getElementById('gainerTab');
+    const loserBtn = document.getElementById('loserTab');
+    const gainersList = document.getElementById('gainersList');
+    const losersList = document.getElementById('losersList');
 
-    function showMovers(type) {
-        const gainerBtn = document.getElementById('gainerTab');
-        const loserBtn = document.getElementById('loserTab');
-        const gainersList = document.getElementById('gainersList');
-        const losersList = document.getElementById('losersList');
-
-        if (type === 'gainers') {
-            gainerBtn.style.background = 'var(--bg-card)';
-            gainerBtn.style.color = 'var(--positive)';
-            loserBtn.style.background = 'transparent';
-            loserBtn.style.color = 'var(--tms-text-light)';
-            gainersList.style.display = 'block';
-            losersList.style.display = 'none';
-        } else {
-            gainerBtn.style.background = 'transparent';
-            gainerBtn.style.color = 'var(--tms-text-light)';
-            loserBtn.style.background = 'var(--bg-card)';
-            loserBtn.style.color = 'var(--negative)';
-            gainersList.style.display = 'none';
-            losersList.style.display = 'block';
-        }
+    if (type === 'gainers') {
+        gainerBtn.style.background = 'var(--bg-card)';
+        gainerBtn.style.color = 'var(--positive)';
+        loserBtn.style.background = 'transparent';
+        loserBtn.style.color = 'var(--tms-text-light)';
+        gainersList.style.display = 'block';
+        losersList.style.display = 'none';
+    } else {
+        gainerBtn.style.background = 'transparent';
+        gainerBtn.style.color = 'var(--tms-text-light)';
+        loserBtn.style.background = 'var(--bg-card)';
+        loserBtn.style.color = 'var(--negative)';
+        gainersList.style.display = 'none';
+        losersList.style.display = 'block';
     }
+}
 </script>
 {% endblock %}

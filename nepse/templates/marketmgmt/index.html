@@ -1,29 +1,24 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<!-- DataTables CSS/JS -->
 <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
 <style>
     .dataTables_wrapper .dataTables_paginate .paginate_button.current {
         background: var(--tms-blue) !important;
         color: white !important;
-        border: 1px solid var(--tms-blue-dark) !important;
+        border: 1px solid var(--tms-border) !important;
         border-radius: var(--radius-sm);
     }
-    
-    /* Fix for floated controls */
     .dataTables_wrapper::after {
         content: "";
         display: table;
         clear: both;
     }
-
     .dataTables_wrapper .dataTables_filter {
         float: right !important;
         margin-bottom: 20px !important;
         position: relative;
     }
-
     .dataTables_wrapper .dataTables_length {
         float: left !important;
         margin-bottom: 15px !important;
@@ -31,7 +26,6 @@
         color: var(--tms-text-light);
         font-weight: 600;
     }
-
     .dataTables_wrapper .dataTables_length select {
         border: 1px solid var(--tms-border) !important;
         border-radius: var(--radius-sm) !important;
@@ -39,19 +33,17 @@
         margin: 0 5px !important;
         outline: none;
     }
-
     .dataTables_wrapper .dataTables_filter label {
         position: relative;
         display: flex;
         align-items: center;
-        color: transparent; /* Hide "Search:" text */
+        color: transparent;
     }
-
     .dataTables_wrapper .dataTables_filter input {
         width: 280px !important;
         border: 1px solid var(--tms-border) !important;
         border-radius: 20px !important;
-        padding: 8px 15px 8px 38px !important; /* Spacing for icon */
+        padding: 8px 15px 8px 38px !important;
         margin-left: 0 !important;
         outline: none;
         background-color: white !important;
@@ -60,13 +52,10 @@
         font-size: 0.88rem;
         color: var(--tms-text);
     }
-
     .dataTables_wrapper .dataTables_filter input:focus {
         border-color: var(--tms-blue) !important;
         box-shadow: 0 0 0 3px rgba(13, 71, 161, 0.1);
     }
-
-    /* Properly positioned search icon */
     .dataTables_wrapper .dataTables_filter label::before {
         content: "\f002";
         font-family: "Font Awesome 5 Free";
@@ -80,26 +69,38 @@
         z-index: 10;
         pointer-events: none;
     }
-
     table.dataTable.no-footer {
         border-bottom: 1px solid var(--tms-border) !important;
     }
     table.dataTable thead th {
         border-bottom: 1px solid var(--tms-border) !important;
     }
+    .price-up { color: var(--positive); font-weight: 700; }
+    .price-down { color: var(--negative); font-weight: 700; }
+    .price-flat { color: var(--tms-text-light); }
+    body.dark-theme .dataTables_wrapper .dataTables_filter input {
+        background-color: var(--bg-input) !important;
+        color: var(--tms-text) !important;
+    }
+    .symbol-cell {
+        font-weight: 700;
+    }
 </style>
 
 <div style="margin-bottom: 24px;">
     <h2 style="font-size: 1.25rem; margin: 0; color: var(--tms-blue-dark); font-weight: 800; letter-spacing: -0.5px;">Market Explorer</h2>
-    <p style="font-size: 0.85rem; color: var(--tms-text-light); margin-top: 4px; font-weight: 500;">Real-time market insights and security data.</p>
+    <p style="font-size: 0.85rem; color: var(--tms-text-light); margin-top: 4px; font-weight: 500;">Real-time market data for all listed securities.</p>
 </div>
 
 <div class="card">
     <div class="card-header">
         <h3><i class="fas fa-chart-line" style="margin-right: 8px;"></i> Live Market Watch</h3>
-        <button onclick="location.reload()" class="btn-primary" style="padding: 6px 12px; font-size: 0.75rem; border: none; border-radius: 4px; background: var(--tms-blue); color: white; cursor: pointer; display: flex; align-items: center; gap: 8px;">
-            <i class="fas fa-sync-alt"></i> Refresh Data
-        </button>
+        <div style="display: flex; gap: 10px; align-items: center;">
+            <span id="lastUpdate" style="font-size: 0.75rem; color: var(--tms-text-light);"></span>
+            <span id="dataStatus" style="font-size: 0.7rem; font-weight: 700; color: var(--positive); background: var(--bg-widget); padding: 3px 8px; border-radius: 10px;">
+                <i class="fas fa-circle" style="font-size: 0.5rem;"></i> LIVE
+            </span>
+        </div>
     </div>
     <div class="table-container" style="padding: 20px;">
         <table id="marketTable" class="display" style="width:100%">
@@ -110,7 +111,8 @@
                     <th style="text-align: right;">High</th>
                     <th style="text-align: right;">Low</th>
                     <th style="text-align: right;">Open</th>
-                    <th style="text-align: right;">Diff (%)</th>
+                    <th style="text-align: right;">Prev Close</th>
+                    <th style="text-align: right;">Change</th>
                     <th style="text-align: center;">Action</th>
                 </tr>
             </thead>
@@ -118,13 +120,14 @@
                 {% for row in table_data %}
                 {% set diff_str = row.get('Diff %', '0')|string|replace('%', '')|replace(',', '')|trim %}
                 {% set diff_val = diff_str|float if diff_str and diff_str != 'nan' else 0 %}
-                <tr class="{{ 'row-positive' if diff_val > 0 else 'row-negative' if diff_val < 0 else 'row-warning' if diff_val == 0 else '' }}">
+                <tr class="{{ 'row-positive' if diff_val > 0 else 'row-negative' if diff_val < 0 else '' }}">
                     <td><span class="symbol-cell">{{ row.get('Symbol', '') }}</span></td>
                     <td style="text-align: right; font-weight: 700;">{{ row.get('LTP', '') }}</td>
                     <td style="text-align: right;">{{ row.get('High', '') }}</td>
                     <td style="text-align: right;">{{ row.get('Low', '') }}</td>
                     <td style="text-align: right;">{{ row.get('Open', '') }}</td>
-                    <td style="text-align: right;" class="{{ 'text-positive' if row.get('Diff %', '0')|string|replace('%', '')|replace(',', '')|float > 0 else 'text-negative' if row.get('Diff %', '0')|string|replace('%', '')|replace(',', '')|float < 0 else '' }}">
+                    <td style="text-align: right;">{{ row.get('Prev. Close', '') }}</td>
+                    <td style="text-align: right;" class="{{ 'price-up' if diff_val > 0 else 'price-down' if diff_val < 0 else 'price-flat' }}">
                         <span style="font-weight: 700;">{{ row.get('Diff', '') }}</span>
                         <br>
                         <small>({{ row.get('Diff %', '') }}%)</small>
@@ -132,9 +135,9 @@
                     <td style="text-align: center;">
                         <div style="display: flex; gap: 10px; justify-content: center; align-items: center;">
                             {% set is_watched = row.get('Symbol') in watchlist_symbols %}
-                            <button onclick="toggleWatchlist('{{ row.get('Symbol') }}', this)" 
-                                    class="watchlist-btn {{ 'active' if is_watched else '' }}" 
-                                    style="background: none; border: none; cursor: pointer; color: var(--watchlist-color, {{ '#f59e0b' if is_watched else '#cbd5e1' }}); font-size: 1.1rem; padding: 0;"
+                            <button onclick="toggleWatchlist('{{ row.get('Symbol') }}', this)"
+                                    class="watchlist-btn {{ 'active' if is_watched else '' }}"
+                                    style="background: none; border: none; cursor: pointer; color: {{ '#f59e0b' if is_watched else '#cbd5e1' }}; font-size: 1.1rem; padding: 0;"
                                     title="{{ 'Remove from Watchlist' if is_watched else 'Add to Watchlist' }}">
                                 <i class="fas fa-star"></i>
                             </button>
@@ -153,38 +156,45 @@
 <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
 <script>
 $(document).ready(function() {
-    $('#marketTable').DataTable({
+    const table = $('#marketTable').DataTable({
         "pageLength": 15,
-        "order": [[ 0, "asc" ]],
+        "order": [[0, "asc"]],
         "language": {
             "search": "",
             "searchPlaceholder": "Filter symbols...",
             "paginate": {
                 "next": '<i class="fas fa-chevron-right"></i>',
                 "previous": '<i class="fas fa-chevron-left"></i>'
-            }
+            },
+            "info": "Showing _START_ to _END_ of _TOTAL_ securities",
+            "infoEmpty": "No securities found",
+            "emptyTable": "No market data available. Data refreshes every 60 seconds."
         }
     });
+
+    // Show last update time
+    const now = new Date();
+    document.getElementById('lastUpdate').innerText = 'Updated: ' + now.toLocaleTimeString();
 });
 
 function toggleWatchlist(symbol, btn) {
-    const isActive = btn.classList.contains('active');
-    const url = isActive ? `/watchlist/delete/${symbol}` : `/watchlist/add/${symbol}`;
-    
-    fetch(url, { method: 'POST' })
+    fetch(`/api/watchlist/${symbol}`, { method: 'POST' })
         .then(res => res.json())
         .then(json => {
             if (json.success) {
-                if (isActive) {
-                    btn.classList.remove('active');
-                    btn.style.color = '#cbd5e1';
-                    btn.title = 'Add to Watchlist';
-                } else {
+                if (json.action === 'added') {
                     btn.classList.add('active');
                     btn.style.color = '#f59e0b';
                     btn.title = 'Remove from Watchlist';
+                } else {
+                    btn.classList.remove('active');
+                    btn.style.color = '#cbd5e1';
+                    btn.title = 'Add to Watchlist';
                 }
             }
+        })
+        .catch(err => {
+            console.error('Watchlist toggle error:', err);
         });
 }
 </script>

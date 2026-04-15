@@ -1,0 +1,256 @@
+- generic [ref=e2]:
+  - complementary [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e6]: 
+      - generic [ref=e7]:
+        - generic [ref=e8]: NEPSE TMS
+        - generic [ref=e9]: Virtual Simulator
+    - generic [ref=e11]:
+      - generic: 
+      - textbox "Search Menu..." [ref=e12]
+    - navigation [ref=e13]:
+      - generic [ref=e14]: Dashboard
+      - link " Portfolio" [ref=e15] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e16]: 
+        - generic [ref=e17]: Portfolio
+      - generic [ref=e18]: Market
+      - link " Market Summary" [ref=e19] [cursor=pointer]:
+        - /url: /market-summary
+        - generic [ref=e20]: 
+        - generic [ref=e21]: Market Summary
+      - link " Sector Analysis" [ref=e22] [cursor=pointer]:
+        - /url: /sector-analysis
+        - generic [ref=e23]: 
+        - generic [ref=e24]: Sector Analysis
+      - link " Volume Analysis" [ref=e25] [cursor=pointer]:
+        - /url: /volume-analysis
+        - generic [ref=e26]: 
+        - generic [ref=e27]: Volume Analysis
+      - link "Technical Analysis" [ref=e28] [cursor=pointer]:
+        - /url: /technical-analysis
+        - generic [ref=e29]: Technical Analysis
+      - generic [ref=e30]: Trading
+      - link " Watchlist" [ref=e31] [cursor=pointer]:
+        - /url: /watchlist-page
+        - generic [ref=e32]: 
+        - generic [ref=e33]: Watchlist
+      - link " Paper Trading" [ref=e34] [cursor=pointer]:
+        - /url: /ordermgmt/
+        - generic [ref=e35]: 
+        - generic [ref=e36]: Paper Trading
+      - link "Charts" [ref=e37] [cursor=pointer]:
+        - /url: /charts
+        - generic [ref=e38]: Charts
+      - generic [ref=e39]: Intelligence
+      - link " Signals" [ref=e40] [cursor=pointer]:
+        - /url: /signals
+        - generic [ref=e41]: 
+        - generic [ref=e42]: Signals
+      - link " Broker Analysis" [ref=e43] [cursor=pointer]:
+        - /url: /broker-analysis
+        - generic [ref=e44]: 
+        - generic [ref=e45]: Broker Analysis
+      - generic [ref=e46]: Research
+      - link " NEPSE News" [ref=e47] [cursor=pointer]:
+        - /url: /news
+        - generic [ref=e48]: 
+        - generic [ref=e49]: NEPSE News
+      - link " Research & Reports" [ref=e50] [cursor=pointer]:
+        - /url: /research-reports
+        - generic [ref=e51]: 
+        - generic [ref=e52]: Research & Reports
+      - link " Newsletter" [ref=e53] [cursor=pointer]:
+        - /url: /newsletter
+        - generic [ref=e54]: 
+        - generic [ref=e55]: Newsletter
+      - generic [ref=e56]: Account
+      - link " Trader Profile" [ref=e57] [cursor=pointer]:
+        - /url: /trader-profile
+        - generic [ref=e58]: 
+        - generic [ref=e59]: Trader Profile
+      - link " Transaction History" [ref=e60] [cursor=pointer]:
+        - /url: /ordermgmt/history
+        - generic [ref=e61]: 
+        - generic [ref=e62]: Transaction History
+      - link " Open Orders" [ref=e63] [cursor=pointer]:
+        - /url: /ordermgmt/orders
+        - generic [ref=e64]: 
+        - generic [ref=e65]: Open Orders
+    - generic [ref=e66]:
+      - generic [ref=e69]: 2026 COMPLIANT
+      - generic [ref=e70]: "Margin Trading: Active"
+      - generic [ref=e71]: "Settlement: T+2 Standard"
+    - generic [ref=e73]:
+      - generic [ref=e74]:
+        - generic [ref=e75]: MY NET WORTH
+        - generic [ref=e76]:
+          - generic [ref=e77]: 
+          - text: LIVE
+      - generic [ref=e78]: NPR 70,443.92
+      - generic [ref=e79]:
+        - generic [ref=e80]: 
+        - text: "-32,022.54 (-100.00%)"
+  - main [ref=e81]:
+    - generic [ref=e82]:
+      - generic [ref=e83]:
+        - generic [ref=e84]:
+          - generic [ref=e85]: NEPSE Index
+          - generic [ref=e86]:
+            - text: 2,605.63
+            - generic [ref=e87]: 
+        - generic [ref=e88]:
+          - generic [ref=e89]: Total Turnover
+          - generic [ref=e90]: NPR 364.76M
+        - generic [ref=e91]:
+          - generic [ref=e92]: 
+          - generic [ref=e93]: CONTINUOUS SESSION
+          - generic [ref=e94]: 00:00:00
+      - generic [ref=e95]:
+        - generic [ref=e96]:
+          - generic [ref=e97]: Trading Balance
+          - text: NPR 70,443.92
+        - generic [ref=e98]:
+          - button "" [ref=e99] [cursor=pointer]:
+            - generic [ref=e100]: 
+          - generic [ref=e102] [cursor=pointer]: 
+    - generic [ref=e104]:
+      - generic [ref=e105]:
+        - combobox [ref=e106]:
+          - option "ACLBSL" [selected]
+          - option "ADBL"
+          - option "AHL"
+          - option "AHPC"
+          - option "AKJCL"
+          - option "AKPL"
+          - option "ALBSL"
+          - option "ALICL"
+          - option "ANLB"
+          - option "API"
+          - option "AVYAN"
+          - option "BANDIPUR"
+          - option "BARUN"
+          - option "BBC"
+          - option "BEDC"
+          - option "BFC"
+          - option "BGWT"
+          - option "BHCL"
+          - option "BHDC"
+          - option "BHL"
+          - option "BHPL"
+          - option "BJHL"
+          - option "BNHC"
+          - option "BNT"
+          - option "BPCL"
+          - option "BUNGAL"
+          - option "C30MF"
+          - option "CBBL"
+          - option "CBLD88"
+          - option "CCBD88"
+          - option "CFCL"
+          - option "CGH"
+          - option "CHCL"
+          - option "CHDC"
+          - option "CHL"
+          - option "CIT"
+          - option "CITY"
+          - option "CIZBD90"
+          - option "CKHL"
+          - option "CLI"
+          - option "CMF2"
+          - option "CORBL"
+          - option "CREST"
+          - option "CSY"
+          - option "CYCL"
+          - option "CZBIL"
+          - option "DDBL"
+          - option "DHEL"
+          - option "DHPL"
+          - option "DLBS"
+        - generic [ref=e107]:
+          - generic [ref=e108]: NPR 531.90
+          - generic [ref=e109]: +0.36%
+        - generic [ref=e110]:
+          - button "1D" [ref=e111] [cursor=pointer]
+          - button "1W" [ref=e112] [cursor=pointer]
+          - button "1M" [ref=e113] [cursor=pointer]
+          - button "3M" [ref=e114] [cursor=pointer]
+          - button "6M" [ref=e115] [cursor=pointer]
+          - button "1Y" [ref=e116] [cursor=pointer]
+      - generic [ref=e117]:
+        - generic [ref=e118]: Overlay
+        - button "SMA20" [ref=e119] [cursor=pointer]
+        - button "SMA50" [ref=e120] [cursor=pointer]
+        - button "SMA200" [ref=e121] [cursor=pointer]
+        - button "EMA20" [ref=e122] [cursor=pointer]
+        - button "EMA50" [ref=e123] [cursor=pointer]
+        - button "Bollinger" [ref=e124] [cursor=pointer]
+        - generic [ref=e126]: Panel
+        - button "RSI" [ref=e127] [cursor=pointer]
+        - button "MACD" [ref=e128] [cursor=pointer]
+        - button "Volume" [ref=e129] [cursor=pointer]
+        - button " Clear" [ref=e131] [cursor=pointer]:
+          - generic [ref=e132]: 
+          - text: Clear
+      - generic [ref=e133]:
+        - button "Candlestick" [ref=e134] [cursor=pointer]:
+          - img [ref=e135]
+        - button "" [ref=e144] [cursor=pointer]:
+          - generic [ref=e145]: 
+        - button "" [ref=e146] [cursor=pointer]:
+          - generic [ref=e147]: 
+        - button "" [ref=e148] [cursor=pointer]:
+          - generic [ref=e149]: 
+      - generic [ref=e150]:
+        - table [ref=e153]:
+          - row "Charting by TradingView" [ref=e154]:
+            - cell
+            - cell "Charting by TradingView" [ref=e155]:
+              - link "Charting by TradingView" [ref=e159] [cursor=pointer]:
+                - /url: https://www.tradingview.com/?utm_medium=lwc-link&utm_campaign=lwc-chart&utm_source=localhost/charts/NABIL
+                - img [ref=e160]
+            - cell [ref=e164]
+          - row [ref=e168]:
+            - cell
+            - cell [ref=e169]
+            - cell [ref=e173]
+        - generic:
+          - generic:
+            - text: O
+            - strong: "466.62"
+          - generic:
+            - text: H
+            - strong: "476.64"
+          - generic:
+            - text: L
+            - strong: "465.78"
+          - generic:
+            - text: C
+            - strong: "471.82"
+          - generic:
+            - text: V
+            - strong: 23,163
+      - generic [ref=e176]:
+        - generic [ref=e177]:
+          - generic [ref=e178]:
+            - text: BUY @
+            - strong [ref=e179]: "531.90"
+          - spinbutton [ref=e180]
+          - generic [ref=e181]:
+            - text: "Total:"
+            - strong [ref=e182]: NPR 0
+        - generic [ref=e183]:
+          - button " Buy" [ref=e184] [cursor=pointer]:
+            - generic [ref=e185]: 
+            - text: Buy
+          - button " Sell" [ref=e186] [cursor=pointer]:
+            - generic [ref=e187]: 
+            - text: Sell
+        - generic [ref=e188]:
+          - generic [ref=e189]:
+            - text: SELL @
+            - strong [ref=e190]: "531.90"
+          - spinbutton [ref=e191]
+          - generic [ref=e192]:
+            - text: "Proceeds:"
+            - strong [ref=e193]: NPR 0

@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="page-header animate-fade-in">
+    <div>
+        <h1 class="page-title">Research & Reports</h1>
+        <p class="page-subtitle">Market analysis, sector deep-dives, and educational content</p>
+    </div>
+</div>
+
+<!-- Categories -->
+<div class="category-tabs animate-slide-up">
+    <button class="tab-btn active" data-category="all">All</button>
+    {% for cat in categories %}
+    <button class="tab-btn" data-category="{{ cat }}">{{ cat }}</button>
+    {% endfor %}
+</div>
+
+<!-- Reports Grid -->
+<div class="reports-grid animate-slide-up">
+    {% for report in reports %}
+    <article class="report-card" data-category="{{ report.category }}">
+        <div class="report-header">
+            <span class="report-category">{{ report.category }}</span>
+            <span class="report-views"><i class="fas fa-eye"></i> {{ report.views }}</span>
+        </div>
+        <h3 class="report-title">{{ report.title }}</h3>
+        <p class="report-summary">{{ report.summary }}</p>
+        <div class="report-footer">
+            <div class="report-author">
+                <i class="fas fa-user"></i> {{ report.author }}
+            </div>
+            <div class="report-date">
+                <i class="fas fa-calendar"></i> {{ report.date }}
+            </div>
+        </div>
+        <button class="btn btn-primary" style="width: 100%; margin-top: 16px;">Download Report</button>
+    </article>
+    {% endfor %}
+</div>
+
+<style>
+.category-tabs { display: flex; gap: 10px; margin: 24px 0; flex-wrap: wrap; }
+.tab-btn { padding: 8px 20px; border-radius: 8px; background: var(--bg-app); border: 1px solid var(--tms-border); color: var(--tms-text); font-size: 0.85rem; font-weight: 500; cursor: pointer; transition: all 0.2s; }
+.tab-btn:hover, .tab-btn.active { background: var(--tms-blue); color: white; border-color: var(--tms-blue); }
+.reports-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 20px; }
+.report-card { background: var(--bg-card); border: 1px solid var(--tms-border); border-radius: 16px; padding: 24px; }
+.report-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+.report-category { background: linear-gradient(135deg, var(--tms-blue), #6366f1); color: white; padding: 4px 12px; border-radius: 6px; font-size: 0.7rem; font-weight: 700; }
+.report-views { font-size: 0.75rem; color: var(--tms-text-light); display: flex; align-items: center; gap: 4px; }
+.report-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 10px; color: var(--tms-text); }
+.report-summary { font-size: 0.85rem; color: var(--tms-text-light); line-height: 1.6; margin-bottom: 16px; }
+.report-footer { display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--tms-text-light); }
+.report-author, .report-date { display: flex; align-items: center; gap: 4px; }
+</style>
+
+<script>
+document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        const filter = this.dataset.category;
+        document.querySelectorAll('.report-card').forEach(card => {
+            const cat = card.dataset.category;
+            card.style.display = (filter === 'all' || cat === filter) ? '' : 'none';
+        });
+    });
+});
+</script>
+{% endblock %}

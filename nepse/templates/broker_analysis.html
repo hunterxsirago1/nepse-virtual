@@ -1,0 +1,146 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="page-header animate-fade-in">
+    <div>
+        <h1 class="page-title">Broker Analysis</h1>
+        <p class="page-subtitle">Institutional activity, broker flow, and whale trades</p>
+    </div>
+    <div class="header-actions">
+        <select class="filter-select">
+            <option>All Activity</option>
+            <option>Buy Only</option>
+            <option>Sell Only</option>
+            <option>Large Trades (NPR 1M+)</option>
+        </select>
+    </div>
+</div>
+
+<!-- Broker Stats -->
+<div class="stats-grid animate-slide-up">
+    <div class="stat-card">
+        <div class="stat-icon" style="background: rgba(0, 191, 139, 0.1); color: var(--positive);">
+            <i class="fas fa-shopping-cart"></i>
+        </div>
+        <div class="stat-info">
+            <span class="stat-label">Total Buys</span>
+            <span class="stat-value" style="color: var(--positive);">{{ activities|selectattr('type', 'equalto', 'BUY')|list|length }}</span>
+        </div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon" style="background: rgba(239, 68, 68, 0.1); color: var(--negative);">
+            <i class="fas fa-dollar-sign"></i>
+        </div>
+        <div class="stat-info">
+            <span class="stat-label">Total Sells</span>
+            <span class="stat-value" style="color: var(--negative);">{{ activities|selectattr('type', 'equalto', 'SELL')|list|length }}</span>
+        </div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon" style="background: rgba(139, 92, 246, 0.1); color: #8b5cf6;">
+            <i class="fas fa-whale"></i>
+        </div>
+        <div class="stat-info">
+            <span class="stat-label">Large Trades</span>
+            <span class="stat-value" style="color: #8b5cf6;">{{ activities|selectattr('value', '>=', 1000000)|list|length }}</span>
+        </div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon" style="background: rgba(245, 158, 11, 0.1); color: #f59e0b;">
+            <i class="fas fa-building"></i>
+        </div>
+        <div class="stat-info">
+            <span class="stat-label">Active Brokers</span>
+            <span class="stat-value">{{ top_buyers|length + top_sellers|length }}</span>
+        </div>
+    </div>
+</div>
+
+<!-- Top Buyers/Sellers -->
+<div class="two-column-grid animate-slide-up" style="margin: 24px 0;">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title"><i class="fas fa-arrow-up" style="color: var(--positive);"></i> Top Institutional Buyers</h3>
+        </div>
+        <div class="table-container">
+            <table class="data-table">
+                <thead><tr><th>Broker</th><th>Total Value</th></tr></thead>
+                <tbody>
+                    {% for buyer in top_buyers %}
+                    <tr>
+                        <td><strong>{{ buyer.broker }}</strong></td>
+                        <td class="text-positive">NPR {{ "%.0f"|format(buyer.total) }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title"><i class="fas fa-arrow-down" style="color: var(--negative);"></i> Top Institutional Sellers</h3>
+        </div>
+        <div class="table-container">
+            <table class="data-table">
+                <thead><tr><th>Broker</th><th>Total Value</th></tr></thead>
+                <tbody>
+                    {% for seller in top_sellers %}
+                    <tr>
+                        <td><strong>{{ seller.broker }}</strong></td>
+                        <td class="text-negative">NPR {{ "%.0f"|format(seller.total) }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Activity Feed -->
+<div class="card animate-slide-up">
+    <div class="card-header">
+        <h3 class="card-title"><i class="fas fa-list"></i> Recent Broker Activity</h3>
+    </div>
+    <div class="table-container">
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Broker</th>
+                    <th>Symbol</th>
+                    <th>Type</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Value</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for activity in activities[:20] %}
+                <tr class="{{ 'large-trade' if activity.value > 1000000 else '' }}">
+                    <td><strong>{{ activity.broker }}</strong></td>
+                    <td><a href="/charts/{{ activity.symbol }}" class="symbol-link">{{ activity.symbol }}</a></td>
+                    <td>
+                        <span class="type-badge type-{{ activity.type|lower }}">
+                            {{ activity.type }}
+                        </span>
+                    </td>
+                    <td>{{ activity.quantity }}</td>
+                    <td>{{ activity.price }}</td>
+                    <td class="{{ 'text-positive' if activity.type == 'BUY' else 'text-negative' }}">NPR {{ "%.0f"|format(activity.value) }}</td>
+                    <td>{{ activity.date }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<style>
+.type-badge { padding: 4px 10px; border-radius: 6px; font-size: 0.7rem; font-weight: 700; }
+.type-buy { background: rgba(0, 191, 139, 0.15); color: var(--positive); }
+.type-sell { background: rgba(239, 68, 68, 0.15); color: var(--negative); }
+.large-trade { background: rgba(139, 92, 246, 0.05); }
+.symbol-link { color: var(--tms-blue); font-weight: 600; text-decoration: none; }
+.symbol-link:hover { text-decoration: underline; }
+</style>
+{% endblock %}

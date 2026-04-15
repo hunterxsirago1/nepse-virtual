@@ -1,0 +1,154 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="page-header animate-fade-in">
+    <div>
+        <h1 class="page-title">Volume Analysis</h1>
+        <p class="page-subtitle">Trading volume patterns and anomaly detection</p>
+    </div>
+</div>
+
+<!-- Volume Stats -->
+<div class="stats-grid animate-slide-up">
+    <div class="stat-card">
+        <div class="stat-icon" style="background: rgba(59, 130, 246, 0.1); color: var(--tms-blue);">
+            <i class="fas fa-chart-bar"></i>
+        </div>
+        <div class="stat-info">
+            <span class="stat-label">Avg Daily Volume</span>
+            <span class="stat-value">{{ (avg_vol / 1000)|round|int }}K</span>
+        </div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon" style="background: rgba(245, 158, 11, 0.1); color: #f59e0b;">
+            <i class="fas fa-fire"></i>
+        </div>
+        <div class="stat-info">
+            <span class="stat-label">Volume Spikes</span>
+            <span class="stat-value">{{ vol_spikes|length }}</span>
+        </div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon" style="background: rgba(139, 92, 246, 0.1); color: #8b5cf6;">
+            <i class="fas fa-clock"></i>
+        </div>
+        <div class="stat-info">
+            <span class="stat-label">Avg Turnover</span>
+            <span class="stat-value">NPR 450M</span>
+        </div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon" style="background: rgba(0, 191, 139, 0.1); color: var(--positive);">
+            <i class="fas fa-arrow-up"></i>
+        </div>
+        <div class="stat-info">
+            <span class="stat-label">High Volume Days</span>
+            <span class="stat-value">{{ (vol_history|selectattr('volume', '>=', 300000)|list)|length }}</span>
+        </div>
+    </div>
+</div>
+
+<!-- Volume Chart -->
+<div class="card animate-slide-up" style="margin: 24px 0;">
+    <div class="card-header">
+        <h3 class="card-title">Daily Volume Trend (30 Days)</h3>
+    </div>
+    <div style="height: 250px;">
+        <canvas id="volumeChart"></canvas>
+    </div>
+</div>
+
+<div class="two-column-grid">
+    <!-- Volume Leaders -->
+    <div class="card animate-slide-up">
+        <div class="card-header">
+            <h3 class="card-title"><i class="fas fa-fire" style="color: #f59e0b;"></i> High Volume Stocks</h3>
+        </div>
+        <div class="table-container">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Symbol</th>
+                        <th>Price</th>
+                        <th>Change</th>
+                        <th>Volume</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in high_volume[:10] %}
+                    <tr>
+                        <td><strong>{{ row.Symbol }}</strong></td>
+                        <td>{{ row.get('LTP', '-') }}</td>
+                        <td class="{{ 'text-positive' if row.get('Diff %', 0) > 0 else 'text-negative' }}">{{ "%.2f"|format(row.get('Diff %', 0)) }}%</td>
+                        <td>{{ row.get('Volume', row.get('Qty', '-')) }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Volume Spikes -->
+    <div class="card animate-slide-up">
+        <div class="card-header">
+            <h3 class="card-title"><i class="fas fa-bolt" style="color: #ef4444;"></i> Volume Spikes (>2x avg)</h3>
+        </div>
+        <div class="table-container">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Symbol</th>
+                        <th>Price</th>
+                        <th>Volume</th>
+                        <th>Signal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in vol_spikes[:10] %}
+                    <tr>
+                        <td><strong>{{ row.Symbol }}</strong></td>
+                        <td>{{ row.get('LTP', '-') }}</td>
+                        <td>{{ row.get('Volume', '-') }}</td>
+                        <td><span class="badge badge-warning">SPIKE</span></td>
+                    </tr>
+                    {% endfor %}
+                    {% if not vol_spikes %}
+                    <tr><td colspan="4" class="text-center" style="color: var(--tms-text-light);">No volume spikes detected</td></tr>
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const history = {{ vol_history | tojson }};
+    new Chart(document.getElementById('volumeChart'), {
+        type: 'bar',
+        data: {
+            labels: history.map(h => h.date.slice(5)),
+            datasets: [{
+                label: 'Volume',
+                data: history.map(h => h.volume),
+                backgroundColor: history.map(h => h.volume > 300000 ? 'rgba(0, 191, 139, 0.7)' : 'rgba(59, 130, 246, 0.5)'),
+                borderRadius: 4,
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { legend: { display: false } },
+            scales: {
+                x: { grid: { display: false } },
+                y: {
+                    grid: { color: 'rgba(0,0,0,0.05)' },
+                    ticks: { callback: v => (v/1000).toFixed(0) + 'K' }
+                }
+            }
+        }
+    });
+});
+</script>
+{% endblock %}

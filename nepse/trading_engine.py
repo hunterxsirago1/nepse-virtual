@@ -1,7 +1,6 @@
 import datetime
-import math
 from typing import Optional, Tuple, Dict, List, Any
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 
 @dataclass
 class NepalHoliday:
@@ -85,8 +84,8 @@ class NepseTradingEngine:
     Implements accurate Nepal Stock Exchange trading rules.
     """
 
-    # Debug mode - always open for testing
-    DEBUG_ALWAYS_OPEN = True
+    # Market open check uses DEBUG_ALWAYS_OPEN from app.py environment
+    # Set DEBUG_MARKET_OPEN env var to control market hours
 
     # Commission Slabs (effective from Jestha 1, 2081 - May 14, 2024)
     # Applied to GROSS transaction amount (not progressive)
@@ -175,10 +174,6 @@ class NepseTradingEngine:
             Tuple of (is_open, message, phase)
             phase can be: CLOSED, PRE_OPEN, REGULAR
         """
-        # Debug mode - always open for testing
-        if NepseTradingEngine.DEBUG_ALWAYS_OPEN:
-            return True, "Market is Open (Debug Mode).", "REGULAR"
-
         now = datetime.datetime.now()
         current_time = now.time()
 
